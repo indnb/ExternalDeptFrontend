@@ -21,7 +21,7 @@ describe('useTemplateApiQuery', () => {
 
     const { result } = renderHook(() => useTemplateApiQuery(), { wrapper });
 
-    await waitFor(() =>  expect(result.current.data).toEqual(mockData));  // Wait for the query to succeed
+    await waitFor(() =>  expect(result.current.data).toEqual(mockData)); 
 
   });
 

@@ -8,7 +8,7 @@ export default function TestTextInHome() {
   const toggleLang = () => {
     changeLanguage(language === "ua" ? "eng" : "ua");
   };
-
+console.log(process.env.API_PORT)
   return (
     <div>
       <h1>{data[language]}</h1>
