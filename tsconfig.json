@@ -12,7 +12,7 @@
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
