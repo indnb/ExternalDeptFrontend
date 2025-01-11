@@ -17,8 +17,6 @@ export default function Home() {
               <button onClick={() => toggleLang()}>one up</button>
 
           </div>
-          <Registration/>
-          <Footer/>
       </div>
 
   );

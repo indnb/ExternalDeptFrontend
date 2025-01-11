@@ -1,4 +1,4 @@
-import {RegistrationInput} from "@/src/app/Atoms/RegistrationInput";
+import {RegistrationInput} from '@/src/app/Molecules/RegistrationInput'
 import {RegistrationSendButton} from "@/src/app/Atoms/RegistrationSendButton";
 import { useForm} from 'react-hook-form';
 

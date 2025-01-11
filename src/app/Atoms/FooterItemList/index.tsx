@@ -1,4 +1,4 @@
-export const FooterList = ({ list }: { list: string[] }) => {
+export const FooterItemList = ({ list }: { list: string[] }) => {
     return (
         <div>
             <ul className="flex flex-col gap-8">
