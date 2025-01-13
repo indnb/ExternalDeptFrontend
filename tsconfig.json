@@ -20,12 +20,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["./src/app/*"],
       "@/public": ["/src/public/*"],
-      "@/Atoms": ["/src/Atoms/*"],
-      "@/Molecules": ["/src/Molecules/*"],
-      "@/Organisms": ["/src/Organisms/*"],
-      "@/Templates": ["/src/Templates/*"]
+      "@/Atoms": ["/Atoms/*"],
+      "@/Molecules": ["/Molecules/*"],
+      "@/Organisms": ["/Organisms/*"],
+      "@/Templates": ["/Templates/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

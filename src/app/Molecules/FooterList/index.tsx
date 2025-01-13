@@ -1,9 +1,12 @@
-export const FooterItemList = ({ list }: { list: string[] }) => {
+import { FooterItem } from "@/Atoms/FooterItem";
+
+
+export const FooterList = ({ list }: { list: string[] }) => {
     return (
         <div>
             <ul className="flex flex-col gap-8">
                 {list.map((item: string, i: number) => (
-                    <li key={i}>{item}</li>
+                    <FooterItem key={i} item={item} />
                 ))}
             </ul>
         </div>

@@ -1,8 +1,8 @@
 "use client";
 import { useLanguageStore } from "../store/LanguageChanger";
 import 'src/app/globals.css'
-import {Footer} from "@/src/app/Organisms/Footer";
-import {Registration} from "@/src/app/Organisms/Registration";
+import {Footer} from "@/Organisms/Footer";
+import {Registration} from "@/Organisms/Registration";
 
 export default function Home() {
   const { language, changeLanguage } = useLanguageStore();
@@ -17,6 +17,8 @@ export default function Home() {
               <button onClick={() => toggleLang()}>one up</button>
 
           </div>
+          <Registration/>
+          <Footer/>
       </div>
 
   );

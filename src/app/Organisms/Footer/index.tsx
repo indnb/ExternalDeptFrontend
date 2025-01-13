@@ -1,5 +1,5 @@
-import {FooterDyikt} from "src/app/Molecules/FooterDyikt";
-import {FooterMenu} from "@/src/app/Molecules/FooterMenu";
+import {FooterDyikt} from "@/Molecules/FooterDyikt";
+import {FooterMenu} from "@/Molecules/FooterMenu";
 
 export const Footer = () => {
     return (

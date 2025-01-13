@@ -1,5 +1,5 @@
-import {RegistrationText} from "@/src/app/Atoms/RegistrationText";
-import {RegistrationLable} from "@/src/app/Atoms/RegistrationLable";
+import {RegistrationText} from "@/Atoms/RegistrationText";
+import {RegistrationLable} from "@/Atoms/RegistrationLable";
 
 export const RegistrationHeader=()=>{
     return (

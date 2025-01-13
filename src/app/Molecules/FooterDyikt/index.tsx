@@ -1,5 +1,5 @@
-import { FooterImage } from "@/src/app/Atoms/FooterImage";
-import { FooterLabel } from "@/src/app/Atoms/FooterLable";
+import { FooterImage } from "@/Atoms/FooterImage";
+import { FooterLabel } from "@/Atoms/FooterLable";
 
 export const FooterDyikt: React.FC = () => {
     return (

@@ -1,5 +1,5 @@
-import {RegistrationHeader} from "@/src/app/Molecules/RegistrationHeader";
-import {RegistrationForm} from "@/src/app/Molecules/RegistrationForm";
+import {RegistrationHeader} from "@/Molecules/RegistrationHeader";
+import {RegistrationForm} from "@/Molecules/RegistrationForm";
 
 export const Registration =()=>{
     return (

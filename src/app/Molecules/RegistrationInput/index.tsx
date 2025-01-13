@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { InputField } from '@/src/app/Atoms/RegistrationInputField';
+import { InputField } from '@/Atoms/RegistrationInputField';
 
 interface InputConfig {
     name: string;

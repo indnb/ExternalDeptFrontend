@@ -1,5 +1,5 @@
 'use client'
-import Dyikt from '@/public/Dyikt.png'
+import Dyikt from '../../../public/Dyikt.png'
 
 export const FooterImage = () => {
     return (
