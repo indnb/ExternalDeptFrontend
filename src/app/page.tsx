@@ -7,6 +7,14 @@ import { Registration } from "@/Organisms/Registration";
 export default function Home() {
   return (
     <div>
+      <h1
+        style={{
+          fontFamily:
+            "'Kharkiv Tone', 'Kyiv Type Sans', 'Montserrat', sans-serif",
+        }}
+      >
+        aaaaa
+      </h1>
       <Registration />
       <Footer />
     </div>
