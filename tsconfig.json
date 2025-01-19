@@ -29,6 +29,7 @@
       "@/Atoms": ["/Atoms/*"],
       "@/Molecules": ["/Molecules/*"],
       "@/Organisms": ["/Organisms/*"],
+      "@/_store": ["./src/_store/*"],
       "@/Templates": ["/Templates/*"]
     }
   },
