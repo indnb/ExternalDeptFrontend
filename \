@@ -1,5 +1,5 @@
 import { RegistrationInput } from "@/Molecules/RegistrationInput";
-import { Button } from "@/Atoms/Button";
+import { RegistrationSendButton } from "@/Atoms/RegistrationSendButton";
 import { useForm } from "react-hook-form";
 
 export const RegistrationForm = () => {
@@ -65,7 +65,7 @@ export const RegistrationForm = () => {
         control={control}
         errors={errors}
       />
-      <Button title={"Надіслати"} type="submit" />
+      <Button title={"Надіслати"} />
     </form>
   );
 };
