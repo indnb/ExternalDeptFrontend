@@ -1,7 +1,7 @@
 import {RegistrationHeader} from "@/Molecules/RegistrationHeader";
 import {RegistrationForm} from "@/Molecules/RegistrationForm";
 
-export const Registration =()=>{
+export const DesktopRegistration =()=>{
     return (
         <div className="bg-white">
             <RegistrationHeader/>
