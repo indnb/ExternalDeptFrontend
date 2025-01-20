@@ -25,7 +25,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/public": ["/src/public/*"],
+      "@/public": ["/public/*"],
       "@/Atoms": ["/Atoms/*"],
       "@/Molecules": ["/Molecules/*"],
       "@/Organisms": ["/Organisms/*"],

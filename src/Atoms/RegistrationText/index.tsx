@@ -5,7 +5,11 @@ type TextProps = {
 export const RegistrationText: React.FC<TextProps> = ({ title }) => {
     return (
         <div>
-            <p className={`font-bold text-4xl text-black p-2`}>{title}</p>
+            <p
+                style={{
+                    fontFamily: "'Kyiv Type Sans', sans-serif",
+                }}
+                className={`font-bold text-4xl text-black p-2 max-sm:text-xl`}>{title}</p>
         </div>
     )
 }
