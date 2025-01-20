@@ -4,9 +4,9 @@ import "src/app/globals.css";
 import { Footer } from "@/Organisms/Footer";
 
 import { DesktopRegistration } from "src/Organisms/DesktopRegistration";
-import {RegistrationButtons} from "@/Molecules/RegistrationButtons";
-import {MobileRegistration} from "@/Organisms/MobileRegistration";
-
+import { RegistrationButtons } from "@/Molecules/RegistrationButtons";
+import { MobileRegistration } from "@/Organisms/MobileRegistration";
+import { Main } from "@/Organisms/Main";
 export default function Home() {
   return (
     <div className="bg-white ">
@@ -19,12 +19,11 @@ export default function Home() {
       >
         aaaaa
       </h1>
-        <div className={`w-full flex flex-col gap-10 justify-center`}>
-            <MobileRegistration/>
-            <RegistrationButtons/>
-        </div>
-
-
+      <div className={`w-full flex flex-col gap-10 justify-center`}>
+        <Main />
+        <MobileRegistration />
+        <RegistrationButtons />
+      </div>
     </div>
   );
 }

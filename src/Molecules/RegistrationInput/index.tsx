@@ -40,7 +40,6 @@ export const RegistrationInput: React.FC<RegistrationInputProps> = ({ inputsConf
                 </div>
             ))}
 
-        </div>
       ))}
     </div>
   );
