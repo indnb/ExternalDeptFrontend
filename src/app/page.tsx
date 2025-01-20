@@ -1,7 +1,8 @@
 "use client";
-import { useLanguageStore } from "../store/LanguageChanger";
+import { uselanguagestore } from "../store/languagechanger";
 import "src/app/globals.css";
 import { Footer } from "@/Organisms/Footer";
+
 import { DesktopRegistration } from "src/Organisms/DesktopRegistration";
 import {RegistrationButtons} from "@/Molecules/RegistrationButtons";
 import {MobileRegistration} from "@/Organisms/MobileRegistration";
@@ -22,6 +23,7 @@ export default function Home() {
             <MobileRegistration/>
             <RegistrationButtons/>
         </div>
+
 
     </div>
   );
