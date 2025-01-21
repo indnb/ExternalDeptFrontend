@@ -17,7 +17,6 @@ export default function Home() {
         }}
         className="text-black"
       >
-        aaaaa
       </h1>
       <div className={`w-full flex flex-col gap-10 justify-center`}>
         <Main />
