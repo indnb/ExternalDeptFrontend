@@ -1,21 +1,28 @@
 "use client";
-import { useLanguageStore } from "../store/LanguageChanger";
+import { uselanguagestore } from "../store/languagechanger";
 import "src/app/globals.css";
 import { Footer } from "@/Organisms/Footer";
-import { Registration } from "@/Organisms/Registration";
 
+import { DesktopRegistration } from "src/Organisms/DesktopRegistration";
+import { RegistrationButtons } from "@/Molecules/RegistrationButtons";
+import { MobileRegistration } from "@/Organisms/MobileRegistration";
+import { Main } from "@/Organisms/Main";
 export default function Home() {
   return (
-    <div>
+    <div className="bg-white ">
       <h1
         style={{
           fontFamily:
             "'Kharkiv Tone', 'Kyiv Type Sans', 'Montserrat', sans-serif",
         }}
+        className="text-black"
       >
       </h1>
-      <Registration />
-      <Footer />
+      <div className={`w-full flex flex-col gap-10 justify-center`}>
+        <Main />
+        <MobileRegistration />
+        <RegistrationButtons />
+      </div>
     </div>
   );
 }
