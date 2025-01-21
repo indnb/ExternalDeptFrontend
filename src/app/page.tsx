@@ -13,7 +13,6 @@ export default function Home() {
             "'Kharkiv Tone', 'Kyiv Type Sans', 'Montserrat', sans-serif",
         }}
       >
-        aaaaa
       </h1>
       <Registration />
       <Footer />
