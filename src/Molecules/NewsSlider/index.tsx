@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { ItemNews } from "@/Atoms/ItemNews";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -22,12 +22,64 @@ export const NewsSlider = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 1.5,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+
+    responsive: [
+      {
+        breakpoint: 1694,
+        settings: {
+          slidesToShow: 2.5,
+        },
+      },
+      {
+        breakpoint: 1504,
+        settings: {
+          slidesToShow: 2.25,
+        },
+      },
+
+      {
+        breakpoint: 1304,
+        settings: {
+          slidesToShow: 1.75,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1.5,
+        },
+      },
+
+      {
+        breakpoint: 724,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 658,
+        settings: {
+          slidesToShow: 1.5,
+        },
+      },
+      {
+        breakpoint: 470,
+        settings: {
+          slidesToShow: 1.25,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="h-[230px] w-[100vw]">
+    <div className="max-[850px]:h-[230px] w-[100vw]">
       <Slider {...settings}>
         {arr.map((item, index) => (
           <ItemNews key={index} title={item.title} />
