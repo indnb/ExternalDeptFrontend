@@ -4,7 +4,7 @@ import "src/app/globals.css";
 import { Footer } from "@/Organisms/Footer";
 
 import { DesktopRegistration } from "@/Organisms/DesktopRegistration";
-import { NewsSlider } from "@/Organisms/NewsSlider";
+import { News } from "@/Organisms/News";
 import { RegistrationButtons } from "@/Molecules/RegistrationButtons";
 import { MobileRegistration } from "@/Organisms/MobileRegistration";
 import { Main } from "@/Organisms/Main";
@@ -22,7 +22,7 @@ export default function Home() {
       </h1>
       <div className={`w-full flex flex-col gap-10 justify-center`}>
         <Main />
-        <NewsSlider />
+        <News />
         <MobileRegistration />
         <RegistrationButtons />
       </div>
