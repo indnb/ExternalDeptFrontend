@@ -1,10 +1,16 @@
+
 import {RegistrationInput} from '@/Molecules/RegistrationInput'
 import {RegistrationButton} from "src/Atoms/RegistrationButton";
 import { useForm} from 'react-hook-form';
 import {inputsConfig} from './RegisrationForm.data'
 
 export const RegistrationForm = () => {
-    const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+
 
     const onSubmit = (data: FormData) => {
         console.log(data);
@@ -17,4 +23,5 @@ export const RegistrationForm = () => {
             <RegistrationButton width={"300"} title={'Надіслати'} />
         </form>
     );
+
 };

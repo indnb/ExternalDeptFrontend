@@ -1,8 +1,8 @@
-import React from 'react';
-import { Controller } from 'react-hook-form';
-import { InputField } from '@/Atoms/RegistrationInputField';
+import { Controller } from "react-hook-form";
+import { InputField } from "@/Atoms/RegistrationInputField";
 
 interface InputConfig {
+
     name: string;
     placeholder: string;
     type: string;
@@ -10,13 +10,14 @@ interface InputConfig {
         required?: string | boolean;
         pattern?: { value: RegExp; message: string };
     };
+
+}
+interface RegistrationInputProps {
+  inputsConfig: InputConfig[];
+  control: any;
+  errors: any;
 }
 
-interface RegistrationInputProps {
-    inputsConfig: InputConfig[];
-    control: any;
-    errors: any;
-}
 
 export const RegistrationInput: React.FC<RegistrationInputProps> = ({ inputsConfig, control, errors }) => {
     return (
@@ -38,6 +39,8 @@ export const RegistrationInput: React.FC<RegistrationInputProps> = ({ inputsConf
                     />
                 </div>
             ))}
-        </div>
-    );
+
+      ))}
+    </div>
+  );
 };
