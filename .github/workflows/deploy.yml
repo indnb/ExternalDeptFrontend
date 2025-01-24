@@ -1,0 +1,43 @@
+name: Deploy to Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        port: ${{ secrets.SERVER_PORT }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        script: |
+          
+        timeout: 30m
+        script: |
+          CONTAINER_NAME=${{ secrets.CONTAINER_NAME }}
+          NETWORK_NAME=${{ secrets.NETWORK_NAME }}
+          IMAGE_TAG=${GITHUB_REF_NAME:-latest}
+
+          echo "Deploying with Container Name: $CONTAINER_NAME, Network Name: $NETWORK_NAME, and Tag: $IMAGE_TAG"
+
+          cd /home/dnb/ExternalDeptFrontend
+
+          git pull
+
+          docker build -t external-dept-fontend:$IMAGE_TAG .
+
+          docker rm -f $CONTAINER_NAME || true
+
+          docker run -d -p 8080:80 -p 8443:443 --name $CONTAINER_NAME -network $NETWORK_NAME -external-dept-fontend:$IMAGE_TAG 
+
+          echo "Deployment completed successfully with tag $IMAGE_TAG."

@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  frontend:
+    image: nextjs-frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Expose the app on port 3000
+    environment:
+      NODE_ENV: production
+      # Add other environment variables here
+      NEXT_PUBLIC_API_URL: https://api.example.com
+    command: npm start # Start Next.js in production mode
+
