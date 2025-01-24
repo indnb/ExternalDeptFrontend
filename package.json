@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbo --port 8080 --hostname 0.0.0.0",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port 8080 --hostname 0.0.0.0",
     "lint": "next lint",
     "test": "jest"
   },
