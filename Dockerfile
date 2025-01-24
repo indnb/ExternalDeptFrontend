@@ -1,30 +1,20 @@
-FROM node:18 AS builder
+FROM node:latest AS builder
 
-# Set working directory
-WORKDIR /app
+WORKDIR /frontend
 
-# Copy package.json and install dependencies
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm install --force
 
-# Copy the rest of the code
 COPY . .
-
-# Build the application
 RUN npm run build
 
-# Production image
-FROM node:18
-WORKDIR /app
+FROM node:alpine
 
-# Copy only the build artifacts and necessary files
-COPY --from=builder /app/build /app/build
-COPY package.json package-lock.json ./
-RUN npm install --production
+WORKDIR /frontend
 
-# Expose the application port
+COPY --from=builder /frontend ./
+
 EXPOSE 3000
 
-# Set the default command
 CMD ["npm", "start"]
 

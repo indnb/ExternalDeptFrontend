@@ -2,8 +2,8 @@ name: Deploy to Frontend
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'  
 
 jobs:
   deploy:
@@ -30,7 +30,7 @@ jobs:
 
           echo "Deploying with Container Name: $CONTAINER_NAME, Network Name: $NETWORK_NAME, and Tag: $IMAGE_TAG"
 
-          cd /home/dnb/ExternalDeptFrontend
+          cd /var/www/site2
 
           git pull
 
@@ -38,6 +38,6 @@ jobs:
 
           docker rm -f $CONTAINER_NAME || true
 
-          docker run -d -p 8080:80 -p 8443:443 --name $CONTAINER_NAME -network $NETWORK_NAME -external-dept-fontend:$IMAGE_TAG 
+          docker run -d -p 8080:80 -p 8443:443 --name $CONTAINER_NAME -network $NETWORK_NAME external-dept-fontend:$IMAGE_TAG 
 
           echo "Deployment completed successfully with tag $IMAGE_TAG."

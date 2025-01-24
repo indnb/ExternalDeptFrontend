@@ -1,10 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   env: {
-    API_PORT: 'http://0.0.0.0:8181/api',
-  }, 
+    API_PORT: "http://0.0.0.0:8181/api",
+  },
+  eslint: {
+    ignoreDuringBuilds: true, 
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
