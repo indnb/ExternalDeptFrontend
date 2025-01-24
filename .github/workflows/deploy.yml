@@ -29,7 +29,7 @@ jobs:
 
           echo "Deploying with Container Name: $CONTAINER_NAME, Network Name: $NETWORK_NAME, and Tag: $IMAGE_TAG"
 
-          cd /var/www/site2
+          cd /var/www/site2/ExternalDeptFrontend
 
           git pull
 
