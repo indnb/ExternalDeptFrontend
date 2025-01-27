@@ -8,7 +8,7 @@ export const HeaderButtons: React.FC = () => {
     const languages: string[] = ["ua", "en"];
 
     return (
-        <div className=" flex space-x-2 md:space-x-8 lg:mr-12">
+        <div className="flex space-x-2 md:space-x-8 mr-5 lg:mr-12">
             {languages.map((elem: string) => {
                 const isActive = elem === language;
                 return (
@@ -18,7 +18,7 @@ export const HeaderButtons: React.FC = () => {
                         onClick={() => changeLanguage(elem as "ua" | "eng")}
                         className={`px-2 py-2 rounded-md border-2 mr-2 border-black ${
                             isActive ? "bg-[#203C8F] text-white" : "bg-white text-black"
-                        }`}
+                        } text-sm md:text-lg lg:text-xl`}
                     />
                 );
             })}
