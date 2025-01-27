@@ -1,5 +1,5 @@
 "use client";
-import Dyikt from "../../public/logo.png";
+import Dyikt from "../../public/Logo.svg";
 
 export const Headerimage = () => {
     return (
