@@ -16,7 +16,7 @@ export const MainLeftPanel = () => {
 
       <h1
         className="h-[auto] text-[64px] w-[48vw] h-[auto] leading-[64px]  max-[850px]:text-[40px] max-[550px]:text-[30px] text-black 
-        max-[850px]:leading-[40px] max-[850px]:mt-[22px] max-[550px]:mt-[20px]
+        max-[850px]:leading-[40px] max-[850px]:mt-[22px] max-[550px]:mt-[25px]
         max-[850px]:w-[398px] max-[550px]:w-[80vw]"
         style={{ fontFamily: "Kharkiv Tone" }}
       >

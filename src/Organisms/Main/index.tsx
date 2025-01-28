@@ -5,7 +5,7 @@ export const Main = () => {
   return (
     <main
       className="mt-[120px] max-[750px]:mt-[70px] flex-row-reverse flex items-center justify-between max-[850px]:justify-start bg-white 
-      max-[850px]:flex-col  max-[850px]:h-[580px] max-[550px]:h-[410px]"
+      max-[850px]:flex-col  max-[850px]:h-[580px] max-[550px]:h-[510px]"
     >
       <div
         className="h-[738px] w-[48vw] max-[1000px]:w-[43vw]       
