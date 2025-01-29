@@ -23,6 +23,7 @@ export const NewsSlider = () => {
     infinite: false,
     speed: 500,
     slidesToShow: 3,
+
     responsive: [
       {
         breakpoint: 1694,

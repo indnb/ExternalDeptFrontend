@@ -2,7 +2,7 @@
 import { uselanguagestore } from "../store/languagechanger";
 import "src/app/globals.css";
 import { Footer } from "@/Organisms/Footer";
-
+import { AboutUs } from "@/Organisms/AboutUs";
 import { RegistrationButtons } from "@/Molecules/RegistrationButtons";
 import { RegistrationBox } from "@/Molecules/RegistrationBox";
 import { MobileRegistration } from "@/Organisms/MobileRegistration";
@@ -15,6 +15,7 @@ export default function Home() {
       <div className={`w-full flex flex-col gap-10 justify-center`}>
         <Main />
         <News />
+        <AboutUs />
         <RegistrationBox />
         <MobileRegistration />
         <RegistrationButtons />
