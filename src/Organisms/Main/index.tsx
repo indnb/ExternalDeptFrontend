@@ -4,7 +4,7 @@ import { MainLeftPanel } from "@/Molecules/MainLeftPanel";
 export const Main = () => {
   return (
     <main
-      className="mt-[120px] max-[750px]:mt-[70px] flex-row-reverse flex items-center justify-between max-[850px]:justify-start bg-white 
+      className="mt-[120px] max-[750px]:mt-[70px] flex-row-reverse flex items-center justify-between max-[850px]:justify-start bg-[#F6F6F6]
       max-[850px]:flex-col  max-[850px]:h-[580px] max-[550px]:h-[510px]"
     >
       <div

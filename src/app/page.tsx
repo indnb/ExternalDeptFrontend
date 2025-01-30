@@ -11,7 +11,7 @@ import { News } from "@/Organisms/News";
 import { Main } from "@/Organisms/Main";
 export default function Home() {
   return (
-    <div className="bg-white ">
+    <div className="bg-[#F6F6F6] ">
       <div className={`w-full flex flex-col gap-10 justify-center`}>
         <Main />
         <News />
