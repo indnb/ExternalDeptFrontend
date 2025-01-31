@@ -3,73 +3,33 @@ import Slider from "react-slick";
 import { aboutUsData } from "./aboutUs.data";
 import { IAboutUsData } from "@/type/IAboutUsData";
 import { ItemAboutUs } from "@/Atoms/ItemAboutUs";
+import { useState, useEffect } from "react";
+import useScreenSize from "@/hook/useScreenSize";
 export const AboutUsSlider = () => {
+  const { width } = useScreenSize();
+  const [slidesToShow, setSlidesToShow] = useState<number>(1);
   var settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 2.1,
-    responsive: [
-      {
-        breakpoint: 1600,
-        settings: {
-          slidesToShow: 1.75,
-        },
-      },
-      {
-        breakpoint: 1404,
-        settings: {
-          slidesToShow: 1.5,
-        },
-      },
-
-      {
-        breakpoint: 1204,
-        settings: {
-          slidesToShow: 1.35,
-        },
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1.2,
-        },
-      },
-
-      {
-        breakpoint: 850,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 658,
-        settings: {
-          slidesToShow: 1.5,
-        },
-      },
-      {
-        breakpoint: 470,
-        settings: {
-          slidesToShow: 1.25,
-        },
-      },
-      {
-        breakpoint: 400,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+    slidesToShow: slidesToShow,
+    arrows: false,
   };
-
+  useEffect(() => {
+    if (width >= 850) {
+      var sliderCount = width / 746;
+    } else {
+      var sliderCount = width / 333;
+    }
+    setSlidesToShow(sliderCount);
+  }, [width]);
   return (
     <div>
       <Slider {...settings}>
         {aboutUsData.map((elem, index) => (
           <ItemAboutUs data={elem} key={index} />
         ))}
-      </Slider>{" "}
+      </Slider>
     </div>
   );
 };
