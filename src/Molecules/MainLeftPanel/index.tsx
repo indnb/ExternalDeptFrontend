@@ -3,7 +3,7 @@ import { Button } from "@/Atoms/Button";
 import { useLanguageStore } from "@/_store/LanguageChanger";
 
 export const MainLeftPanel = () => {
-  const { language, changeLanguage } = useLanguageStore();
+  const { language } = useLanguageStore();
 
   return (
     <div className="h-[738px] flex w-[52vw] flex-col justify-center items-center max-[850px]:h-[auto] max-[550px]:h-[180px]">

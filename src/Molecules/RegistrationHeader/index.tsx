@@ -1,11 +1,15 @@
 import {RegistrationText} from "@/Atoms/RegistrationText";
 import {RegistrationLable} from "@/Atoms/RegistrationLable";
 
-export const RegistrationHeader=()=>{
+interface RegistrationHeaderProps {
+    title: string;
+}
+
+export const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({ title }) => {
     return (
         <div>
-            <RegistrationText title={'Реєстрація учасника №1'}/>
-            <RegistrationLable title={'*Максимальна кількість учасників в команді - 6.'}/>
+            <RegistrationText title={title} />
+            <RegistrationLable title="*Максимальна кількість учасників в команді - 6." />
         </div>
-    )
-}
+    );
+};

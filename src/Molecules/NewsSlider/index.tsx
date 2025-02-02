@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
 import { ItemNews } from "@/Atoms/ItemNews";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+
 const arr: INews[] = [
   {
     title: "Крейзі новини відділу",
@@ -14,11 +15,12 @@ const arr: INews[] = [
     title: "Крейзі новини відділу",
   },
 ];
+
 export interface INews {
   title: string;
 }
 export const NewsSlider = () => {
-  var settings = {
+  let settings = {
     dots: false,
     infinite: false,
     speed: 500,
