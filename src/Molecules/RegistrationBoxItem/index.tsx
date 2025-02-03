@@ -11,11 +11,11 @@ interface RegistrationBoxItemProps {
 
 export const RegistrationBoxItem: React.FC<RegistrationBoxItemProps> = ({ image, text, label }) => {
     return (
-        <div className="flex flex-col text-center items-center p-4 ">
-            <div className="flex flex-col items-center">
+        <div className="flex w-full h-32 max-sm:flex-col max-sm:h-auto flex-row justify-evenly text-center items-center p-8  ">
+            <div className="flex flex-col items-center self-center">
                 <RegistrationBoxImage image={image} />
                 <RegistrationBoxText text={text} />
-            </div>
+            </div >
             <RegistrationBoxLabel label={label} />
         </div>
     );
