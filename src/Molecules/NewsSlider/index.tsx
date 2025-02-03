@@ -2,7 +2,7 @@ import { ItemNews } from "@/Atoms/ItemNews";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { useState, useEffect } from "react";
 import useScreenSize from "@/hook/useScreenSize";
 const arr: INews[] = [
   {
@@ -20,12 +20,10 @@ export interface INews {
   title: string;
 }
 export const NewsSlider = () => {
-
   const { width } = useScreenSize();
   const [slidesToShow, setSlidesToShow] = useState<number>(1);
-  
-  let settings = {
 
+  let settings = {
     dots: false,
     infinite: false,
     speed: 500,
