@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const useScreenSize = () => {
   const [screenSize, setScreenSize] = useState({
-    width: window.innerWidth,
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
   });
 
   useEffect(() => {
