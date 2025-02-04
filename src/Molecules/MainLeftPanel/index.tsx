@@ -1,10 +1,14 @@
 import React from "react";
 import { Button } from "@/Atoms/Button";
 import { useLanguageStore } from "@/_store/LanguageChanger";
+import { useRefStore } from "@/_store/RegistrationSectionLink";
 
 export const MainLeftPanel = () => {
   const { language } = useLanguageStore();
-
+  const { refRegistrationSection } = useRefStore();
+  const handlerScroll = () => {
+    refRegistrationSection.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="h-[738px] flex w-[52vw] flex-col justify-center items-center max-[850px]:h-[auto] max-[550px]:h-[180px]">
       <p
@@ -26,6 +30,7 @@ export const MainLeftPanel = () => {
       </h1>
       <div className="mt-[27px] max-[550px]:mt-[20px] max-[850px]:w-[auto] w-[50vw]">
         <Button
+          callback={handlerScroll}
           title={
             language == "ua"
               ? "Реєстрація на хакатон"
