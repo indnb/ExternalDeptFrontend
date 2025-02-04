@@ -34,7 +34,7 @@ export const AboutUsSlider = () => {
     setSlidesToShow(sliderCount);
   }, [width]);
   return (
-    <div>
+    <div className="w-[98.5vw]">
       <Slider {...settings}>
         {aboutUsData.map((elem, index) => (
           <ItemAboutUs data={elem} key={index} />
