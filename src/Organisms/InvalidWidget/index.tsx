@@ -16,7 +16,7 @@ export const InvalidWidget = () => {
       ) : null}
       <button
         onClick={handlerSwitchInvalididget}
-        className="fixed right-[2vw]  top-[90vh]  h-[50px] w-[50px] bg-[none] rounded-[50%] text-white flex items-center justify-center  shadow-md z-40"
+        className="fixed right-[2vw]  top-[90vh]  h-[50px] w-[50px] bg-[none] rounded-[50%] text-white flex items-center justify-center  shadow-md z-30"
       >
         <Image className="rounded-[50px] bg-[none]" src={InvalidImg} alt="" />
       </button>

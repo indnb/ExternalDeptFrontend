@@ -13,16 +13,16 @@ export const InvalidWidgetHeader = ({
   };
 
   return (
-    <div className="bg-[#203C8F] h-[164px] w-[100%] flex items-center justify-center">
+    <div className="bg-[#203C8F] h-[164px] w-[100%] flex items-center justify-center max-[850px]:h-[94px]">
       <h1
-        className="text-[24px] text-[bold] font-semibold flex"
+        className="text-[24px] text-[bold] font-semibold flex max-[850px]:text-[20px]"
         style={{ fontFamily: "Montserrat" }}
       >
         Доступність
       </h1>
       <button
         onClick={handlerClose}
-        className="bg-none absolute right-[29px] w-[24px] h-[24px] top-[29px]"
+        className="bg-none absolute right-[29px] w-[24px] h-[24px] top-[29px] max-[850px]:top-[15px] max-[850px]:right-[15px]"
       >
         <Image src={Cross} alt="" className="w-[24px] h-[24px]" />
       </button>

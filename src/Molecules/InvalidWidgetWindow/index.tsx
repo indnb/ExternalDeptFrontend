@@ -2,6 +2,7 @@ import React from "react";
 import { InvalidWidgetHeader } from "@/Atoms/InvalidWidgetHeader";
 import { InvalidData } from "./Invalid.data";
 import Image from "next/image";
+import { ItemInvalidWidget } from "@/Atoms/ItemInvalidWidget";
 interface InvalidWidgetWindowProps {
   setStateWidget: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -11,28 +12,19 @@ export const InvalidWidgetWindow = ({
 }: InvalidWidgetWindowProps) => {
   return (
     <div
-      className="fixed rounded-[16px]  right-[2vw] top-[30vh] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
-        overflow-hidden
+      className="fixed rounded-[16px]  right-[2vw] top-[42vh] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
+        overflow-hidden  max-[850px]:w-[383px] max-[850px]:h-[452px] max-[850px]:top-[43vh]
         shadow-md z-40"
     >
       <InvalidWidgetHeader setStateWidget={setStateWidget} />
       <div className="flex flex-wrap gap-[31px] items-center justify-center mt-[34px]">
         {InvalidData.map((elem, index) => (
-          <div
-            key={index}
-            className="w-[208px] h-[139px] rounded-[16px] border-solid border-[black] border-[3px] 
-            flex flex-col items-center justify-center gap-[auto] cursor-pointer"
-          >
-            <Image src={elem.icon} alt="" />
-            <h1
-              className="text-[black] font-medium text-[24px] text-center "
-              style={{ fontFamily: "Montserrat" }}
-            >
-              {elem.text}
-            </h1>
-          </div>
+          <ItemInvalidWidget key={index} elem={elem} />
         ))}
       </div>
+      <h1 className="text-[0px] max-[850px]:text-[16px] text-[black] mt-[20px]">
+        Вимкнути
+      </h1>
     </div>
   );
 };
