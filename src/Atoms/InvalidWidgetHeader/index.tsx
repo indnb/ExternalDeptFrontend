@@ -1,9 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import Cross from "@/public/Cross.svg";
+interface InvalidWidgetHeaderProps {
+  setStateWidget: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export const InvalidWidgetHeader = () => {
-  const handlerClose = () => {};
+export const InvalidWidgetHeader = ({
+  setStateWidget,
+}: InvalidWidgetHeaderProps) => {
+  const handlerClose = () => {
+    setStateWidget(false);
+  };
 
   return (
     <div className="bg-[#203C8F] h-[164px] w-[100%] flex items-center justify-center">
