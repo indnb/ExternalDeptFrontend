@@ -21,7 +21,7 @@ interface RegistrationInputProps {
 
 export const RegistrationInput: React.FC<RegistrationInputProps> = ({ inputsConfig, control, errors }) => {
     return (
-        <div className="grid grid-cols-2 gap-x-72 p-4 gap-y-6 self-center max-sm:flex max-sm:flex-col">
+        <div className="grid grid-cols-2 gap-x-72 p-4 gap-y-6 self-center max-[850px]:flex max-[850px]:flex-col">
             {inputsConfig.map((input, index) => (
                 <div key={index} className="w-96 p-2">
                     <Controller
