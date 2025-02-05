@@ -3,9 +3,10 @@ import { RegistrationForm } from "@/Molecules/RegistrationForm";
 
 interface DesktopRegistrationProps {
     selectedForm: "participant" | "team";
+    onClose: () => void;
 }
 
-export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ selectedForm }) => {
+export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ selectedForm, onClose }) => {
     const formTitles: Record<DesktopRegistrationProps["selectedForm"], string> = {
         participant: "учасника",
         team: "команди",
@@ -13,7 +14,7 @@ export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ select
 
     return (
         <div className="bg-white">
-            <RegistrationHeader title={formTitles[selectedForm]} /> {/* Передаем title */}
+            <RegistrationHeader onClose={onClose} title={formTitles[selectedForm]} />
             <RegistrationForm selectedForm={selectedForm} />
         </div>
     );
