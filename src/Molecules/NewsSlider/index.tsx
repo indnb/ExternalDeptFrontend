@@ -22,7 +22,6 @@ export interface INews {
 export const NewsSlider = () => {
   const { width } = useScreenSize();
   const [slidesToShow, setSlidesToShow] = useState<number>(1);
-
   let settings = {
     dots: false,
     infinite: false,
@@ -30,6 +29,7 @@ export const NewsSlider = () => {
     slidesToShow: slidesToShow,
     arrows: false,
   };
+
   useEffect(() => {
     if (width >= 850) {
       var sliderCount = width / 615;

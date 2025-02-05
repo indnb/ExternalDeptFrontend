@@ -3,17 +3,30 @@ import { RegistrationButtons } from "@/Molecules/RegistrationButtons";
 import { RegistrationBox } from "@/Molecules/RegistrationBox";
 import { MobileRegistration } from "@/Organisms/MobileRegistration";
 import { DesktopRegistration } from "@/Organisms/DesktopRegistration";
-import { useState } from "react";
+import { useRefStore } from "@/_store/RegistrationSectionLink";
+import { useState, useEffect, useRef } from "react";
 
 export const Registration = () => {
-    const [selectedForm, setSelectedForm] = useState<"participant" | "team" | null>(null);
-
+  const refRegistrationSection = useRef(null);
+  const [selectedForm, setSelectedForm] = useState<
+    "participant" | "team" | null
+  >(null);
     const handleClose = () => {
         setSelectedForm(null);
     };
 
+  const { setRef } = useRefStore();
+  useEffect(() => {
+    if (refRegistrationSection.current) {
+      setRef(refRegistrationSection);
+    }
+  }, [refRegistrationSection]);
+  
     return (
-        <div className="w-full flex flex-col gap-10 justify-center">
+    <div
+      className="w-full flex flex-col gap-10 justify-center "
+      ref={refRegistrationSection}
+    >
             {!selectedForm ? (
                 <div className="flex flex-col gap-6">
                     <RegistrationText title={` на хакатон`} />
@@ -32,6 +45,6 @@ export const Registration = () => {
                     </div>
                 </>
             )}
-        </div>
-    );
+    </div>
+  );
 };

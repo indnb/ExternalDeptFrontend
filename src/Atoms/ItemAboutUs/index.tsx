@@ -5,8 +5,11 @@ import Image from "next/image";
 export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
   return (
     <div
+      style={{
+        boxShadow: "2px -4px 3px 1px rgba(173, 159, 173, 0.35)",
+      }}
       className="w-[721px] h-[472px]
-      max-[850px]:w-[314px] max-[850px]:h-[191px] flex bg-[white] ml-[16px] items-center justify-around rounded-[8px]"
+      max-[850px]:w-[314px] max-[850px]:h-[191px] flex bg-[white] ml-[20px] items-center justify-around rounded-[8px] "
     >
       <Image
         className="w-[350px] h-[472px]
