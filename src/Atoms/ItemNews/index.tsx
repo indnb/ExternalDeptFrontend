@@ -10,7 +10,7 @@ export const ItemNews: React.FC<IItemNews> = ({ title }) => {
     >
       <div className=" w-[555px] h-[376px] bg-[#203C8F] max-[850px]:w-[299px] max-[*50px]:h-[191px] rounded-[16px]"></div>
       <p
-        className="block  font-bold  text-black text-[16px] text-left mt-[8px]"
+        className="block  font-bold  text-black text-[28px] max-[850px]:text-[16px] text-left mt-[8px]"
         style={{ fontFamily: "Montserrat" }}
       >
         {title}

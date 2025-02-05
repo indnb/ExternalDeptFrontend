@@ -12,7 +12,7 @@ export const AboutUsSlider = () => {
   const sliderRef = useRef<Slider | null>(null);
 
   var settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: slidesToShow,

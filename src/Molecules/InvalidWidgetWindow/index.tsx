@@ -15,7 +15,7 @@ export const InvalidWidgetWindow = ({
 
   return (
     <div
-      className="fixed rounded-[16px]  right-[2vw] top-[42vh] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
+      className="fixed rounded-[16px]  right-[2vw] top-[36vh] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
         overflow-hidden  max-[850px]:w-[383px] max-[850px]:h-[452px] max-[850px]:top-[43vh]
         shadow-md z-40"
     >
