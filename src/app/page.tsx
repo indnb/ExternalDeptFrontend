@@ -6,6 +6,7 @@ import { News } from "@/Organisms/News";
 import { Registration } from "@/Organisms/Registration";
 import { InvalidWidget } from "@/Organisms/InvalidWidget";
 import { HackathonInfo } from "@/Organisms/HackathonInfo"
+import { HackathonCategory } from "@/Organisms/HackathonCategory";
 export default function Home() {
   return (
     <div className="bg-[white] ">
@@ -16,6 +17,7 @@ export default function Home() {
         <News />
         <AboutUs />
         <HackathonInfo />
+        <HackathonCategory />
         <Registration />
       </div>
     </div>
