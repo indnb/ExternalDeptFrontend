@@ -1,16 +1,16 @@
-import imgLead from "@/public/RegisterIcon/ri_team-fill.svg"
-import imgCommand from "@/public/RegisterIcon/ri_team-fill(1).svg"
+import { SvgLeader } from "./SvgLeader";
+import { SvgCommand } from "./SvgCommand";
 export interface IRegisterButtonData {
-  img: string;
+  img: any;
   text: string
 }
 export const RegisterButtonData: IRegisterButtonData[] = [
   {
-    img: imgLead,
+    img: <SvgLeader />,
     text: "РЕЄСТРАЦІЯ УЧАСНИКА"
   },
   {
-    img: imgCommand,
+    img: <SvgCommand />,
     text: "РЕЄСТРАЦІЯ КОМАНДИ"
   },
 

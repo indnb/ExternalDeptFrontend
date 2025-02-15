@@ -19,6 +19,7 @@ export default function Home() {
         <HackathonInfo />
         <HackathonCategory />
         <Registration />
+
       </div>
     </div>
   );
