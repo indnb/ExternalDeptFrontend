@@ -7,6 +7,7 @@ import { Registration } from "@/Organisms/Registration";
 import { InvalidWidget } from "@/Organisms/InvalidWidget";
 import { HackathonInfo } from "@/Organisms/HackathonInfo"
 import { HackathonCategory } from "@/Organisms/HackathonCategory";
+import { Footer } from "@/Organisms/Footer";
 export default function Home() {
   return (
     <div className="bg-[white] ">
@@ -19,7 +20,7 @@ export default function Home() {
         <HackathonInfo />
         <HackathonCategory />
         <Registration />
-
+        <Footer />
       </div>
     </div>
   );
