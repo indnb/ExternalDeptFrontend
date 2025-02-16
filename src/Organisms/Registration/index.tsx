@@ -5,8 +5,10 @@ import { MobileRegistration } from "@/Organisms/MobileRegistration";
 import { DesktopRegistration } from "@/Organisms/DesktopRegistration";
 import { useRefStore } from "@/_store/RegistrationSectionLink";
 import { useState, useEffect, useRef } from "react";
+import { useLanguageStore } from "@/_store/LanguageChanger";
 
 export const Registration = () => {
+  const { language } = useLanguageStore();
   const refRegistrationSection = useRef(null);
   const [selectedForm, setSelectedForm] = useState<
     "participant" | "team" | null
@@ -24,12 +26,12 @@ export const Registration = () => {
 
   return (
     <div
-      className="w-full flex flex-col gap-10 justify-center max-[850px]:mb-[40px] mb-[80px]"
+      className="w-full flex flex-col gap-10 justify-center mt-[100px] max-[850px]:mt-[20px] max-[850px]:mb-[40px] mb-[80px]"
       ref={refRegistrationSection}
     >
       {!selectedForm ? (
         <div className="flex flex-col gap-6">
-          <RegistrationText title={` на ха9атон`} />
+          <RegistrationText title={language == "ua" ? `Реєстрація на хаkатон` : "Registration for the hackathon"} />
           <div className="flex flex-col-reverse min-[850px]:flex-col gap-6">
             <RegistrationButtons setSelectedForm={setSelectedForm} />
           </div>

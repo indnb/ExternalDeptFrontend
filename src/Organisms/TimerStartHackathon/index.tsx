@@ -33,11 +33,13 @@ export const TimerStartHackathon = () => {
     setMinute(0);
     setSecond(0);
   };
-
+  const formatTime = (time: number) => {
+    return time < 10 ? `0${time}` : `${time}`;
+  };
   return (
     <div className='max-[850px]:h-[60px] h-[146px]  w-[100vw] flex items-end justify-center'>
       <div className=' text-[#203C8F] h-[84px] w-[582px] text-[32px] max-[850px]:h-[41px] border-2 border-[#203C8F] rounded-[8px] max-[850px]:w-[284px] max-[850px]:text-[16px] flex items-center justify-center'>
-        Дата проведення:{hour}.{minute}.{second}
+        Дата проведення:{formatTime(hour)}.{formatTime(minute)}.{formatTime(second)}
       </div>
     </div>
   )

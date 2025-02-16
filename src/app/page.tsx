@@ -14,9 +14,8 @@ export default function Home() {
       <div className={`w-full flex flex-col gap-10 justify-center`}>
         <InvalidWidget />
         <Main />
-
-        <News />
         <AboutUs />
+        <News />
         <HackathonInfo />
         <HackathonCategory />
         <TimerStartHackathon />

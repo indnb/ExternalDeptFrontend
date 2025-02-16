@@ -46,7 +46,7 @@ export const NewsSlider = () => {
   };
 
   return (
-    <div className="max-[850px]:h-[230px] w-[100vw]">
+    <div className="max-[850px]:h-[200px] w-[100vw]">
       <Swiper
         slidesPerView={2.4}
         centeredSlides={true}
