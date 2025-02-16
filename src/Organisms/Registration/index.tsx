@@ -24,12 +24,12 @@ export const Registration = () => {
 
   return (
     <div
-      className="w-full flex flex-col gap-10 justify-center "
+      className="w-full flex flex-col gap-10 justify-center max-[850px]:mb-[40px] mb-[80px]"
       ref={refRegistrationSection}
     >
       {!selectedForm ? (
         <div className="flex flex-col gap-6">
-          <RegistrationText title={` на хакатон`} />
+          <RegistrationText title={` на ха9атон`} />
           <div className="flex flex-col-reverse min-[850px]:flex-col gap-6">
             <RegistrationButtons setSelectedForm={setSelectedForm} />
           </div>

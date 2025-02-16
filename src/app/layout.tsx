@@ -4,7 +4,7 @@ import Header from "@/Organisms/Header";
 
 import "./globals.css";
 import ReactQueryProvider from "../utils/ReactQueryProvider";
-import { Footer } from "@/Molecules/Footer";
+import { Footer } from "@/Organisms/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -7,7 +7,7 @@ import { Registration } from "@/Organisms/Registration";
 import { InvalidWidget } from "@/Organisms/InvalidWidget";
 import { HackathonInfo } from "@/Organisms/HackathonInfo"
 import { HackathonCategory } from "@/Organisms/HackathonCategory";
-import { Footer } from "@/Organisms/Footer";
+import { TimerStartHackathon } from "@/Organisms/TimerStartHackathon";
 export default function Home() {
   return (
     <div className="bg-[white] ">
@@ -19,8 +19,8 @@ export default function Home() {
         <AboutUs />
         <HackathonInfo />
         <HackathonCategory />
+        <TimerStartHackathon />
         <Registration />
-        <Footer />
       </div>
     </div>
   );
