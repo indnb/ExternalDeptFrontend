@@ -1,6 +1,6 @@
 import React from "react";
 export interface IItemNews {
-  title: stirng;
+  title: string;
 }
 export const ItemNews: React.FC<IItemNews> = ({ title }) => {
   return (

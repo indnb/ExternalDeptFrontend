@@ -7,7 +7,7 @@ export const MainLeftPanel = () => {
   const { language } = useLanguageStore();
   const { refRegistrationSection } = useRefStore();
   const handlerScroll = () => {
-    refRegistrationSection.current?.scrollIntoView({ behavior: "smooth" });
+    refRegistrationSection?.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <div className="h-[738px] flex w-[52vw] flex-col justify-center items-center max-[850px]:h-[auto] max-[550px]:h-[180px]">
