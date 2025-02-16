@@ -1,7 +1,6 @@
 import React from "react";
 import { InvalidWidgetHeader } from "@/Atoms/InvalidWidgetHeader";
 import { InvalidData } from "./Invalid.data";
-import Image from "next/image";
 import { ItemInvalidWidget } from "@/Atoms/ItemInvalidWidget";
 import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 interface InvalidWidgetWindowProps {
@@ -11,7 +10,7 @@ interface InvalidWidgetWindowProps {
 export const InvalidWidgetWindow = ({
   setStateWidget,
 }: InvalidWidgetWindowProps) => {
-  const {} = useInvalidWidgetStore();
+  const { } = useInvalidWidgetStore();
 
   return (
     <div

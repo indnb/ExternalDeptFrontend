@@ -1,18 +1,9 @@
-import { ItemNews } from "@/Atoms/ItemNews";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState, useEffect } from "react";
 import "./style.css"
-import useScreenSize from "@/hook/useScreenSize";
-const images = [
-  "https://via.placeholder.com/800x400/ff7f7f/333333?text=Image+1",
-  "https://via.placeholder.com/800x400/ffbf00/333333?text=Image+2",
-  "https://via.placeholder.com/800x400/9f66cc/333333?text=Image+3",
-  "https://via.placeholder.com/800x400/99ff99/333333?text=Image+4",
-  "https://via.placeholder.com/800x400/66ccff/333333?text=Image+5"
-];
+
 const arr: INews[] = [
   {
     title: "Крейзі новини відділу",
@@ -35,15 +26,7 @@ export interface INews {
   title: string;
 }
 export const NewsSlider = () => {
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: false,
-    arrows: false,
-    slidesToShow: 2.5,
-    centerPadding: '0',
-    speed: 500,
-  };
+
 
   return (
     <div className="max-[850px]:h-[200px] w-[100vw]">

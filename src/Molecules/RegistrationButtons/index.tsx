@@ -1,5 +1,4 @@
-import { Button } from "@/Atoms/Button";
-import { useLanguageStore } from "@/_store/LanguageChanger";
+
 import { IRegisterButtonData, RegisterButtonData } from "./Register.data";
 import { RegisterButton } from "@/Atoms/RegisterButton";
 

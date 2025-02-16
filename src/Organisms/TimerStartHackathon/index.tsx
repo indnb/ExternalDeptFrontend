@@ -28,11 +28,6 @@ export const TimerStartHackathon = () => {
     };
   }, []);
 
-  const resetTimer = () => {
-    setHour(0);
-    setMinute(0);
-    setSecond(0);
-  };
   const formatTime = (time: number) => {
     return time < 10 ? `0${time}` : `${time}`;
   };

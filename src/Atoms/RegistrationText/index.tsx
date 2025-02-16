@@ -1,4 +1,3 @@
-import { useLanguageStore } from "@/_store/LanguageChanger";
 
 type TextProps = {
   title: string;

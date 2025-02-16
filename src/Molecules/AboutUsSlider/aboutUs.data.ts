@@ -6,8 +6,9 @@ import Ana from "@/public/photoAboutUs/photo_5233443158443027204_y.jpg";
 import Ksenia from "@/public/photoAboutUs/photo_5233443158443027247_x.jpg";
 import VladLavr from "@/public/photoAboutUs/photo_5233443158443027205_x.jpg";
 import Valera from "@/public/photoAboutUs/photo_5233443158443027206_x.jpg";
+import { IAboutUsData } from "@/type/IAboutUsData";
 
-export const aboutUsData = [
+export const aboutUsData: IAboutUsData[] = [
   {
     name: "Дмитро Новостройний",
     text: "lore Ipsum",

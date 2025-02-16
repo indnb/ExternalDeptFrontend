@@ -2,7 +2,7 @@ import React from "react";
 import { AboutUsSlider } from "@/Molecules/AboutUsSlider";
 import { useLanguageStore } from "@/_store/LanguageChanger";
 
-export const AboutUs = (props: {}) => {
+export const AboutUs = () => {
   const { language } = useLanguageStore();
 
   return (

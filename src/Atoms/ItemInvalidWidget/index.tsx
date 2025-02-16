@@ -4,7 +4,7 @@ interface ItemInvalidWidgetProps {
   icon: string;
   text: string;
 }
-export const ItemInvalidWidget = ({ elem }: ItemInvalidWidgetProps) => {
+export const ItemInvalidWidget = ({ elem }: { elem: ItemInvalidWidgetProps }) => {
   return (
     <div
       className="w-[208px] h-[139px] rounded-[16px] border-solid border-[black] border-[3px] 

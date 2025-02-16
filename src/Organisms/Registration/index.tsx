@@ -1,6 +1,5 @@
 import { RegistrationText } from "@/Atoms/RegistrationText";
 import { RegistrationButtons } from "@/Molecules/RegistrationButtons";
-import { RegistrationBox } from "@/Molecules/RegistrationBox";
 import { MobileRegistration } from "@/Organisms/MobileRegistration";
 import { DesktopRegistration } from "@/Organisms/DesktopRegistration";
 import { useRefStore } from "@/_store/RegistrationSectionLink";
@@ -9,7 +8,7 @@ import { useLanguageStore } from "@/_store/LanguageChanger";
 
 export const Registration = () => {
   const { language } = useLanguageStore();
-  const refRegistrationSection = useRef(null);
+  const refRegistrationSection = useRef<any>(null);
   const [selectedForm, setSelectedForm] = useState<
     "participant" | "team" | null
   >(null);
