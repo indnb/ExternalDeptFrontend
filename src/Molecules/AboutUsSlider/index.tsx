@@ -35,7 +35,7 @@ export const AboutUsSlider = () => {
     setSlidesToShow(sliderCount);
   }, [width]);
   return (
-    <div className="w-[98.5vw] ">
+    <div className="w-[98.5vw] overflow-x-hidden">
       <Slider {...settings} ref={sliderRef}>
         {aboutUsData.map((elem, index) => (
           <ItemAboutUs data={elem} key={index} />
