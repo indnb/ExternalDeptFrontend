@@ -1,0 +1,31 @@
+  .svg-icon path {
+    transition: fill 0.3s ease;
+  }
+  
+  
+  .regButton svg  { 
+  height: 155px;
+  width: 155px;
+}
+@media(max-width:1300px){
+.regButton svg  { 
+  height: 122px;
+  width: 122px;
+}
+}
+@media(max-width:850px){
+.regButton svg  { 
+  height: 75px;
+  width: 75px;
+}
+}
+  .regButton:hover{
+    background:#203C8F;
+  }
+.regButton:hover h1{
+  color:white;
+}
+  .regButton:hover svg path {
+    fill: white !important; 
+    stroke:white;
+  }

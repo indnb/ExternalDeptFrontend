@@ -1,26 +1,26 @@
-
 "use client";
-import { useLanguageStore } from "../store/LanguageChanger";
-import 'src/app/globals.css'
-import {Footer} from "@/Organisms/Footer";
-import {Registration} from "@/Organisms/Registration";
-
-
+import "src/app/globals.css";
+import { AboutUs } from "@/Organisms/AboutUs";
+import { Main } from "@/Organisms/Main";
+import { News } from "@/Organisms/News";
+import { Registration } from "@/Organisms/Registration";
+import { InvalidWidget } from "@/Organisms/InvalidWidget";
+import { HackathonInfo } from "@/Organisms/HackathonInfo"
+import { HackathonCategory } from "@/Organisms/HackathonCategory";
+import { TimerStartHackathon } from "@/Organisms/TimerStartHackathon";
 export default function Home() {
-  
   return (
-
-      <div>
-          <div
-              className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-              <h1 data-testid="text">{language}</h1>
-              <button onClick={() => toggleLang()}>one up</button>
-
-          </div>
-          <Registration/>
-          <Footer/>
+    <div className="bg-[white] ">
+      <div className={`w-full flex flex-col gap-10 justify-center`}>
+        <InvalidWidget />
+        <Main />
+        <AboutUs />
+        <News />
+        <HackathonInfo />
+        <HackathonCategory />
+        <TimerStartHackathon />
+        <Registration />
       </div>
-
-
+    </div>
   );
 }
