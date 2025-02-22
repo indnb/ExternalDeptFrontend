@@ -3,6 +3,7 @@ import 'swiper/swiper-bundle.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.css"
+import { ItemNews } from '@/Atoms/ItemNews';
 
 const arr: INews[] = [
   {
@@ -41,14 +42,7 @@ export const NewsSlider = () => {
       >
         {arr.map((elem, index) => (
           <SwiperSlide key={index} className="flex justify-center items-center w-[100%] max-[850px]:h-[170px] h-[480px] flex-row">
-            {({ isActive }) => (<div className="flex justify-center items-center w-[100%] max-[850px]:h-[200px] h-[480px] flex-col">
-              <div className={`max-[850px]:h-[90px] w-[300px] h-[300px] max-[850px]:w-[90px] rounded-[4px] bg-[#203C8F] ${isActive ? 'active' : 'not-active'}`}>
-              </div>
-              <h1 className={`${isActive ? 'active-text' : 'not-active'} h-[15px] text-[0px]`}>
-                {elem.title}
-              </h1>
-            </div>
-            )}
+            {({ isActive }) => (<ItemNews title={elem.title} isActive={isActive} />)}
           </SwiperSlide>
         ))}
       </Swiper>

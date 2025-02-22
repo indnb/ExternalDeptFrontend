@@ -1,10 +1,12 @@
+"use client"
+import { useInvalidWidgetStore } from '@/_store/InvalidWidget';
 import React, { useEffect, useState } from 'react'
 
 export const TimerStartHackathon = () => {
   const [hour, setHour] = useState<number>(0);
   const [minute, setMinute] = useState<number>(0);
   const [second, setSecond] = useState<number>(0);
-
+  const { contrast } = useInvalidWidgetStore()
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
     interval = setInterval(() => {
@@ -33,7 +35,7 @@ export const TimerStartHackathon = () => {
   };
   return (
     <div className='max-[850px]:h-[60px] h-[146px]  w-[100vw] flex items-end justify-center'>
-      <div className=' text-[#203C8F] h-[84px] w-[582px] text-[32px] max-[850px]:h-[41px] border-2 border-[#203C8F] rounded-[8px] max-[850px]:w-[284px] max-[850px]:text-[16px] flex items-center justify-center'>
+      <div className={` ${contrast ? " text-[#414141] border-[#414141]" : "text-[#203C8F] border-[#203C8F]"}  h-[84px] w-[582px] text-[32px] max-[850px]:h-[41px] border-2  rounded-[8px] max-[850px]:w-[284px] max-[850px]:text-[16px] flex items-center justify-center`}>
         Дата проведення:{formatTime(hour)}.{formatTime(minute)}.{formatTime(second)}
       </div>
     </div>

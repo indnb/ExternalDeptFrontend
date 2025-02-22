@@ -1,8 +1,10 @@
 import React from "react";
 import { IAboutUsData } from "@/type/IAboutUsData";
 import Image from "next/image";
+import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 
 export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
+  const { contrast } = useInvalidWidgetStore()
   return (
     <div
       style={{
@@ -12,8 +14,9 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
       max-[850px]:w-[314px] max-[850px]:h-[191px] flex bg-[white] ml-[20px] items-center justify-start rounded-[8px] "
     >
       <Image
-        className="w-[350px] h-[472px]
-        max-[850px]:w-[154px] max-[850px]:h-[191px] object-fit rounded-[4px]"
+        className={`${contrast ? 'filter grayscale brightness-90' : ''} 
+        w-[350px] h-[472px]
+        max-[850px]:w-[154px] max-[850px]:h-[191px] object-fit rounded-[4px]`}
         src={data.img}
         alt=""
       />

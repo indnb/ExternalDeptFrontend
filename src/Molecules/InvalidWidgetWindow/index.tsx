@@ -1,8 +1,11 @@
 import React from "react";
 import { InvalidWidgetHeader } from "@/Atoms/InvalidWidgetHeader";
-import { InvalidData } from "./Invalid.data";
 import { ItemInvalidWidget } from "@/Atoms/ItemInvalidWidget";
 import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
+import ImageImg from "@/public/invalidIcon/Group60.svg";
+import FontFamilyImg from "@/public/invalidIcon/Group62.svg";
+import ContrastImg from "@/public/invalidIcon/Group61.svg";
+import FontSizeImg from "@/public/invalidIcon/Group63.svg";
 interface InvalidWidgetWindowProps {
   setStateWidget: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -10,8 +13,38 @@ interface InvalidWidgetWindowProps {
 export const InvalidWidgetWindow = ({
   setStateWidget,
 }: InvalidWidgetWindowProps) => {
-  const { } = useInvalidWidgetStore();
+  const { contrast, setContrast } = useInvalidWidgetStore();
 
+
+  const InvalidData = [
+    {
+      icon: ImageImg,
+      text: "Зображення",
+      callback: () => { },
+      state: ""
+    },
+    {
+      icon: FontFamilyImg,
+      text: "Шрифт",
+      callback: () => { },
+      state: ""
+
+    },
+    {
+      icon: ContrastImg,
+      text: "Контраст",
+      callback: () => { setContrast() },
+      state: contrast
+
+    },
+    {
+      icon: FontSizeImg,
+      text: "Збільшення шрифту",
+      callback: () => { },
+      state: ""
+
+    },
+  ];
   return (
     <div
       className="fixed rounded-[16px]  right-[2vw] top-[36vh] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
