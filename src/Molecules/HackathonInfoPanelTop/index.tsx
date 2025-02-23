@@ -5,7 +5,7 @@ export const HackathonInfoPanelTop = ({ firstRow, secondRow }: { firstRow: strin
   const { contrast, fontFamily, fontSize } = useInvalidWidgetStore()
   return (
 
-    <div className='w-[100vw] flex justify-center '>
+    <div className='w-[100vw] flex justify-center max-w-[1800px]'>
       <div className={`w-[48vw] h-full  ${contrast ? "text-[#414141]" : "text-[#203C8F]"} text-left`}>
         <p className={`${fontFamily ? "font-kyivSerif font-[250] " : "font-kyivSans"}  h-full  flex items-center  text-[calc(250/1552*100vw)]`}
 
