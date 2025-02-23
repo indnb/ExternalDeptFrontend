@@ -1,24 +1,24 @@
 import { create } from "zustand";
 
 export interface IInvalidWidgetStore {
-  fontSize: number;
-  fontFamily: string;
+  fontSize: boolean;
+  fontFamily: boolean;
   image: string;
-  contrast: string;
-  setFontSize: (size: number) => void;
-  setFontFamily: (family: string) => void;
+  contrast: boolean;
+  setFontSize: () => void;
+  setFontFamily: () => void;
   setImage: (imageUrl: string) => void;
-  setContrast: (contrast: string) => void;
+  setContrast: () => void;
 }
 
 export const useInvalidWidgetStore = create<IInvalidWidgetStore>((set) => ({
-  fontSize: 14,
-  fontFamily: "Arial",
+  fontSize: false,
+  fontFamily: false,
   image: "",
-  contrast: "normal",
+  contrast: false,
 
-  setFontSize: (size) => set(() => ({ fontSize: size })),
-  setFontFamily: (family) => set(() => ({ fontFamily: family })),
+  setFontSize: () => set((state) => ({ fontSize: !state.fontSize })),
+  setFontFamily: () => set((state) => ({ fontFamily: !state.fontFamily })),
   setImage: (imageUrl) => set(() => ({ image: imageUrl })),
-  setContrast: (contrast) => set(() => ({ contrast })),
+  setContrast: () => set((state) => ({ contrast: !state.contrast })),
 }));
