@@ -25,7 +25,9 @@ const Header: React.FC = () => {
         }`}
     >
       <HeaderDyikt />
+
       <HeaderButtons />
+
     </header>
   );
 };
