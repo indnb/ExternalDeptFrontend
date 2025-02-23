@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 
 export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
-  const { contrast } = useInvalidWidgetStore()
+  const { contrast, fontSize } = useInvalidWidgetStore()
   return (
     <div
       style={{
@@ -22,14 +22,14 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
       />
       <div className="text-[black] h-[auto] ml-[20px] max-[850px]:ml-[10px]">
         <h1
-          className="text-[38px] max-[850px]:text-[16px] text-[center]"
+          className={`${fontSize ? "text-[46px] max-[850px]:text-[20px]" : "text-[38px] max-[850px]:text-[16px]"} text-[center] font-[530]`}
           style={{ fontFamily: "Montserrat" }}
         >
           {data.name}
         </h1>
         <p
           style={{ fontFamily: "Montserrat" }}
-          className="max-[850px]:text-[11px] text-[center]"
+          className={`${fontSize ? "text-[26px] max-[850px]:text-[15px]" : "text-[20px] max-[850px]:text-[11px]"} text-[center]`}
         >
           {data.text}
         </p>

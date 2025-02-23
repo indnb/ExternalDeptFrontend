@@ -18,7 +18,7 @@ export const Button: React.FC<buttonProps> = ({
       callback();
     }
   };
-  const { contrast } = useInvalidWidgetStore()
+  const { contrast, fontSize } = useInvalidWidgetStore()
 
   return (
     <button
@@ -31,7 +31,7 @@ export const Button: React.FC<buttonProps> = ({
     ${contrast && "text-white bg-[#414141]"}
     max-[550px]:w-[80vw]
     flex justify-center items-center self-center border-2  rounded-xl
-    transition h-12 w-96`}
+    transition h-12 w-96 ${fontSize ? " text-[24px]" : "text-[16px]"} `}
     >
       {title}
     </button>

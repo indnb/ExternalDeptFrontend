@@ -6,6 +6,7 @@ import ImageImg from "@/public/invalidIcon/Group60.svg";
 import FontFamilyImg from "@/public/invalidIcon/Group62.svg";
 import ContrastImg from "@/public/invalidIcon/Group61.svg";
 import FontSizeImg from "@/public/invalidIcon/Group63.svg";
+import { f } from "msw/lib/core/HttpResponse-5Sn2vNaJ";
 interface InvalidWidgetWindowProps {
   setStateWidget: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -13,8 +14,7 @@ interface InvalidWidgetWindowProps {
 export const InvalidWidgetWindow = ({
   setStateWidget,
 }: InvalidWidgetWindowProps) => {
-  const { contrast, setContrast } = useInvalidWidgetStore();
-
+  const { fontFamily, fontSize, contrast, setFontFamily, setContrast, setFontSize } = useInvalidWidgetStore();
 
   const InvalidData = [
     {
@@ -26,8 +26,8 @@ export const InvalidWidgetWindow = ({
     {
       icon: FontFamilyImg,
       text: "Шрифт",
-      callback: () => { },
-      state: ""
+      callback: () => { setFontFamily() },
+      state: fontFamily,
 
     },
     {
@@ -40,8 +40,9 @@ export const InvalidWidgetWindow = ({
     {
       icon: FontSizeImg,
       text: "Збільшення шрифту",
-      callback: () => { },
-      state: ""
+      callback: () => { setFontSize() },
+      state: fontSize
+
 
     },
   ];
