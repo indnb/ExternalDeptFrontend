@@ -2,13 +2,18 @@ import React from "react";
 import { Button } from "@/Atoms/Button";
 import { useLanguageStore } from "@/_store/LanguageChanger";
 import { useRefStore } from "@/_store/RegistrationSectionLink";
+import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 
 export const MainLeftPanel = () => {
   const { language } = useLanguageStore();
   const { refRegistrationSection } = useRefStore();
+  const { fontFamily } = useInvalidWidgetStore()
   const handlerScroll = () => {
-    refRegistrationSection?.current?.scrollIntoView({ behavior: "smooth" });
+    if (refRegistrationSection?.current) {
+      refRegistrationSection.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
+
   return (
     <div className="h-[738px] flex w-[52vw] flex-col justify-center items-center max-[850px]:h-[auto] max-[550px]:h-[180px]">
       <p
@@ -19,10 +24,12 @@ export const MainLeftPanel = () => {
       </p>
 
       <h1
-        className="h-[auto] text-[64px] w-[48vw] h-[auto] leading-[64px]  max-[850px]:text-[40px] max-[550px]:text-[30px] text-black 
+        className={`h-[auto] text-[64px] w-[48vw] h-[auto] leading-[64px]  max-[850px]:text-[40px] max-[550px]:text-[30px] text-black 
         max-[850px]:leading-[40px] max-[850px]:mt-[22px] max-[550px]:mt-[25px]
-        max-[850px]:w-[398px] max-[550px]:w-[80vw]"
-        style={{ fontFamily: "Kharkiv Tone" }}
+        max-[850px]:w-[398px] max-[550px]:w-[80vw] ${fontFamily ? "font-kyivSerif" : "font-kyivSans"}`}
+      //style={{
+      //  fontFamily: fontFamily ? "Kharkiv Tone" : "Kyiv*Type Serif",
+      //}}
       >
         EDUCATION
         <br /> WITHOUT
@@ -39,6 +46,6 @@ export const MainLeftPanel = () => {
           colorButton="blue"
         />
       </div>
-    </div>
+    </div >
   );
 };
