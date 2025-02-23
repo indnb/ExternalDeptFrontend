@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import { aboutUsData } from "./aboutUs.data";
-import { IAboutUsData } from "@/type/IAboutUsData";
 import { ItemAboutUs } from "@/Atoms/ItemAboutUs";
 import useScreenSize from "@/hook/useScreenSize";
 import "./AboutUsSlider.css";
@@ -11,7 +10,7 @@ export const AboutUsSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const sliderRef = useRef<Slider | null>(null);
 
-  var settings = {
+  const settings = {
     dots: false,
     infinite: false,
     speed: 500,
@@ -26,16 +25,17 @@ export const AboutUsSlider = () => {
     console.log(activeSlide);
   }, [activeSlide]);
   useEffect(() => {
+    let sliderCount
     if (width >= 850) {
-      var sliderCount = width / 766;
+      sliderCount = width / 766;
     } else {
-      var sliderCount = width / 353;
+      sliderCount = width / 353;
     }
 
     setSlidesToShow(sliderCount);
   }, [width]);
   return (
-    <div className="w-[98.5vw] mb-[170px] max-[850px]:mb-[60px]">
+    <div className="w-[98.5vw] overflow-x-hidden">
       <Slider {...settings} ref={sliderRef}>
         {aboutUsData.map((elem, index) => (
           <ItemAboutUs data={elem} key={index} />
