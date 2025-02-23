@@ -15,7 +15,6 @@ export default function Home() {
         <InvalidWidget />
         <Main />
         <AboutUs />
-        <News />
         <HackathonInfo />
         <HackathonCategory />
         <TimerStartHackathon />

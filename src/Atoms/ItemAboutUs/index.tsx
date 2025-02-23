@@ -22,7 +22,7 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
       />
       <div className="text-[black] h-[auto] ml-[20px] max-[850px]:ml-[10px]">
         <h1
-          className={`${fontSize ? "text-[46px] max-[850px]:text-[20px]" : "text-[38px] max-[850px]:text-[16px]"} text-[center] font-[530]`}
+          className={`${fontSize ? "text-[44px] max-[850px]:text-[20px]" : "text-[38px] max-[850px]:text-[16px]"} text-[center] font-[530] `}
           style={{ fontFamily: "Montserrat" }}
         >
           {data.name}
