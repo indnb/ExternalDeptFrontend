@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-import Slider from "react-slick";
+import React, { useState, useEffect } from "react";
 import { aboutUsData } from "./aboutUs.data";
 import { ItemAboutUs } from "@/Atoms/ItemAboutUs";
 import useScreenSize from "@/hook/useScreenSize";
