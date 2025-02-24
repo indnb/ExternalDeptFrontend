@@ -1,4 +1,4 @@
-emport React from 'react'
+import React from 'react'
 
 export const ItemCategoryHackathon = ({ img, description }: { img: string, description: string }) => {
   return (

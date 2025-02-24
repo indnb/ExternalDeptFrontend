@@ -29,12 +29,6 @@ body {
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: "Kyiv*Type Serif";
-  src: url("../public/font_family/FontKyivTypeSerif/KyivTypeSerif-VarGX.ttf")
-    format("truetype");
-  font-style: normal;
-}
 
 @font-face {
   font-family: "Kyiv Type Sans";
