@@ -1,3 +1,8 @@
+import axios from "axios";
+
+const DataUniversity= await axios.get('http://0.0.0.0:8181/api/hackathon_2024/university/all')
+const DataTeam = await axios.get('http://0.0.0.0:8181/api/hackathon_2024/team/all');
+
 export const inputsConfig = [
     {
         name: "name",
@@ -28,7 +33,7 @@ export const inputsConfig = [
         }
     },
     {
-        name: "tg",
+        name: "nickname_tg",
         type: "text",
         placeholder: "НІКНЕЙМ В ТЕЛЕГРАМІ",
         validation: {
@@ -42,17 +47,19 @@ export const inputsConfig = [
         }
     },
     {
-        name: "school",
-        type: "text",
+        name: "university",
+        type: "select",
         placeholder: "НАЗВА НАВЧАЛЬНОГО ЗАКЛАДУ",
+        options:DataUniversity.data.map((university:any)=>university.name),
         validation: {
             required: "Це поле обов'язкове"
         }
     },
     {
         name: "teamName",
-        type: "text",
-        placeholder: "НАЗВА КОМАНДИ",
+        type: "select",
+        placeholder: "ОБЕРІТЬ КОМАНДУ",
+        options: DataTeam.data.map((team: any) => team.name),
         validation: {
             required: "Це поле обов'язкове"
         }
@@ -79,5 +86,5 @@ export const inputsConfig = [
                 return true;
             }
         }
-    },
+    }
 ];

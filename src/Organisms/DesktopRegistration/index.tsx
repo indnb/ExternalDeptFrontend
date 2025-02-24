@@ -12,6 +12,7 @@ export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ select
         team: "команди",
     };
 
+
     return (
         <div className="bg-white">
             <RegistrationHeader onClose={onClose} title={formTitles[selectedForm]} />

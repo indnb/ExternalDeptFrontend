@@ -1,29 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
-import Slider from "react-slick";
+import React, { useState, useEffect } from "react";
 import { aboutUsData } from "./aboutUs.data";
 import { ItemAboutUs } from "@/Atoms/ItemAboutUs";
 import useScreenSize from "@/hook/useScreenSize";
+import 'swiper/swiper-bundle.css';
 import "./AboutUsSlider.css";
+import { Swiper, SwiperSlide } from "swiper/react";
 export const AboutUsSlider = () => {
   const { width } = useScreenSize();
   const [slidesToShow, setSlidesToShow] = useState<number>(1);
-  const [activeSlide, setActiveSlide] = useState(0);
-  const sliderRef = useRef<Slider | null>(null);
 
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: slidesToShow,
-    arrows: false,
-    slidesToScroll: 1,
-    beforeChange: (_, next) => {
-      setActiveSlide(next);
-    },
-  };
-  useEffect(() => {
-    console.log(activeSlide);
-  }, [activeSlide]);
+
   useEffect(() => {
     let sliderCount
     if (width >= 850) {
@@ -35,12 +21,17 @@ export const AboutUsSlider = () => {
     setSlidesToShow(sliderCount);
   }, [width]);
   return (
-    <div className="w-[98.5vw] overflow-x-hidden">
-      <Slider {...settings} ref={sliderRef}>
+    <div className="flex w-[98.5vw]  mt-[5px]">
+      <Swiper
+        slidesPerView={slidesToShow}
+      >
         {aboutUsData.map((elem, index) => (
-          <ItemAboutUs data={elem} key={index} />
+          <SwiperSlide key={index}>
+            <ItemAboutUs data={elem} />
+          </SwiperSlide>
+
         ))}
-      </Slider>
+      </Swiper>
     </div>
   );
 };

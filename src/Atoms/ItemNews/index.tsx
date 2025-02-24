@@ -1,20 +1,24 @@
+import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 import React from "react";
 export interface IItemNews {
+  isActive: boolean;
+
   title: string;
 }
-export const ItemNews: React.FC<IItemNews> = ({ title }) => {
+export const ItemNews: React.FC<IItemNews> = ({ title, isActive }) => {
+  const { contrast, fontSize } = useInvalidWidgetStore()
+
   return (
-    <div
-      style={{ display: "flex" }}
-      className="h-[435px] flex flex-col items-start justify-between max-[850px]:h-[225px] max-[850px]:w-[299px] mr-[30px] ml-[30px] max-[850px]:ml-[16px] max-[850px]:mr-[16px]"
-    >
-      <div className=" w-[555px] h-[376px] bg-[#203C8F] max-[850px]:w-[299px] max-[*50px]:h-[191px] rounded-[16px]"></div>
-      <p
-        className="block  font-bold  text-black text-[28px] max-[850px]:text-[16px] text-left mt-[8px]"
+    <div className="flex justify-center items-center w-[100%] max-[850px]:h-[200px] h-[500px] flex-col text-center">
+      <div className={`${contrast ? "bg-[#414141]" : ""} max-[850px]:h-[90px] w-[300px] h-[300px] max-[850px]:w-[90px] rounded-[4px] bg-[#203C8F] ${isActive ? 'active' : 'not-active'}`}>
+      </div>
+      <h1
         style={{ fontFamily: "Montserrat" }}
+        className={`${isActive ? fontSize ? "active-text text-bigger" : "active-text" : 'not-active'} h-[15px]  text-[0px] max-[850px]:mt-[12px] mt-[30px]`}
       >
         {title}
-      </p>
+      </h1>
     </div>
+
   );
 };

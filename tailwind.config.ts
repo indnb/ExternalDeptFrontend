@@ -14,7 +14,13 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        kharkiv: ['"Kharkiv Tone"', 'sans-serif'],
+        kyivSerif: ['"Kyiv*Type Serif"', 'serif'],
+        kyivSans: ['"Kyiv Type Sans"', 'sans-serif'],
+        montserrat: ['"Montserrat"', 'sans-serif'],
+      },
     },
   },
-  plugins: [],
+  plugins: []
 } satisfies Config;

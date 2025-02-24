@@ -1,8 +1,7 @@
 import { Controller } from "react-hook-form";
-import { InputField } from "@/Atoms/RegistrationInputField";
+import { RegistrationInputField } from "@/Atoms/RegistrationInputField";
 
 interface InputConfig {
-
     name: string;
     placeholder: string;
     type: string;
@@ -10,14 +9,14 @@ interface InputConfig {
         required?: string | boolean;
         pattern?: { value: RegExp; message: string };
     };
-
+    options?: string[];
 }
+
 interface RegistrationInputProps {
-  inputsConfig: InputConfig[];
-  control: any;
-  errors: any;
+    inputsConfig: InputConfig[];
+    control: any;
+    errors: any;
 }
-
 
 export const RegistrationInput: React.FC<RegistrationInputProps> = ({ inputsConfig, control, errors }) => {
     return (
@@ -29,16 +28,17 @@ export const RegistrationInput: React.FC<RegistrationInputProps> = ({ inputsConf
                         control={control}
                         rules={input.validation}
                         render={({ field }) => (
-                            <InputField
+                            <RegistrationInputField
                                 type={input.type}
                                 field={field}
                                 placeholder={input.placeholder}
                                 error={errors[input.name]?.message}
+                                options={input.options} // Передаем options
                             />
                         )}
                     />
                 </div>
             ))}
-    </div>
-  );
+        </div>
+    );
 };

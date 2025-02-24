@@ -1,6 +1,6 @@
 export const inputsConfig = [
     {
-        name: "nameTeam",
+        name: "name",
         type: "text",
         placeholder: "НАЗВА КОМАНДИ",
         validation: {
@@ -14,21 +14,16 @@ export const inputsConfig = [
         },
     },
     {
-        name: "Category",
-        type: "text",
+        name: "category",
+        type: "select",
         placeholder: "КАТЕГОРІЯ НА ХАКАТОН",
+        options: ["Web 3.0", "Military", "Education","Cybersecurity"],
         validation: {
             required: "Це поле обов'язкове",
-            validate: (value: string) => {
-                if (!/^[\+\(\)\d\s]+$/.test(value)) {
-                    return "Тільки цифри";
-                }
-                return true;
-            },
         },
     },
     {
-        name: "tg",
+        name: "nickname_tg",
         type: "text",
         placeholder: "НІКНЕЙМ ЛІДЕРА В ТЕЛЕГРАМІ",
         validation: {
@@ -42,7 +37,7 @@ export const inputsConfig = [
         },
     },
     {
-        name: "password",
+        name: "password_registration",
         type: "text",
         placeholder: "ПАРОЛЬ",
         validation: {
@@ -65,10 +60,11 @@ export const inputsConfig = [
         },
     },
     {
-        name: "password again",
+        name: "passwordAgain",
         type: "text",
         placeholder: "ПІДТВЕРДЖЕННЯ ПАРОЛЮ",
         validation: {
+
             required: "Це поле обов'язкове",
             validate: (value: string, context: any) => {
                 if (value !== context.password) {
