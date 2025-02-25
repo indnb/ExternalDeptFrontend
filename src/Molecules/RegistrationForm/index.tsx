@@ -6,73 +6,79 @@ import { inputsConfig as participantConfig } from "./RegistrationFormParticipant
 import { inputsConfig as teamConfig } from "./RegistrationFormTeam.data";
 
 interface RegistrationFormProps {
-    selectedForm: "participant" | "team";
+  selectedForm: "participant" | "team";
 }
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm }) => {
-    const { control, handleSubmit, formState: { errors } } = useForm();
+  const { control, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmitParticipant = async (data: any) => {
-        const DataUniversity= await axios.get('http://0.0.0.0:8181/api/hackathon_2024/university/all')
-        const DataTeam = await axios.get('http://0.0.0.0:8181/api/hackathon_2024/team/all');
+  const onSubmitParticipant = async (data: any) => {
+    let DataUniversity
+    let DataTeam
 
-        const university = DataUniversity.data.find((univ: any) => univ.name === data.university);
-        const team = DataTeam.data.find((team: any) => team.name === data.teamName);
+    try {
 
-        const match=data.name.match(/^(\S+)\s+(\S+)/)
+    } catch (e) {
 
-        const filteredData={
+    }
 
-            "team_data": {
-                "id": team.id,
-                "password": data.password,
-            },
-            "user_data": {
-                "first_name": match[1],
-                "last_name": match[2],
-                "nickname_tg": data.nickname_tg,
-                "phone": data.phone,
-                "team_id": team.id,
-                "university_id": university.id
-            }
-        }
-        try {
-            const response = await axios.post("http://0.0.0.0:8181/api/hackathon_2024/user/registration_by_tg", JSON.stringify(filteredData), {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+    const university = DataUniversity.data.find((univ: any) => univ.name === data.university);
+    const team = DataTeam.data.find((team: any) => team.name === data.teamName);
 
-            console.log("secssus answer participant:");
-        } catch (error) {
-            console.error("error participant:", error);
-        }
-    };
+    const match = data.name.match(/^(\S+)\s+(\S+)/)
 
-    const onSubmitTeam = async (data: any) => {
+    const filteredData = {
 
-        const { passwordAgain, ...filteredData } = data;
+      "team_data": {
+        "id": team.id,
+        "password": data.password,
+      },
+      "user_data": {
+        "first_name": match[1],
+        "last_name": match[2],
+        "nickname_tg": data.nickname_tg,
+        "phone": data.phone,
+        "team_id": team.id,
+        "university_id": university.id
+      }
+    }
+    try {
+      const response = await axios.post(`${process.env.API_PORT}/hackathon_2024/user/registration_by_tg`, JSON.stringify(filteredData), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-        try {
-            const response = await axios.post("http://0.0.0.0:8181/api/hackathon_2024/team/create", JSON.stringify(filteredData), {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+      console.log("secssus answer participant:");
+    } catch (error) {
+      console.error("error participant:", error);
+    }
+  };
 
-            console.log("secssus answer team:");
-        } catch (error) {
-            console.error("error team:", error);
-        }
-    };
+  const onSubmitTeam = async (data: any) => {
 
-    const inputsConfig = selectedForm === "participant" ? participantConfig : teamConfig;
-    const onSubmit = selectedForm === "participant" ? onSubmitParticipant : onSubmitTeam;
+    const { passwordAgain, ...filteredData } = data;
 
-    return (
-        <form className="w-full flex flex-col p-10" onSubmit={handleSubmit(onSubmit)}>
-            <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />
-            <RegistrationButton width="300" title="Надіслати" />
-        </form>
-    );
+    try {
+      const response = await axios.post(`${process.env.API_PORT}/hackathon_2024/team/create`, JSON.stringify(filteredData), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("secssus answer team:");
+    } catch (error) {
+      console.error("error team:", error);
+    }
+  };
+
+  const inputsConfig = selectedForm === "participant" ? participantConfig : teamConfig;
+  const onSubmit = selectedForm === "participant" ? onSubmitParticipant : onSubmitTeam;
+
+  return (
+    <form className="w-full flex flex-col p-10" onSubmit={handleSubmit(onSubmit)}>
+      <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />
+      <RegistrationButton width="300" title="Надіслати" />
+    </form>
+  );
 };

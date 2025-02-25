@@ -3,7 +3,7 @@ import { SvgCommand } from "./SvgCommand";
 export interface IRegisterButtonData {
   img: any;
   text: string;
-  fromType:string;
+  formType: string;
 }
 export const RegisterButtonData: IRegisterButtonData[] = [
   {
