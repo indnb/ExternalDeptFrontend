@@ -66,8 +66,8 @@ export const inputsConfig = [
         validation: {
 
             required: "Це поле обов'язкове",
-            validate: (value: string, context: any) => {
-                if (value !== context.password) {
+            validate: (value: string, formValues: any) => {
+                if (value !== formValues.password_registration) {
                     return "Паролі не співпадають";
                 }
                 return true;
