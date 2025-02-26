@@ -10,23 +10,27 @@ try {
     DataTeam = data.data
   })
 } catch (e) {
-
+  console.log(e)
 }
-export const inputsConfig = [
-  {
-    name: "name",
-    type: "text",
-    placeholder: "ІМ'Я ПРІЗВИЩЕ",
-    validation: {
-      required: "Це поле обов'язкове",
-      validate: (value: string) => {
-        if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value)) {
-          return "Можна вводити тільки літери";
-        }
-        return true;
-      }
-    }
-  },
+ export const inputsConfig  = [
+   {
+     name: "name",
+     type: "text",
+     placeholder: "ІМ'Я ПРІЗВИЩЕ",
+     validation: {
+       required: "Це поле обов'язкове",
+       validate: (value: string) => {
+         if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value)) {
+           return "Можна вводити тільки літери";
+         }
+         const words = value.trim().split(/\s+/);
+         if (words.length !== 2) {
+           return "Має бути прізвище та і'мя";
+         }
+         return true;
+       }
+     }
+   },
   {
     name: "phone",
     type: "text",
@@ -34,8 +38,11 @@ export const inputsConfig = [
     validation: {
       required: "Це поле обов'язкове",
       validate: (value: string) => {
-        if (!/^[\+\(\)\d\s]+$/.test(value)) {
+        if (!/^[\d]+$/.test(value)) {
           return "Тільки цифри";
+        }
+        if (value.length !== 10) {
+          return "Номер складається з 10 цифр";
         }
         return true;
       }
@@ -75,7 +82,7 @@ export const inputsConfig = [
   },
   {
     name: "password",
-    type: "text",
+    type: "password",
     placeholder: "ПАРОЛЬ",
     validation: {
       required: "Це поле обов'язкове",

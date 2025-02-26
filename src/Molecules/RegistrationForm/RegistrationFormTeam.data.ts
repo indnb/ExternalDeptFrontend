@@ -38,7 +38,7 @@ export const inputsConfig = [
     },
     {
         name: "password_registration",
-        type: "text",
+        type: "password",
         placeholder: "ПАРОЛЬ",
         validation: {
             required: "Це поле обов'язкове",
@@ -61,7 +61,7 @@ export const inputsConfig = [
     },
     {
         name: "passwordAgain",
-        type: "text",
+        type: "password",
         placeholder: "ПІДТВЕРДЖЕННЯ ПАРОЛЮ",
         validation: {
 
