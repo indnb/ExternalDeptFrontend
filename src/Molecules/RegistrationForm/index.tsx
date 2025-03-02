@@ -1,7 +1,8 @@
 'use client'
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { onSubmitParticipant, onSubmitTeam } from "./onSumbit";
+import {onSubmitParticipant} from "./onSubmitParticiant"
+import { onSubmitTeam } from "./onSubmitTeam";
 import { RegistrationInput } from "@/Molecules/RegistrationInput";
 import { RegistrationButton } from "src/Atoms/RegistrationButton";
 import { inputsConfig as participantConfig } from "./RegistrationFormParticipant.data";
