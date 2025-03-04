@@ -8,8 +8,8 @@ interface DesktopRegistrationProps {
 
 export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ selectedForm, onClose }) => {
     const formTitles: Record<DesktopRegistrationProps["selectedForm"], string> = {
-        participant: "учасника",
-        team: "команди",
+        participant: "Реєстрація учасника",
+        team: "Реєстрація команди",
     };
 
 
