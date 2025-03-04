@@ -38,7 +38,7 @@ export const inputsConfig = [
     },
     {
         name: "password_registration",
-        type: "text",
+        type: "password",
         placeholder: "ПАРОЛЬ",
         validation: {
             required: "Це поле обов'язкове",
@@ -61,13 +61,13 @@ export const inputsConfig = [
     },
     {
         name: "passwordAgain",
-        type: "text",
+        type: "password",
         placeholder: "ПІДТВЕРДЖЕННЯ ПАРОЛЮ",
         validation: {
 
             required: "Це поле обов'язкове",
-            validate: (value: string, context: any) => {
-                if (value !== context.password) {
+            validate: (value: string, formValues: any) => {
+                if (value !== formValues.password_registration) {
                     return "Паролі не співпадають";
                 }
                 return true;
