@@ -1,6 +1,6 @@
 "use client";
 
-import HeaderButtons from "src/Molecules/HeaderButtons";
+import HeaderButtones from "src/Molecules/HeaderButtones";
 import React, { useState, useEffect } from "react";
 import { HeaderDyikt } from "@/Molecules/HeaderDyikt";
 
@@ -25,9 +25,7 @@ const Header: React.FC = () => {
         }`}
     >
       <HeaderDyikt />
-
-      <HeaderButtons />
-
+      <HeaderButtones />
     </header>
   );
 };

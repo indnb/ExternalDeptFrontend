@@ -2,6 +2,7 @@
 import "src/app/globals.css";
 import { AboutUs } from "@/Organisms/AboutUs";
 import { Main } from "@/Organisms/Main";
+import { News } from "@/Organisms/News";
 import { Registration } from "@/Organisms/Registration";
 import { InvalidWidget } from "@/Organisms/InvalidWidget";
 import { HackathonInfo } from "@/Organisms/HackathonInfo"
@@ -14,6 +15,7 @@ export default function Home() {
         <InvalidWidget />
         <Main />
         <AboutUs />
+        <News />
         <HackathonInfo />
         <HackathonCategory />
         <TimerStartHackathon />

@@ -1,7 +1,8 @@
   .svg-icon path {
     transition: fill 0.3s ease;
   }
- 
+  
+  
   .regButton svg  { 
   height: 155px;
   width: 155px;
@@ -27,13 +28,4 @@
   .regButton:hover svg path {
     fill: white !important; 
     stroke:white;
-  }
-
-   
-  .regButtonContrast:hover{
-    background:#414141;
-  }
-  .regButtonContrast svg path{
-    fill:#414141;
-    
   }
