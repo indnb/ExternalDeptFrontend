@@ -3,22 +3,22 @@ import { create } from "zustand";
 export interface IInvalidWidgetStore {
   fontSize: boolean;
   fontFamily: boolean;
-  image: string;
+  image: boolean;
   contrast: boolean;
   setFontSize: () => void;
   setFontFamily: () => void;
-  setImage: (imageUrl: string) => void;
+  setImage: () => void;
   setContrast: () => void;
 }
 
 export const useInvalidWidgetStore = create<IInvalidWidgetStore>((set) => ({
   fontSize: false,
   fontFamily: false,
-  image: "",
+  image: false,
   contrast: false,
 
   setFontSize: () => set((state) => ({ fontSize: !state.fontSize })),
   setFontFamily: () => set((state) => ({ fontFamily: !state.fontFamily })),
-  setImage: (imageUrl) => set(() => ({ image: imageUrl })),
+  setImage: () => set((state) => ({ image: !state.image })),
   setContrast: () => set((state) => ({ contrast: !state.contrast })),
 }));

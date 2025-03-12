@@ -5,21 +5,29 @@ import useScreenSize from "@/hook/useScreenSize";
 import 'swiper/swiper-bundle.css';
 import "./AboutUsSlider.css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 export const AboutUsSlider = () => {
   const { width } = useScreenSize();
+  const { image } = useInvalidWidgetStore()
   const [slidesToShow, setSlidesToShow] = useState<number>(1);
 
 
   useEffect(() => {
-    let sliderCount
-    if (width >= 850) {
-      sliderCount = width / 766;
-    } else {
-      sliderCount = width / 353;
-    }
+    const getSliderCount = (width: number, image: boolean) => {
+      const breakpoints = [
+        { minWidth: 850, noImage: 766, withImage: 440 },
+        { minWidth: 0, noImage: 353, withImage: 240 }
+      ];
+      const res = breakpoints.find(bp => width >= bp.minWidth);
+      if (!res) {
+        return 0
+      }
+      let { noImage, withImage } = res
+      return width / (image ? withImage : noImage);
+    };
 
-    setSlidesToShow(sliderCount);
-  }, [width]);
+    setSlidesToShow(getSliderCount(width, image));
+  }, [width, image]);
   return (
     <div className="flex w-[98.5vw]  mt-[5px]">
       <Swiper
