@@ -1,20 +1,20 @@
 'use client'
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { onSubmitParticipant } from "../../hooks/onSubmitParticiant"
 import { onSubmitTeam } from "./onSubmitTeam";
 import { RegistrationInput } from "@/Molecules/RegistrationInput";
 import { RegistrationButton } from "src/Atoms/RegistrationButton";
 import { inputsConfig as participantConfig } from "./RegistrationFormParticipant.data";
 import { inputsConfig as teamConfig } from "./RegistrationFormTeam.data";
+import { onSubmitParticipant } from "./onSubmitParticiant";
 
 interface RegistrationFormProps {
   selectedForm: "participant" | "team";
 }
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm }) => {
-  const [formSubmitted, setFormSubmitted] = useState(false);  // Состояние для отображения текста
-  const [message, setMessage] = useState("");  // Состояние для текста сообщения
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [message, setMessage] = useState("");
   const { control, handleSubmit, formState: { errors }, reset } = useForm();
 
   const inputsConfig = selectedForm === "participant" ? participantConfig : teamConfig;
