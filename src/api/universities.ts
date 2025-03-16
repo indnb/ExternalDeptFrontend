@@ -2,68 +2,63 @@ import api from "@/api/axiosInstance";
 
 const API_BASE_URL = "/api/hackathon_2024/university";
 
-// ✅ Получить все университеты
 export const getAllUniversities = async () => {
     try {
         const response = await api.get(`${API_BASE_URL}/all`);
         return response.data;
     } catch (error) {
-        console.error("Ошибка при получении университетов:", error);
-        throw new Error("Не удалось загрузить университеты");
+        console.error("Error fetching universities:", error);
+        throw new Error("Failed to load universities");
     }
 };
 
-// ✅ Добавить университет (с проверкой на дубликаты)
-export const createUniversity = async (name: string) => {
+export const getUniversityById = async (id: number) => {
     try {
-        const existingUniversities = await getAllUniversities();
-        if (existingUniversities.some((u: { name: string }) => u.name === name)) {
-            throw new Error("Такой университет уже существует!");
-        }
-
-        const response = await api.post(`${API_BASE_URL}/create`, { name });
+        const response = await api.get(`${API_BASE_URL}/by_id/${id}`);
         return response.data;
     } catch (error) {
-        console.error("Ошибка при добавлении университета:", error);
-        throw new Error("Не удалось добавить университет");
+        console.error("Error fetching university by ID:", error);
+        throw new Error("Failed to fetch university");
     }
 };
 
-// ✅ Массовое добавление университетов
-export const createUniversitiesBatch = async (names: string[]) => {
+export const createUniversity = async (name: string, name_eng: string) => {
     try {
-        const existingUniversities = await getAllUniversities();
-        const newNames = names.filter(name => !existingUniversities.some((u: { name: string }) => u.name === name));
-
-        if (newNames.length === 0) {
-            throw new Error("Все введенные университеты уже существуют!");
-        }
-
-        const response = await api.post(`${API_BASE_URL}/create_by_vec`, newNames.map(name => ({ name })));
+        const response = await api.post(`${API_BASE_URL}/create`, { name, name_eng });
         return response.data;
     } catch (error) {
-        console.error("Ошибка при массовом добавлении университетов:", error);
-        throw new Error("Не удалось добавить университеты");
+        console.error("Error adding university:", error);
+        throw new Error("Failed to add university");
     }
 };
 
-// ✅ Обновить университет по ID
-export const updateUniversity = async (id: number, name: string) => {
+export const createUniversitiesBatch = async (universities: { name: string; name_eng: string }[]) => {
     try {
-        const response = await api.put(`${API_BASE_URL}/by_id/${id}`, { name });
+        const response = await api.post(`${API_BASE_URL}/create_by_vec`, universities);
         return response.data;
     } catch (error) {
-        console.error("Ошибка при обновлении университета:", error);
-        throw new Error("Не удалось обновить университет");
+        console.error("Error batch adding universities:", error);
+        throw new Error("Failed to add universities");
     }
 };
 
-// ✅ Удалить университет по ID
+export const updateUniversity = async (id: number, name: string, name_eng: string) => {
+    try {
+        console.log("Sending update request:", { id, name, name_eng }); // Debug log
+        const response = await api.put(`${API_BASE_URL}/by_id/${id}`, { name, name_eng });
+        console.log("Response:", response.data); // Debug log
+        return response.data;
+    } catch (error) {
+        console.error("Error updating university:", error);
+        throw new Error("Failed to update university");
+    }
+};
+
 export const deleteUniversity = async (id: number) => {
     try {
         await api.delete(`${API_BASE_URL}/by_id/${id}`);
     } catch (error) {
-        console.error("Ошибка при удалении университета:", error);
-        throw new Error("Не удалось удалить университет");
+        console.error("Error deleting university:", error);
+        throw new Error("Failed to delete university");
     }
 };

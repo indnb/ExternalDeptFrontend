@@ -1,118 +1,90 @@
 "use client";
+import "src/app/globals.css";
+import { useEffect, useState } from "react";
+import { getAllUniversities, deleteUniversity } from "@/api/universities";
+import { UniversityTable } from "@/Organisms/UniversityTable";
+import { UniversityCreationForm } from "@/Organisms/UniversityCreationForm";
+import { UniversityEditor } from "@/Organisms/UniversityEditor";
+import { PrimaryButton } from "@/Atoms/PrimaryButton";
+import { TeamsManagement } from "@/Organisms/TeamsManagement";
+import { ParticipantsManagement } from "@/Organisms/ParticipantsManagement";
+import { LanguageToggle } from "@/Atoms/LanguageToggle";
 
-import React, { useEffect, useState } from "react";
-import UniversityForm from "@/components/UniversityForm";
-import EditUniversityModal from "@/components/EditUniversityModal";
-import UniversityList from "@/components/UniversityList";
-import {
-    getAllUniversities,
-    updateUniversity,
-    deleteUniversity
-} from "@/api/universities";
+export default function AdminPage() {
+    const [universities, setUniversities] = useState<{ id: number; name: string; name_eng: string }[]>([]);
+    const [editingUniversity, setEditingUniversity] = useState<{ id: number; name: string; name_eng: string } | null>(null);
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [isEnglish, setIsEnglish] = useState(false);
 
-interface University {
-    id: number;
-    name: string;
-}
-
-const AdminPage: React.FC = () => {
-    const [universities, setUniversities] = useState<University[]>([]);
-    const [editingUniversity, setEditingUniversity] = useState<University | null>(null);
-    const [showAddModal, setShowAddModal] = useState<boolean>(false);
-    const [currentPage, setCurrentPage] = useState<number>(1);
-    const universitiesPerPage = 10;
-
-    const fetchData = async () => {
-        try {
-            const data = await getAllUniversities();
-            setUniversities(data);
-        } catch (err) {
-            console.error("Error fetching universities:", err);
-        }
-    };
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
 
     useEffect(() => {
-        fetchData();
+        getAllUniversities().then(setUniversities);
     }, []);
 
-    const handleEditUniversity = async (updatedUniversity: University) => {
-        try {
-            await updateUniversity(updatedUniversity.id, updatedUniversity.name);
-            setEditingUniversity(null);
-            fetchData();
-        } catch (err) {
-            console.error("Error updating university:", err);
-        }
-    };
-
-    const handleDeleteUniversity = async (id: number) => {
-        try {
-            await deleteUniversity(id);
-            fetchData();
-        } catch (err) {
-            console.error("Error deleting university:", err);
-        }
-    };
-
-    const indexOfLastUniversity = currentPage * universitiesPerPage;
-    const indexOfFirstUniversity = indexOfLastUniversity - universitiesPerPage;
-    const currentUniversities = universities.slice(indexOfFirstUniversity, indexOfLastUniversity);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentUniversities = universities.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(universities.length / itemsPerPage);
 
     return (
-        <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white p-6 mt-28">
-            <h1 className="text-3xl font-bold mb-6">University Management</h1>
+        <div className="bg-gray-900 min-h-screen p-6 pt-32">
+            <h1 className="bg-gray-800 text-3xl font-bold mb-6 text-center">University Management</h1>
 
-            <button
-                className="mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => setShowAddModal(true)}
-            >
-                Add University
-            </button>
+            <div className="flex justify-between mb-6">
+                <PrimaryButton className="bg-green-500 text-white" onClick={() => setShowAddModal(true)}>
+                    Add University
+                </PrimaryButton>
+                <LanguageToggle isEnglish={isEnglish} toggleLanguage={() => setIsEnglish(!isEnglish)} />
+            </div>
 
             {showAddModal && (
-                <UniversityForm
-                    closeModal={() => setShowAddModal(false)}
-                    onUniversityAdded={fetchData}
-                />
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-[1000px] max-w-[1000px]">
+                        <UniversityCreationForm
+                            closeModal={() => setShowAddModal(false)}
+                            onUniversityAdded={async () => setUniversities(await getAllUniversities())}
+                        />
+                    </div>
+                </div>
             )}
 
             {editingUniversity && (
-                <EditUniversityModal
+                <UniversityEditor
                     university={editingUniversity}
                     closeModal={() => setEditingUniversity(null)}
-                    onSave={handleEditUniversity}
+                    onSave={async () => setUniversities(await getAllUniversities())}
                 />
             )}
 
-            <div className="w-[1500px] bg-gray-800 p-6 rounded-lg shadow-lg">
-                <UniversityList
-                    universities={currentUniversities}
-                    onDelete={handleDeleteUniversity}
-                    onEdit={setEditingUniversity}
-                />
+            <UniversityTable
+                universities={currentUniversities}
+                isEnglish={isEnglish}
+                onEdit={(university) => setEditingUniversity(university)}
+                onDelete={async (id) => {
+                    await deleteUniversity(id);
+                    setUniversities(await getAllUniversities());
+                }}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                setCurrentPage={setCurrentPage}
+            />
+
+            <hr className="border-gray-600 my-12" />
+
+            <h1 className="bg-gray-800 text-3xl font-bold mb-6 text-center">Teams Management</h1>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <TeamsManagement />
             </div>
 
-            <div className="flex gap-2 mt-4">
-                <button
-                    className="bg-gray-700 px-4 py-2 rounded"
-                    disabled={currentPage === 1}
-                    onClick={() => setCurrentPage(currentPage - 1)}
-                >
-                    Previous
-                </button>
-                <span className="px-4 py-2 bg-gray-800 rounded">
-                    {currentPage} / {Math.ceil(universities.length / universitiesPerPage)}
-                </span>
-                <button
-                    className="bg-gray-700 px-4 py-2 rounded"
-                    disabled={indexOfLastUniversity >= universities.length}
-                    onClick={() => setCurrentPage(currentPage + 1)}
-                >
-                    Next
-                </button>
+            <hr className="border-gray-600 my-12" />
+
+            <h1 className="bg-gray-800 text-3xl font-bold mb-6 text-center">Participants Management</h1>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <ParticipantsManagement />
             </div>
         </div>
     );
-};
-
-export default AdminPage;
+}
