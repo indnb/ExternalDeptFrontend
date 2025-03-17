@@ -12,25 +12,25 @@ try {
 } catch (e) {
   console.log(e)
 }
- export const inputsConfig  = [
-   {
-     name: "name",
-     type: "text",
-     placeholder: "ІМ'Я ПРІЗВИЩЕ",
-     validation: {
-       required: "Це поле обов'язкове",
-       validate: (value: string) => {
-         if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value)) {
-           return "Можна вводити тільки літери";
-         }
-         const words = value.trim().split(/\s+/);
-         if (words.length !== 2) {
-           return "Має бути прізвище та і'мя";
-         }
-         return true;
-       }
-     }
-   },
+export const inputsConfig = [
+  {
+    name: "name",
+    type: "text",
+    placeholder: "ІМ'Я ПРІЗВИЩЕ",
+    validation: {
+      required: "Це поле обов'язкове",
+      validate: (value: string) => {
+        if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value)) {
+          return "Можна вводити тільки літери";
+        }
+        const words = value.trim().split(/\s+/);
+        if (words.length !== 2) {
+          return "Має бути прізвище та і'мя";
+        }
+        return true;
+      }
+    }
+  },
   {
     name: "phone",
     type: "text",
@@ -81,7 +81,7 @@ try {
     }
   },
   {
-    name: "password",
+    name: "password_registration",
     type: "password",
     placeholder: "ПАРОЛЬ",
     validation: {
@@ -100,7 +100,22 @@ try {
           return "Пароль має бути від 10 до 20 символів і містити цифри, символи, великі та малі літери.";
         }
         return true;
-      }
-    }
-  }
+      },
+    },
+  },
+  {
+    name: "passwordAgain",
+    type: "password",
+    placeholder: "ПІДТВЕРДЖЕННЯ ПАРОЛЮ",
+    validation: {
+
+      required: "Це поле обов'язкове",
+      validate: (value: string, formValues: any) => {
+        if (value !== formValues.password_registration) {
+          return "Паролі не співпадають";
+        }
+        return true;
+      },
+    },
+  },
 ];

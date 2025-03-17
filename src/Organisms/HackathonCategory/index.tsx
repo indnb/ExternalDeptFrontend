@@ -13,7 +13,7 @@ export const HackathonCategory = () => {
         {language == 'ua' ? "Категорії на хакатон" : "Category hackathon"}
       </h1>
       {CategoryData.map((elem, index) => (
-        <ItemCategoryHackathon img={elem.img} description={elem.description} key={index} />
+        <ItemCategoryHackathon img={elem.img} description={language == "ua" ? elem.description : elem.description_eng} key={index} />
       ))}
       <div className="w-[83vw] border-t-2 border-black" ></div>
 

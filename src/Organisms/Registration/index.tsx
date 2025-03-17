@@ -30,20 +30,14 @@ export const Registration = () => {
     >
       {!selectedForm ? (
         <div className="flex flex-col gap-6">
-          <RegistrationText title={language == "ua" ? `Реєстрація на хаkатон` : "Registration for the hackathon"} />
+          <RegistrationText title={language == "ua" ? `Реєстрація на хаkатон ` : "Registration for the hackathon"} />
           <div className="flex flex-col-reverse min-[850px]:flex-col gap-6">
             <RegistrationButtons setSelectedForm={setSelectedForm} />
           </div>
         </div>
       ) : (
-        <>
-          <div className="flex justify-center min-[850px]:hidden">
-            <MobileRegistration selectedForm={selectedForm} onClose={handleClose} />
-          </div>
-          <div className="hidden min-[850px]:block">
-            <DesktopRegistration selectedForm={selectedForm} onClose={handleClose} />
-          </div>
-        </>
+
+        <DesktopRegistration selectedForm={selectedForm} onClose={handleClose} />
       )}
     </div>
   );
