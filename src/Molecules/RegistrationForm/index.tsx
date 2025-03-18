@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 import { onSubmitTeam } from "./onSubmitTeam";
 import { RegistrationInput } from "@/Molecules/RegistrationInput";
 import { RegistrationButton } from "src/Atoms/RegistrationButton";
-import { inputsConfig as teamConfig } from "./RegistrationFormTeam.data";
 import { onSubmitParticipant } from "./onSubmitParticiant";
 import { useFormConfig } from "./RegistrationFormParticipant.data";
+import { useRegisterTeam } from "./RegistrationFormTeam.data";
 
 interface RegistrationFormProps {
   selectedForm: "participant" | "team";
+  setStatusRegister: React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 export interface IRegisterUser {
   name: string;
@@ -28,27 +30,31 @@ export interface ICreateTeam {
   name: string; //name command 
   category: string
 }
-export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm }) => {
+export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm, setStatusRegister }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [message, setMessage] = useState("");
   const { control, handleSubmit, formState: { errors }, reset } = useForm<ICreateTeam | IRegisterUser>();
   const { participantConfig, isLoading } = useFormConfig();
+  const { teamConfig } = useRegisterTeam()
   const inputsConfig = selectedForm === "participant" ? participantConfig : teamConfig;
   const onSubmit = selectedForm === "participant" ? onSubmitParticipant : onSubmitTeam;
   const handleFormSubmit = async (data: ICreateTeam | IRegisterUser) => {
     if ("teamName" in data) {
-      await onSubmitParticipant(data, reset, setMessage);
+      await onSubmitParticipant(data, reset, setMessage, setStatusRegister);
     } else {
-      await onSubmitTeam(data, reset, setMessage);
+      await onSubmitTeam(data, reset, setMessage, setStatusRegister);
     }
     setFormSubmitted(true);
   };
 
 
   return (
-    <form className="w-full max-[450px]:w-[90vw] flex flex-col p-10 justify-center items-center" onSubmit={handleSubmit(handleFormSubmit)}>
-      {!isLoading && inputsConfig && <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />}
-      <RegistrationButton width="300" title="Надіслати" />
+    <form className="w-full max-[450px]:w-[auto] flex flex-col  justify-center items-center" onSubmit={handleSubmit(handleFormSubmit)}>
+      {inputsConfig && !isLoading && <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />}
+      <div className=" mt-[90px] max-[850px]:mt-[40px]">
+        <RegistrationButton width="300" title="Надіслати" />
+      </div>
+
       {formSubmitted && (
         <p className="text-black text-center mt-4">{message}</p>
       )}

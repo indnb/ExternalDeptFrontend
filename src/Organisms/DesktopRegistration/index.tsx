@@ -1,6 +1,8 @@
 import { RegistrationHeader } from "@/Molecules/RegistrationHeader";
 import { RegistrationForm } from "@/Molecules/RegistrationForm";
 import { useLanguageStore } from "@/_store/LanguageChanger";
+import { useState } from "react";
+import RegisterSuccess from "@/Molecules/RegisterSuccess/idnex";
 
 interface DesktopRegistrationProps {
   selectedForm: "participant" | "team";
@@ -9,6 +11,7 @@ interface DesktopRegistrationProps {
 
 export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ selectedForm, onClose }) => {
   const { language } = useLanguageStore();
+  const [statusRegister, setStatusRegister] = useState<boolean>(false)
 
   const formTitles: Record<DesktopRegistrationProps["selectedForm"], { text: string, text_eng: string }> = {
     participant: { text: "Реєстрація учасника", text_eng: "Participant Registration" },
@@ -18,8 +21,13 @@ export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ select
 
   return (
     <div className="bg-white">
-      <RegistrationHeader onClose={onClose} title={language == "ua" ? formTitles[selectedForm].text : formTitles[selectedForm].text_eng} />
-      <RegistrationForm selectedForm={selectedForm} />
+      {!statusRegister ? <RegisterSuccess /> :
+        <>
+          <RegistrationHeader onClose={onClose} title={language == "ua" ? formTitles[selectedForm].text : formTitles[selectedForm].text_eng} />
+          <RegistrationForm selectedForm={selectedForm} setStatusRegister={setStatusRegister} />
+        </>
+      }
+
     </div>
   );
 };

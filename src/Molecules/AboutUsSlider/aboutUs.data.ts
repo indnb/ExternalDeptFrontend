@@ -1,11 +1,10 @@
-import Imgdima from "@/public/photoAboutUs/photo_5233443158443027197_y.jpg";
-import Gleb from "@/public/photoAboutUs/photo_5233443158443027267_x.jpg";
-import Vlad from "@/public/photoAboutUs/photo_5233443158443027199_y.jpg";
-import Maria from "@/public/photoAboutUs/photo_5233443158443027198_y.jpg";
-import Ana from "@/public/photoAboutUs/photo_5233443158443027204_y.jpg";
-import Ksenia from "@/public/photoAboutUs/photo_5233443158443027247_x.jpg";
-import VladLavr from "@/public/photoAboutUs/photo_5233443158443027205_x.jpg";
-import Valera from "@/public/photoAboutUs/photo_5233443158443027206_x.jpg";
+import Ksenia from "@/public/photo_profile/photo_2025-03-18_10-49-18.jpg";
+import Gleb from "@/public/photo_profile/photo_2025-03-18_10-49-18 (2).jpg";
+import Vlad from "@/public/photo_profile/photo_2025-03-18_10-49-18 (3).jpg";
+import Maria from "@/public/photo_profile/photo_2025-03-18_10-49-19.jpg";
+import Ana from "@/public/photo_profile/photo_2025-03-18_10-49-19 (2).jpg";
+import Imgdima from "@/public/photo_profile/photo_2025-03-18_10-49-19 (3).jpg";
+import VladLavr from "@/public/photo_profile/photo_2025-03-18_10-49-19 (4).jpg";
 import { IAboutUsData } from "@/type/IAboutUsData";
 
 export const aboutUsData: IAboutUsData[] = [
@@ -22,8 +21,6 @@ export const aboutUsData: IAboutUsData[] = [
   {
     name: "Влад Боднар",
     text: "lore Ipsum",
-
-
     img: Vlad,
   },
   {
@@ -46,10 +43,5 @@ export const aboutUsData: IAboutUsData[] = [
     name: "Влад Лаврішко",
     text: "lore Ipsum",
     img: VladLavr,
-  },
-  {
-    name: "Валерій Сукач",
-    text: "lore Ipsum",
-    img: Valera,
-  },
+  }
 ];

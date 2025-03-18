@@ -2,7 +2,7 @@ import axios from "axios";
 import { IRegisterUser } from ".";
 
 
-export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMessage: any) => {
+export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMessage: any, setStatusRegister: any) => {
 
   try {
 
@@ -34,7 +34,9 @@ export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMe
         },
       }
     );
-
+    if (response) {
+      setStatusRegister(true)
+    }
     console.log("Success answer participant:", response);
     setMessage("Форма надіслана!");
   } catch (error) {

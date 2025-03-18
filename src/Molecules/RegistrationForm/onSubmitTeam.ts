@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ICreateTeam } from ".";
 
-export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: any) => {
+export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: any, setStatusRegister: any) => {
   const { passwordAgain, ...filteredData } = data;
   console.log(passwordAgain);
   try {
@@ -14,7 +14,9 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
         },
       }
     );
-
+    if (response) {
+      setStatusRegister(true)
+    }
     console.log("Success answer team:", response);
     reset();
     setMessage("зареєструйтесь як учасник!");

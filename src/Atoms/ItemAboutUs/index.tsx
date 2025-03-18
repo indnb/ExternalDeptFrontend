@@ -11,13 +11,13 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
         boxShadow: "2px -4px 3px 1px rgba(173, 159, 173, 0.35)",
       }}
       className={`${!image ? "w-[721px] max-[850px]:w-[314px]" :
-        "w-[400px] max-[850px]:w-[200px]"} h-[472px]
-       max-[850px]:h-[191px] flex bg-[white] ml-[20px] items-center justify-start rounded-[8px]` }
+        "w-[400px] max-[850px]:w-[200px]"} h-[auto]
+       max-[850px]:h-[auto] flex bg-[white] ml-[20px] items-center justify-start rounded-[8px] mt-[5px]` }
     >
       {!image ? <Image
         className={`${contrast ? 'filter grayscale brightness-90' : ''} 
-        w-[350px] h-[472px]
-        max-[850px]:w-[154px] max-[850px]:h-[191px] object-fit rounded-[4px]`}
+        w-[350px] 
+        max-[850px]:w-[154px]  object-fill rounded-[4px]`}
         src={data.img}
         alt=""
       /> : null}

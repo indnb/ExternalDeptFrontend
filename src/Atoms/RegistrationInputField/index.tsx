@@ -29,8 +29,7 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
 
 
   return (
-    <div className=" relative 
-">
+    <div className="relative ">
       {type === "select" ? (
         <Select
           {...field}
@@ -38,10 +37,14 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
           onChange={handleChange}
           options={selectOptions}
           placeholder={placeholder}
-          classNamePrefix="select"
+          classNamePrefix="selectOption"
           styles={{
             control: (provided) => ({
               ...provided,
+              padding: '.1rem',
+              '@media (max-width: 850px)': {
+                padding: '.1.2rem',
+              },
               border: 'none',
               borderBottom: '2px solid #D1D5DB',
               boxShadow: 'none',
@@ -60,6 +63,13 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
               '&:hover': {
                 backgroundColor: '#203C8F',
                 color: 'white',
+              },
+            }),
+            placeholder: (provided) => ({
+              ...provided,
+              color: '#A0A0A0',
+              '@media (max-width: 850px)': {
+                fontSize: '12px',
               },
             }),
           }}
