@@ -6,7 +6,7 @@ interface RegistrationBackButtonProps {
 
 export const BackButton: React.FC<RegistrationBackButtonProps> = ({ onClose }) => {
   return (
-    <div onClick={onClose} className="flex flex-row text-black md:visible hidden items-center self-center text-center cursor-pointer">
+    <div onClick={onClose} className="flex flex-row text-black   items-center self-center text-center cursor-pointer">
       <div className="text-2xl">
         <IoIosArrowBack />
       </div>

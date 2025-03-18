@@ -11,8 +11,8 @@ interface RegistrationHeaderProps {
 export const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({ title, onClose }) => {
   const { language } = useLanguageStore()
   return (
-    <div className="relative flex items-center w-full p-2">
-      <div className=" justify-start  ">
+    <div className="relative flex items-center w-full  p-2">
+      <div className=" justify-start  max-2xl:w-[0px] max-2xl:hidden">
         <BackButton onClose={onClose} />
       </div>
 
@@ -20,7 +20,7 @@ export const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({ title, o
         <RegistrationText title={title} />
         <RegistrationLable title={language == "ua" ? "*Максимальна кількість учасників в команді - 6." : "Maximum number of team members - 6."} />
       </div>
-      <Image onClick={onClose} src={proiconsCancel} alt="" className="md:hidden absolute right-[30px] min-[850px]:invisible" />
+      <Image onClick={onClose} src={proiconsCancel} alt="" className="md:hidden absolute right-[30px] min-[850px]:invisible top-[0px]" />
 
 
 

@@ -10,10 +10,9 @@ export const HackathonCategory = () => {
   return (
     <div className={` ${fontFamily ? "font-kyivSerif" : "font-kyivSans"} flex justify-center flex-col items-center  text-black `}>
       <h1 className='max-[850px]:text-[28px] max-[850px]:mb-[16px] text-[48px] mb-[71px]'>
-        {language == 'ua' ? "Категорії на хакатон" : "Category hackathon"}
-      </h1>
+        {language == 'ua' ? "Категорії на хакатон" : "Category hackathon"} </h1>
       {CategoryData.map((elem, index) => (
-        <ItemCategoryHackathon img={elem.img} description={language == "ua" ? elem.description : elem.description_eng} key={index} />
+        <ItemCategoryHackathon img={elem.img} name={elem.name} description={language == "ua" ? elem.description : elem.description_eng} key={index} />
       ))}
       <div className="w-[83vw] border-t-2 border-black" ></div>
 
