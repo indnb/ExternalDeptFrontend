@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
-interface InputFieldProps {
+import Select from 'react-select';
+import { IOption } from '@/Molecules/RegistrationInput';
+export interface InputFieldProps {
   field: any;
   placeholder: string;
   error?: string;
   type: string;
-  options?: string[];
+  options?: IOption[];
 }
 
 export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, placeholder, error, type, options }) => {
@@ -15,41 +17,66 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const selectOptions = options?.map(option => ({
+    value: option.id,
+    label: option.name
+  }));
+  const handleChange = selectedOption => {
+    field.onChange(selectedOption ? selectedOption.value : '');
+  };
+
+  const selectedValue = selectOptions?.find(option => option.value === field.value);
+
 
   return (
-    <div className="w-full relative">
+    <div className=" relative 
+">
       {type === "select" ? (
-
-        <select
+        <Select
           {...field}
-          value={field.value || ""}
-          onChange={field.onChange}
-          className={`border-b-2 bg-white border-gray-300 focus:border-[#203C8F] outline-none p-2 w-full ${error ? "border-red-500" : ""
-            } ${!field.value ? "text-[#6A6A6A]" : "text-black"
-            }`}
-        >
-          <option value="" disabled className="text-[#6A6A6A]">
-            {placeholder}
-          </option>
-          {options?.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      ) : (
+          value={selectedValue}
+          onChange={handleChange}
+          options={selectOptions}
+          placeholder={placeholder}
+          classNamePrefix="select"
+          styles={{
+            control: (provided) => ({
+              ...provided,
+              border: 'none',
+              borderBottom: '2px solid #D1D5DB',
+              boxShadow: 'none',
+              '&:hover': {
+                border: 'none',
+                borderBottom: '2px solid #D1D5DB',
+              },
+              '&:focus-within': {
+                borderBottom: '2px solid #203C8F',
+              },
+            }),
+            option: (provided, state) => ({
+              ...provided,
+              backgroundColor: state.isSelected ? '#203C8F' : 'white',
+              color: state.isSelected ? 'white' : 'black',
+              '&:hover': {
+                backgroundColor: '#203C8F',
+                color: 'white',
+              },
+            }),
+          }}
+        />) : (
         <div className="relative">
           <input
             {...field}
             type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
+            value={field.value || ""}
             placeholder={placeholder}
-            className={`border-b-2 border-gray-300 text-black focus:border-[#203C8F] outline-none p-2 w-full ${error ? 'border-red-500' : ''}`}
+            className={` text-black border-b-2 border-gray-300 max-[450px]:text-[10px] focus:border-[#203C8F] max-[850px]:text-[12px] outline-none p-2 w-full ${error ? 'border-red-500' : ''}`}
           />
           {type === 'password' && (
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+              className=" absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>

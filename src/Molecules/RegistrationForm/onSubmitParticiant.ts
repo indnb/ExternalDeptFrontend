@@ -1,37 +1,27 @@
 import axios from "axios";
+import { IRegisterUser } from ".";
 
 
-export const onSubmitParticipant = async (data: any, reset: any, setMessage: any) => {
-  let DataUniversity;
-  let DataTeam;
-  let university;
-  let team;
+export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMessage: any) => {
 
   try {
-    const [universityData, teamData] = await Promise.all([
-      axios.get(`${process.env.API_PORT}/hackathon_2024/university/all`),
-      axios.get(`${process.env.API_PORT}/hackathon_2024/team/all`),
-    ]);
-    DataUniversity = universityData.data;
-    DataTeam = teamData.data;
 
-    university = DataUniversity.find((univ: any) => univ.name === data.university);
-    team = DataTeam.find((team: any) => team.name === data.teamName);
+
 
     const match = data.name.match(/^(\S+)\s+(\S+)/);
 
     const filteredData = {
       team_data: {
-        id: team.id,
-        password: data.password,
+        id: data.teamName,
+        password: data.password_registration,
       },
       user_data: {
-        first_name: match[1],
-        last_name: match[2],
+        first_name: match ? match[1] : '',
+        last_name: match ? match[2] : '',
         nickname_tg: data.nickname_tg,
         phone: data.phone,
-        team_id: team.id,
-        university_id: university.id,
+        team_id: data.teamName,
+        university_id: data.university,
       },
     };
 
@@ -46,7 +36,6 @@ export const onSubmitParticipant = async (data: any, reset: any, setMessage: any
     );
 
     console.log("Success answer participant:", response);
-    reset();
     setMessage("Форма надіслана!");
   } catch (error) {
     console.error("Error participant:", error);
