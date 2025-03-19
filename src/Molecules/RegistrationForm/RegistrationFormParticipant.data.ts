@@ -50,11 +50,10 @@ export const useFormConfig = () => {
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
-            if (!/^\d+$/.test(value)) {
-              return language == "ua" ? "Тільки цифри" : "Only digits are allowed"
-            }
-            if (value.length !== 10) {
-              return language == "ua" ? "Номер складається з 10 цифр" : "Phone number must be 10 digits"
+            if (!/^\+?380\d{9}$|^380\d{9}$|^0\d{9}$/.test(value)) {
+              return language == "ua"
+                ? "Формат: +380XXXXXXXXX, 380XXXXXXXXX або 0XXXXXXXXX"
+                : "Format: +380XXXXXXXXX, 380XXXXXXXXX, or 0XXXXXXXXX";
             }
             return true;
           },
@@ -98,7 +97,7 @@ export const useFormConfig = () => {
       {
         name: "password_registration",
         type: "password",
-        placeholder: language == "ua" ? "ПАРОЛЬ" : "PASSWORD",
+        placeholder: language == "ua" ? "ПАРОЛЬ КОМАНДИ" : "PASSWORD TEAM",
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
@@ -113,27 +112,15 @@ export const useFormConfig = () => {
           },
         },
       },
-      {
-        name: "passwordAgain",
-        type: "password",
-        placeholder: language == "ua" ? "ПІДТВЕРДЖЕННЯ ПАРОЛЮ" : "CONFIRM PASSWORD",
-        validation: {
-          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
-          validate: (value: string, formValues: any) => {
-            if (value !== formValues.password_registration) {
-              return language == "ua" ? "Паролі не співпадають" : "Passwords do not match"
-            }
-            return true;
-          },
-        },
-      },
+
     ];
     setParticipantConfig(config)
 
   }, [language, universityData, teamData, isUniversityLoading, isTeamLoading, universityError, teamError]);
-  return { participantConfig, isLoading: isUniversityLoading, error: universityError }; return {
-    participantConfig,
-    isLoading: isUniversityLoading || isTeamLoading,
-    error: universityError || teamError,
-  };
+  return { participantConfig, isLoading: isUniversityLoading, error: universityError };
+
+
+
+
+
 };

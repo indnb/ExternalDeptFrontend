@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { CategoryData } from './category.data'
 import { ItemCategoryHackathon } from '@/Atoms/ItemCategoryHackathon'

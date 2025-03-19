@@ -1,3 +1,4 @@
+"use client"
 import { RegistrationText } from "@/Atoms/RegistrationText";
 import { RegistrationButtons } from "@/Molecules/RegistrationButtons";
 import { DesktopRegistration } from "@/Organisms/DesktopRegistration";

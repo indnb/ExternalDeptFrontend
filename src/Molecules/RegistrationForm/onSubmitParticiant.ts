@@ -5,9 +5,7 @@ import { IRegisterUser } from ".";
 export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMessage: any, setStatusRegister: any) => {
 
   try {
-
-
-
+    const number = formatPhoneNumber(data.phone)
     const match = data.name.match(/^(\S+)\s+(\S+)/);
 
     const filteredData = {
@@ -19,7 +17,7 @@ export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMe
         first_name: match ? match[1] : '',
         last_name: match ? match[2] : '',
         nickname_tg: data.nickname_tg,
-        phone: data.phone,
+        phone: number,
         team_id: data.teamName,
         university_id: data.university,
       },
@@ -50,3 +48,12 @@ export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMe
     }
   }
 };
+
+
+
+function formatPhoneNumber(number: string) {
+  if (number.startsWith("+380")) return "0" + number.slice(4);
+  if (number.startsWith("380")) return "0" + number.slice(3);
+  return number;
+}
+

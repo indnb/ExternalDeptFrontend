@@ -1,3 +1,4 @@
+"use client"
 import { useInvalidWidgetStore } from '@/_store/InvalidWidget'
 import React from 'react'
 

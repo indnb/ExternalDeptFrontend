@@ -12,7 +12,7 @@ export const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({ title, o
   const { language } = useLanguageStore()
   return (
     <div className="relative flex items-center w-full  p-2">
-      <div className=" justify-start  max-2xl:w-[0px] max-2xl:hidden">
+      <div className="   max-2xl:w-[0px] max-[850px]:hidden absolute ">
         <BackButton onClose={onClose} />
       </div>
 

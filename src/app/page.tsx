@@ -1,4 +1,3 @@
-"use client";
 import "src/app/globals.css";
 import { AboutUs } from "@/Organisms/AboutUs";
 import { Main } from "@/Organisms/Main";
@@ -10,7 +9,8 @@ import { TimerStartHackathon } from "@/Organisms/TimerStartHackathon";
 export default function Home() {
   return (
     <div className="bg-[white] ">
-      <div className={`w-full flex flex-col gap-10 justify-center`}>
+
+      <div className={`w-full flex flex-col gap-10 justify-center overflow-hidden`}>
         <InvalidWidget />
         <Main />
         <AboutUs />

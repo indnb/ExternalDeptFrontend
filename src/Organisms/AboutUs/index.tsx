@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { AboutUsSlider } from "@/Molecules/AboutUsSlider";
 import { useLanguageStore } from "@/_store/LanguageChanger";

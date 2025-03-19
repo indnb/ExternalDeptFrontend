@@ -27,9 +27,9 @@ export const useRegisterTeam = () => {
         placeholder: language === "ua" ? "КАТЕГОРІЯ НА ХАКАТОН" : "HACKATHON CATEGORY",
         options: [
           { id: "Software", name: "Software" },
-          { id: "gamedev", name: "GameDev" },
-          { id: "blockchain", name: "Blockchain" },
-          { id: "iot", name: "IoT" },
+          { id: "Gamedev", name: "GameDev" },
+          { id: "Blockchain", name: "Blockchain" },
+          { id: "IoT", name: "IoT" },
         ],
         validation: {
           required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
@@ -47,7 +47,7 @@ export const useRegisterTeam = () => {
       {
         name: "password_registration",
         type: "password",
-        placeholder: language === "ua" ? "ПАРОЛЬ" : "PASSWORD",
+        placeholder: language === "ua" ? "ПАРОЛЬ КОМАНДИ" : "PASSWORD TEAM",
         validation: {
           required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {

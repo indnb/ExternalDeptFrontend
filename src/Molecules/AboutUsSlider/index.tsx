@@ -15,7 +15,7 @@ export const AboutUsSlider = () => {
   useEffect(() => {
     const getSliderCount = (width: number, image: boolean) => {
       const breakpoints = [
-        { minWidth: 850, noImage: 766, withImage: 440 },
+        { minWidth: 851, noImage: 766, withImage: 440 },
         { minWidth: 0, noImage: 353, withImage: 240 }
       ];
       const res = breakpoints.find(bp => width >= bp.minWidth);
