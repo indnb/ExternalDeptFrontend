@@ -5,9 +5,8 @@ import ContrastImg from "@/public/invalidIcon/Group61.svg";
 import FontSizeImg from "@/public/invalidIcon/Group63.svg";
 
 
-export const getInvalidData = () => {
-  const { fontFamily, fontSize, contrast, image, setFontFamily, setContrast, setFontSize, setImage } =
-    useInvalidWidgetStore();
+export const useGetInvalidData = () => {
+  const { fontFamily, fontSize, contrast, image, setFontFamily, setContrast, setFontSize, setImage } = useInvalidWidgetStore();
 
   return [
     {

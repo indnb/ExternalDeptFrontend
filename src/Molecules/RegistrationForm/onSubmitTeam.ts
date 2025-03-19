@@ -20,8 +20,13 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
     console.log("Success answer team:", response);
     reset();
     setMessage("зареєструйтесь як учасник!");
-  } catch (error) {
-    console.error("Error team:", error);
-    setMessage("помилка при реєстрації команди");
+  } catch (error: any) {
+    if (error.response?.data?.message) {
+      setMessage(error.response.data.message);
+    } else if (error.response?.data?.error?.description) {
+      setMessage(error.response.data.error.description);
+    } else {
+      setMessage("Произошла неизвестная ошибка");
+    }
   }
 };

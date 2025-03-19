@@ -1,7 +1,7 @@
 import React from "react";
 import { InvalidWidgetHeader } from "@/Atoms/InvalidWidgetHeader";
 import { ItemInvalidWidget } from "@/Atoms/ItemInvalidWidget";
-import { getInvalidData } from "./Invalid.data";
+import { useGetInvalidData } from "./Invalid.data";
 
 interface InvalidWidgetWindowProps {
   setStateWidget: React.Dispatch<React.SetStateAction<boolean>>;
@@ -10,7 +10,7 @@ interface InvalidWidgetWindowProps {
 export const InvalidWidgetWindow = ({
   setStateWidget,
 }: InvalidWidgetWindowProps) => {
-  const InvalidData = getInvalidData();
+  const InvalidData = useGetInvalidData();
   return (
     <div
       className="fixed rounded-[16px]  right-[2vw] top-[36vh] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md

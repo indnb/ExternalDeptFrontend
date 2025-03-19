@@ -1,11 +1,8 @@
 import { useLanguageStore } from "@/_store/LanguageChanger";
 import { useTeamApiQuery } from "@/api/useGetTeam";
 import { useUniversityApiQuery } from "@/api/useGetUniversity";
-import { InputFieldProps } from "@/Atoms/RegistrationInputField";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { InputConfig } from "../RegistrationInput";
-let DataTeam = []
 export interface IUniversity {
   id: number,
   name: string,

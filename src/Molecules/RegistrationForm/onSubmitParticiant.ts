@@ -34,13 +34,19 @@ export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMe
         },
       }
     );
+    console.log(response)
     if (response) {
       setStatusRegister(true)
     }
     console.log("Success answer participant:", response);
     setMessage("Форма надіслана!");
-  } catch (error) {
-    console.error("Error participant:", error);
-    setMessage("помилка при реєстрації учасника.");
+  } catch (error: any) {
+    if (error.response?.data?.message) {
+      setMessage(error.response.data.message);
+    } else if (error.response?.data?.error?.description) {
+      setMessage(error.response.data.error.description);
+    } else {
+      setMessage("Произошла неизвестная ошибка");
+    }
   }
 };

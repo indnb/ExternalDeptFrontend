@@ -22,7 +22,7 @@ export const AboutUsSlider = () => {
       if (!res) {
         return 0
       }
-      let { noImage, withImage } = res
+      const { noImage, withImage } = res
       return width / (image ? withImage : noImage);
     };
 

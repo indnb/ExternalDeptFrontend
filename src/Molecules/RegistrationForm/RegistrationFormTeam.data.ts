@@ -26,10 +26,10 @@ export const useRegisterTeam = () => {
         type: "select",
         placeholder: language === "ua" ? "КАТЕГОРІЯ НА ХАКАТОН" : "HACKATHON CATEGORY",
         options: [
-          { id: "Web 3.0", name: "Web 3.0" },
-          { id: "Military", name: "Military" },
-          { id: "Education", name: "Education" },
-          { id: "Cybersecurity", name: "Cybersecurity" },
+          { id: "Software", name: "Software" },
+          { id: "gamedev", name: "GameDev" },
+          { id: "blockchain", name: "Blockchain" },
+          { id: "iot", name: "IoT" },
         ],
         validation: {
           required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
