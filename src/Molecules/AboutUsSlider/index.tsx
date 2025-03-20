@@ -32,6 +32,8 @@ export const AboutUsSlider = () => {
     <div className="flex w-[98.5vw]  mt-[5px]">
       <Swiper
         slidesPerView={slidesToShow}
+        style={{ minWidth: '100%' }}
+
       >
         {aboutUsData.map((elem, index) => (
           <SwiperSlide key={index}>

@@ -15,7 +15,7 @@ export const HackathonCategory = () => {
       {CategoryData.map((elem, index) => (
         <ItemCategoryHackathon img={elem.img} name={elem.name} description={language == "ua" ? elem.description : elem.description_eng} key={index} />
       ))}
-      <div className="w-[83vw] border-t-2 border-black" ></div>
+      <div className="w-[83vw] min-xl2:w-[1540px] border-t-2 border-black" ></div>
 
     </div>
   )
