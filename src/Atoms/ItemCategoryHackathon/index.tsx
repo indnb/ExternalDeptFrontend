@@ -13,7 +13,7 @@ export const ItemCategoryHackathon = ({ img, description, name }: { img: string,
             src={img}
             alt="img category"
           />
-          <h1 className=" font-montserrat font-medium text-center max-[850px]:ml-[9px] ml-[20px]  max-[850px]:text-[19px]   text-[46px] mt-[0px] text-[#203C8F]">{name}</h1>
+          <h1 className=" font-montserrat font-medium text-center max-[850px]:ml-[9px] ml-[20px] max-[1050px]:text-[38px]  max-[850px]:text-[24px]   text-[44px] mt-[0px] text-[#203C8F]">{name}</h1>
         </div>
 
         <h1 className={`max-[850px]:mt-[11px] max-[850px]:w-[auto] w-[39vw] font-montserrat font-normal ${fontSize ? "text-[calc(27/1552*100vw)] max-[550px]:text-[14px]" : "text-[calc(23/1552*100vw)] max-[550px]:text-[10px]"} text-black`}>

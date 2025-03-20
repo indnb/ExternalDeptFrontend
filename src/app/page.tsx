@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="bg-[white] ">
 
-      <div className={`w-full flex flex-col gap-10 justify-center overflow-hidden`}>
+      <div className={`w-full flex flex-col gap-10 justify-center overflow-x-hidden`}>
         <InvalidWidget />
         <Main />
         <AboutUs />

@@ -77,10 +77,10 @@ export const useFormConfig = () => {
         name: "university",
         type: "select",
         placeholder: language == "ua" ? "НАЗВА НАВЧАЛЬНОГО ЗАКЛАДУ" : "EDUCATIONAL INSTITUTION NAME",
-        options: universityData.flatMap((university) => [
-          { id: university.id, name: university.name },
-          { id: university.id, name: university.name_eng },
-        ]),
+        options: [
+          ...universityData.map((university) => ({ id: university.id, name: language === "ua" ? university.name : university.name_eng })),
+          ...universityData.map((university) => ({ id: university.id, name: language === "ua" ? university.name_eng : university.name }))
+        ],
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
         },
