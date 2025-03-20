@@ -7,9 +7,9 @@ export const Footer = () => {
   const { contrast } = useInvalidWidgetStore()
   const { language } = useLanguageStore()
   return (
-    <footer className={`overflow-hidden max-[850px]:h-[165px] ${contrast ? "bg-[#414141]" : "bg-[#203C8F]"} w-[100vw] h-[370px] flex items-center flex-col `}>
+    <footer className={`overflow-hidden max-lg:h-[165px] ${contrast ? "bg-[#414141]" : "bg-[#203C8F]"} w-[100vw] h-[370px] flex items-center flex-col `}>
       <FooterTopPanel />
-      <div className="w-[93vw] mt-[12px] max-[850px]:text-[12px] text-[22px]">
+      <div className="w-[93vw] mt-[12px] max-lg:text-[12px] text-[22px]">
         <h1 style={{ fontFamily: "Montserrat" }}
         >{language === "ua" ? "Політика конфіденційності" : "Privacy Policy"}</h1>
         <h1 style={{ fontFamily: "Montserrat" }}

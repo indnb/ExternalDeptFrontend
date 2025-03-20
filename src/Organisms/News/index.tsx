@@ -6,9 +6,9 @@ export const News = () => {
   const { language } = useLanguageStore();
   const { fontFamily } = useInvalidWidgetStore()
   return (
-    <section className="max-[850px]:h-[240px] h-[700px]  flex flex-col relative">
+    <section className="max-lg:h-[240px] h-[700px]  flex flex-col relative">
       <h1
-        className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"} max-[850px]:w-[90vw] w-[95vw] text-black max-[850px]:text-[32px]  text-[48px] ml-[25px] mb-[35px] max-[850px]:mb-[10px]`}
+        className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"} max-lg:w-[90vw] w-[95vw] text-black max-lg:text-[32px]  text-[48px] ml-[25px] mb-[35px] max-lg:mb-[10px]`}
         style={{ fontFamily: "Kyiv Type Sans" }}
       >
         {language == "ua" ? "Новини" : "News"}

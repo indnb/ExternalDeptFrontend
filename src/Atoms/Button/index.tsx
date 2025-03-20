@@ -29,7 +29,7 @@ export const Button: React.FC<buttonProps> = ({
         : "border-[#8D8D8D] text-[#8D8D8D] hover:text-white   hover:bg-[#203C8F] hover:border-[#203C8F]"
         }
     ${contrast && "text-white bg-[#414141]"}
-    max-[550px]:w-[80vw]
+    max-sm:w-[80vw]
     flex justify-center items-center self-center border-2  rounded-xl
     transition h-12 w-96 ${fontSize ? " text-[24px]" : "text-[16px]"} `}
     >

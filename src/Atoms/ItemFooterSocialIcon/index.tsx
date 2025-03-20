@@ -9,8 +9,8 @@ export interface IItemFooterSocailIcon {
 
 export const ItemFooterSocailIcon: React.FC<IItemFooterSocailIcon> = ({ img, link }) => {
   return (
-    <Link href={link} className="h-[91px] w-[91px] max-[850px]:w-[30px] max-[850px]:h-[30px]" >
-      <Image src={img} alt="" className="h-[91px] w-[91px] max-[850px]:w-[30px] max-[850px]:h-[30px]" />
+    <Link href={link} className="h-[91px] w-[91px] max-lg:w-[30px] max-lg:h-[30px]" >
+      <Image src={img} alt="" className="h-[91px] w-[91px] max-lg:w-[30px] max-lg:h-[30px]" />
     </Link>
 
   )

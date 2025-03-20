@@ -35,8 +35,8 @@ export const TimerStartHackathon = () => {
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
   return (
-    <div className='max-[850px]:h-[60px] h-[146px]  w-[100vw] flex items-end justify-center'>
-      <div className={` ${contrast ? " text-[#414141] border-[#414141]" : "text-[#203C8F] border-[#203C8F]"}  h-[84px] w-[582px] text-[32px] max-[850px]:h-[41px] border-2  rounded-[8px] max-[850px]:w-[284px] max-[850px]:text-[16px] flex items-center justify-center`}>
+    <div className='max-lg:h-[60px] h-[146px]  w-[100vw] flex items-end justify-center'>
+      <div className={` ${contrast ? " text-[#414141] border-[#414141]" : "text-[#203C8F] border-[#203C8F]"}  h-[84px] w-[582px] text-[32px] max-lg:h-[41px] border-2  rounded-[8px] max-lg:w-[284px] max-lg:text-[16px] flex items-center justify-center`}>
         {language == "ua" ? "Дата проведення" : "Date of conduction"}:{formatTime(days)}.{formatTime(hours)}.{formatTime(minutes)}.{formatTime(seconds)}
       </div>
     </div>

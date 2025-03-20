@@ -14,7 +14,7 @@ export const InvalidWidgetWindow = ({
   return (
     <div
       className="fixed rounded-[16px]  right-[2vw] top-[36vh] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
-        overflow-hidden max-[450px]:w-[360px] max-[450px]:right-[1vw]  max-[850px]:w-[383px] max-[850px]:h-[452px] max-[850px]:top-[43vh]
+        overflow-hidden max-[450px]:w-[360px] max-[450px]:right-[1vw]  max-lg:w-[383px] max-lg:h-[452px] max-lg:top-[43vh]
         shadow-md z-40"
     >
       <InvalidWidgetHeader setStateWidget={setStateWidget} />
@@ -23,7 +23,7 @@ export const InvalidWidgetWindow = ({
           <ItemInvalidWidget key={index} elem={elem} />
         ))}
       </div>
-      <h1 className="text-[0px] max-[850px]:text-[16px] text-[black] mt-[20px]">
+      <h1 className="text-[0px] max-lg:text-[16px] text-[black] mt-[20px]">
         Вимкнути
       </h1>
     </div>

@@ -51,7 +51,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
   return (
     <form className="w-full max-[450px]:w-[auto] flex flex-col  justify-center items-center" onSubmit={handleSubmit(handleFormSubmit)}>
       {inputsConfig && !isLoading && <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />}
-      <div className=" mt-[90px] max-[850px]:mt-[70px]">
+      <div className=" mt-[90px] max-lg:mt-[70px]">
         <RegistrationButton width="300" title={language == "ua" ? "Надіслати" : "Send"} />
       </div>
 

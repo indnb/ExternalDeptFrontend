@@ -30,7 +30,7 @@ export const NewsSlider = () => {
 
 
   return (
-    <div className="max-[850px]:h-[200px] max-[550px]:w-[99vw] w-[100vw] overflow-x-hidden">
+    <div className="max-lg:h-[200px] max-sm:w-[99vw] w-[100vw] overflow-x-hidden">
       <Swiper
         slidesPerView={2.4}
         centeredSlides={true}
@@ -41,7 +41,7 @@ export const NewsSlider = () => {
         className="mySwiper"
       >
         {arr.map((elem, index) => (
-          <SwiperSlide key={index} className="flex justify-center items-center w-[100%] max-[850px]:h-[170px] h-[480px] flex-row">
+          <SwiperSlide key={index} className="flex justify-center items-center w-[100%] max-lg:h-[170px] h-[480px] flex-row">
             {({ isActive }) => (<ItemNews title={elem.title} isActive={isActive} />)}
           </SwiperSlide>
         ))}

@@ -16,6 +16,8 @@ export default {
         xl: "1280px",
         "2xl": "1800px",
         "max-lg": { max: "850px" },
+        "max-sm": { max: "550px" },
+        "max-xl": { max: "1300px" },
         "min-xl2": { min: "1800px" },
       },
 

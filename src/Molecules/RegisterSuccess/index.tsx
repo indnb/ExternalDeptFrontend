@@ -7,7 +7,7 @@ export default function RegisterSuccess() {
   const { fontFamily } = useInvalidWidgetStore()
 
   return (
-    <div className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"} text-center text-[60px] max-2xl-[850px]:text-[30px] h-[500px] max-[850px]:h-[550px] flex items-center justify-center text-black `}>
+    <div className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"} text-center text-[60px] max-2xl-[850px]:text-[30px] h-[500px] max-lg:h-[550px] flex items-center justify-center text-black `}>
       <h1 >
         {language === 'ua' ? (
           <>

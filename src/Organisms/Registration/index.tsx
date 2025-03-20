@@ -23,13 +23,13 @@ export const Registration = () => {
   }, [refRegistrationSection]);
   return (
     <div
-      className="w-full flex flex-col gap-10 justify-center mt-[100px] max-[850px]:mt-[20px]  mb-[80px]"
+      className="w-full flex flex-col gap-10 justify-center mt-[100px] max-lg:mt-[20px]  mb-[80px]"
       ref={refRegistrationSection}
     >
       {!selectedForm ? (
         <div className="flex flex-col gap-6">
           <RegistrationText title={language == "ua" ? `Реєстрація на хаkатон ` : "Registration for the hackathon"} />
-          <div className="flex  max-[850px]flex-row flex-col gap-6">
+          <div className="flex  max-lgflex-row flex-col gap-6">
             <RegistrationButtons setSelectedForm={setSelectedForm} />
           </div>
         </div>

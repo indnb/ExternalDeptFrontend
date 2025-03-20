@@ -10,7 +10,7 @@ export const RegistrationText: React.FC<TextProps> = ({ title }) => {
   return (
     <div>
       <p
-        className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"} font-normal text-[48px] max-[650px]:text-[17px] max-[850px]:text-[22px] flex text-black p-2  justify-center`}>
+        className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"} font-normal text-[48px] max-[650px]:text-[17px] max-lg:text-[22px] flex text-black p-2  justify-center`}>
         {title}
       </p>
     </div>

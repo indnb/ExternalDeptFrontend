@@ -12,7 +12,7 @@ export const AboutUs = () => {
     <div className="w-[100vw]">
       <h1
         className={`text-[48px] ${fontFamily ? "font-kyivSerif" : "font-kyivSans"}
-text-black font-normal  max-[850px]:text-[32px] ml-[25px] mb-[35px] mt-[138px] max-[850px]:mb-[10px] max-[850px]:mt-[30px]`}
+text-black font-normal  max-lg:text-[32px] ml-[25px] mb-[35px] mt-[138px] max-lg:mb-[10px] max-lg:mt-[30px]`}
       >
         {language == "ua" ? "Про нас" : "About Us"}
       </h1>

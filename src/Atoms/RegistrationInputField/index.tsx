@@ -80,7 +80,7 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
             type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
             value={field.value || ""}
             placeholder={placeholder}
-            className={` text-black border-b-2 border-gray-300 max-[450px]:text-[10px] focus:border-[#203C8F] max-[850px]:text-[12px] outline-none p-2 w-full ${error ? 'border-red-500' : ''}`}
+            className={` text-black border-b-2 border-gray-300 max-[450px]:text-[10px] focus:border-[#203C8F] max-lg:text-[12px] outline-none p-2 w-full ${error ? 'border-red-500' : ''}`}
           />
           {type === 'password' && (
             <button

@@ -18,7 +18,7 @@ export const HackathonInfoPanelTop = ({ firstRow, secondRow }: { firstRow: strin
       </div>
       <div style={{ fontFamily: "Montserrat" }}
 
-        className={`font-normal w-[48vw]  text-[#000000] ${fontSize ? "text-[calc(37/1552*100vw)]  max-[550px]:text-[14px] min-xl2:text-[36px]" : " min-xl2:text-[32px] text-[calc(32/1552*100vw)]  max-[550px]:text-[10px]"}
+        className={`font-normal w-[48vw]  text-[#000000] ${fontSize ? "text-[calc(37/1552*100vw)]  max-sm:text-[14px] min-xl2:text-[36px]" : " min-xl2:text-[32px] text-[calc(32/1552*100vw)]  max-sm:text-[10px]"}
 flex items-center justify-center`}>
 
         {secondRow}
