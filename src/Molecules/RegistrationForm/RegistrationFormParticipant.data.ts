@@ -1,83 +1,126 @@
-export const inputsConfig = [
-    {
+import { useLanguageStore } from "@/_store/LanguageChanger";
+import { useTeamApiQuery } from "@/api/useGetTeam";
+import { useUniversityApiQuery } from "@/api/useGetUniversity";
+import { useEffect, useState } from "react";
+import { InputConfig } from "../RegistrationInput";
+export interface IUniversity {
+  id: number,
+  name: string,
+  name_eng: string
+}
+export interface ITeam {
+  id: number,
+  name: string,
+}
+export const useFormConfig = () => {
+  const { data: universityData, error: universityError, isLoading: isUniversityLoading } = useUniversityApiQuery();
+  const { data: teamData, error: teamError, isLoading: isTeamLoading } = useTeamApiQuery();
+  const { language } = useLanguageStore()
+
+  const [participantConfig, setParticipantConfig] = useState<InputConfig[]>([])
+  useEffect(() => {
+    if (isUniversityLoading || isTeamLoading || universityError || teamError) {
+      return;
+    }
+
+
+    const config: InputConfig[] = [
+      {
         name: "name",
         type: "text",
-        placeholder: "ІМ'Я ПРІЗВИЩЕ",
+        placeholder: language == "ua" ? "ІМ'Я ПРІЗВИЩЕ" : "FIRST AND LAST NAME",
         validation: {
-            required: "Це поле обов'язкове",
-            validate: (value: string) => {
-                if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value)) {
-                    return "Можна вводити тільки літери";
-                }
-                return true;
+          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+          validate: (value: string) => {
+            if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value)) {
+              return language == "ua" ? "Можна вводити тільки літери" : "Only letters are allowed";
             }
+            const words = value.trim().split(/\s+/);
+            if (words.length !== 2) {
+              return language == "ua" ? "Має бути прізвище та ім'я" : "Must include first and last name";
+            }
+            return true;
+          },
         }
-    },
-    {
+      },
+      {
         name: "phone",
         type: "text",
-        placeholder: "НОМЕР ТЕЛЕФОНУ",
+        placeholder: language == "ua" ? "НОМЕР ТЕЛЕФОНУ" : "PHONE NUMBER",
         validation: {
-            required: "Це поле обов'язкове",
-            validate: (value: string) => {
-                if (!/^[\+\(\)\d\s]+$/.test(value)) {
-                    return "Тільки цифри";
-                }
-                return true;
+          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+          validate: (value: string) => {
+            if (!/^\+?380\d{9}$|^380\d{9}$|^0\d{9}$/.test(value)) {
+              return language == "ua"
+                ? "Формат: +380XXXXXXXXX, 380XXXXXXXXX або 0XXXXXXXXX"
+                : "Format: +380XXXXXXXXX, 380XXXXXXXXX, or 0XXXXXXXXX";
             }
-        }
-    },
-    {
-        name: "tg",
+            return true;
+          },
+        },
+      },
+      {
+        name: "nickname_tg",
         type: "text",
-        placeholder: "НІКНЕЙМ В ТЕЛЕГРАМІ",
+        placeholder: language == "ua" ? "НІКНЕЙМ В ТЕЛЕГРАМІ" : "TELEGRAM NICKNAME",
         validation: {
-            required: "Це поле обов'язкове",
-            validate: (value: string) => {
-                if (!new RegExp("^[a-zA-Z0-9](?:[a-zA-Z0-9_]{3,30}[a-zA-Z0-9])?$").test(value)) {
-                    return "Нікнейм Телеграма не відповідає формату";
-                }
-                return true;
+          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+          validate: (value: string) => {
+            if (!/^[a-zA-Z0-9](?:[a-zA-Z0-9_]{3,30}[a-zA-Z0-9])?$/.test(value)) {
+              return language == "ua" ? "Нікнейм Телеграма не відповідає формату" : "Invalid Telegram username format"
             }
-        }
-    },
-    {
-        name: "school",
-        type: "text",
-        placeholder: "НАЗВА НАВЧАЛЬНОГО ЗАКЛАДУ",
+            return true;
+          },
+        },
+      },
+      {
+        name: "university",
+        type: "select",
+        placeholder: language == "ua" ? "НАЗВА НАВЧАЛЬНОГО ЗАКЛАДУ" : "EDUCATIONAL INSTITUTION NAME",
+        options: [
+          ...universityData.map((university) => ({ id: university.id, name: language === "ua" ? university.name : university.name_eng })),
+          ...universityData.map((university) => ({ id: university.id, name: language === "ua" ? university.name_eng : university.name }))
+        ],
         validation: {
-            required: "Це поле обов'язкове"
-        }
-    },
-    {
+          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+        },
+      },
+      {
         name: "teamName",
-        type: "text",
-        placeholder: "НАЗВА КОМАНДИ",
+        type: "select",
+        placeholder: language == "ua" ? "ОБЕРІТЬ КОМАНДУ" : "CHOOSE A TEAM",
+        options: teamData.map((team) => ({ name: team.name, id: team.id })),
         validation: {
-            required: "Це поле обов'язкове"
-        }
-    },
-    {
-        name: "password",
-        type: "text",
-        placeholder: "ПАРОЛЬ",
+          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+        },
+      },
+      {
+        name: "password_registration",
+        type: "password",
+        placeholder: language == "ua" ? "ПАРОЛЬ КОМАНДИ" : "PASSWORD TEAM",
         validation: {
-            required: "Це поле обов'язкове",
-            validate: (value: string) => {
-                const isValidPassword = (input: string) => {
-                    if (input.length < 10 || input.length > 20) return false;
-                    const hasDigit = /\d/.test(input);
-                    const hasSymbol = /[!@#$%^&*()_+=\-{}\[\]|\\:;'<>,.?/~`]/.test(input);
-                    const hasLowercase = /[a-z]/.test(input);
-                    const hasUppercase = /[A-Z]/.test(input);
-
-                    return hasDigit && hasSymbol && hasLowercase && hasUppercase;
-                };
-                if (!isValidPassword(value)) {
-                    return "Пароль має бути від 10 до 20 символів і містити цифри, символи, великі та малі літери.";
-                }
-                return true;
+          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+          validate: (value: string) => {
+            const isValidPassword = (input: string) => {
+              if (input.length < 10 || input.length > 20) return false;
+              return /[A-Z]/.test(input) && /[a-z]/.test(input) && /\d/.test(input) && /[!@#$%^&*()_+=\-{}\[\]|\\:;'<>,.?/~`]/.test(input);
+            };
+            if (!isValidPassword(value)) {
+              return language == "ua" ? "Пароль має бути від 10 до 20 символів і містити цифри, символи, великі та малі літери" : "Password must be 10-20 characters long and include digits, symbols, uppercase, and lowercase letters."
             }
-        }
-    },
-];
+            return true;
+          },
+        },
+      },
+
+    ];
+    setParticipantConfig(config)
+
+  }, [language, universityData, teamData, isUniversityLoading, isTeamLoading, universityError, teamError]);
+  return { participantConfig, isLoading: isUniversityLoading, error: universityError };
+
+
+
+
+
+};

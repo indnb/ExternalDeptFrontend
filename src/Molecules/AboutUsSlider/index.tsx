@@ -1,46 +1,48 @@
-import React, { useState, useRef, useEffect } from "react";
-import Slider from "react-slick";
+import React, { useState, useEffect } from "react";
 import { aboutUsData } from "./aboutUs.data";
 import { ItemAboutUs } from "@/Atoms/ItemAboutUs";
 import useScreenSize from "@/hook/useScreenSize";
+import 'swiper/swiper-bundle.css';
 import "./AboutUsSlider.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 export const AboutUsSlider = () => {
   const { width } = useScreenSize();
+  const { image } = useInvalidWidgetStore()
   const [slidesToShow, setSlidesToShow] = useState<number>(1);
-  const [activeSlide, setActiveSlide] = useState(0);
-  const sliderRef = useRef<Slider | null>(null);
 
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: slidesToShow,
-    arrows: false,
-    slidesToScroll: 1,
-    beforeChange: (_, next) => {
-      setActiveSlide(next);
-    },
-  };
-  useEffect(() => {
-    console.log(activeSlide);
-  }, [activeSlide]);
-  useEffect(() => {
-    let sliderCount
-    if (width >= 850) {
-      sliderCount = width / 766;
-    } else {
-      sliderCount = width / 353;
-    }
 
-    setSlidesToShow(sliderCount);
-  }, [width]);
+  useEffect(() => {
+    const getSliderCount = (width: number, image: boolean) => {
+      const breakpoints = [
+        { minWidth: 851, noImage: 766, withImage: 440 },
+        { minWidth: 0, noImage: 353, withImage: 240 }
+      ];
+      const res = breakpoints.find(bp => width >= bp.minWidth);
+      if (!res) {
+        return 0
+      }
+      const { noImage, withImage } = res
+      return width / (image ? withImage : noImage);
+    };
+
+    setSlidesToShow(getSliderCount(width, image));
+  }, [width, image]);
   return (
-    <div className="w-[98.5vw] overflow-x-hidden">
-      <Slider {...settings} ref={sliderRef}>
+
+    <div className="flex w-[98.5vw]  mt-[5px]">
+      <Swiper
+        slidesPerView={slidesToShow}
+        style={{ minWidth: '100%' }}
+
+      >
         {aboutUsData.map((elem, index) => (
-          <ItemAboutUs data={elem} key={index} />
+          <SwiperSlide key={index}>
+            <ItemAboutUs data={elem} />
+          </SwiperSlide>
+
         ))}
-      </Slider>
+      </Swiper>
     </div>
   );
 };
