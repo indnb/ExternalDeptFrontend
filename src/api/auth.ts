@@ -1,25 +1,25 @@
 import api from "./axiosInstance";
 
-// Интерфейс для логина
+
 export interface LoginData {
     admin_name: string;
     admin_password: string;
 }
 
-// Функция авторизации (POST /api/admin/login)
+
 export const login = async (data: LoginData) => {
     const response = await api.post("/api/admin/login", data);
 
-    const token = response.data; // Сервер возвращает JWT-токен как строку
+    const token = response.data;
     if (!token) {
         throw new Error("Ошибка при получении токена.");
     }
 
-    localStorage.setItem("token", token); // Сохраняем токен
+    localStorage.setItem("token", token);
     return token;
 };
 
-// Функция проверки авторизации (GET /api/admin/get)
+
 export const checkAdminAuth = async () => {
     const token = localStorage.getItem("token");
 
@@ -34,14 +34,14 @@ export const checkAdminAuth = async () => {
     return response.data;
 };
 
-// Функция проверки, истёк ли токен
+
 export const isTokenValid = () => {
     const token = localStorage.getItem("token");
     if (!token) return false;
 
     try {
-        const payload = JSON.parse(atob(token.split(".")[1])); // Декодируем JWT
-        return payload.exp * 1000 > Date.now(); // Проверяем срок действия
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        return payload.exp * 1000 > Date.now();
     } catch {
         return false;
     }

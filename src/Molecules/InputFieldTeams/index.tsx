@@ -12,7 +12,7 @@ export function InputField({ name, value, onChange, placeholder }: InputFieldPro
             name={name}
             value={value}
             onChange={onChange}
-            className="w-full p-2 border rounded mb-4"
+            className="w-full p-2 border rounded mb-4 text-black"
             placeholder={placeholder}
         />
     );

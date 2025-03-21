@@ -46,7 +46,7 @@ export const updateUniversity = async (id: number, name: string, name_eng: strin
     try {
         console.log("Sending update request:", { id, name, name_eng }); // Debug log
         const response = await api.put(`${API_BASE_URL}/by_id/${id}`, { name, name_eng });
-        console.log("Response:", response.data); // Debug log
+        console.log("Response:", response.data);
         return response.data;
     } catch (error) {
         console.error("Error updating university:", error);

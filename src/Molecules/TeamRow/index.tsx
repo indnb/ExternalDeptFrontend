@@ -1,4 +1,4 @@
-import { EditButton, DeleteButton } from "@/Atoms/TeamButtons";
+import { ActionButton } from "@/Atoms/ActionButton";
 
 interface Team {
     id: number;
@@ -14,15 +14,18 @@ interface TeamRowProps {
 }
 
 export function TeamRow({ team, onEdit, onDelete }: TeamRowProps) {
+    const values = [team.id, team.name, team.category, team.nickname_tg];
+
     return (
         <tr className="border border-gray-600 text-white bg-gray-800">
-            <td className="p-2 border border-gray-600 text-center">{team.id}</td>
-            <td className="p-2 border border-gray-600">{team.name}</td>
-            <td className="p-2 border border-gray-600">{team.category}</td>
-            <td className="p-2 border border-gray-600">{team.nickname_tg}</td>
+            {values.map((value, index) => (
+                <td key={index} className="p-2 border border-gray-600 text-center">
+                    {value}
+                </td>
+            ))}
             <td className="p-2 border border-gray-600 text-center">
-                <EditButton onClick={() => onEdit(team)} />
-                <DeleteButton onClick={() => onDelete(team.id)} />
+                <ActionButton onClick={() => onEdit(team)} text="Edit" icon="✏️" className="bg-blue-500 text-white hover:bg-blue-600" />
+                <ActionButton onClick={() => onDelete(team.id)} text="Delete" icon="🗑️" className="bg-red-500 text-white hover:bg-red-600 ml-2" />
             </td>
         </tr>
     );

@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_URL = "http://0.0.0.0:8181/api/hackathon_2024/team";
+const API_URL = `http://${process.env.MAIN_URL || "localhost"}:${process.env.SERVER_PORT || "8181"}/api/hackathon_2024/team`;
 
 const getAuthHeaders = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-        throw new Error("Ошибка: нет токена авторизации. Войдите заново.");
+        throw new Error("Error: No authentication token found. Please log in again.");
     }
     return {
         "Content-Type": "application/json",
@@ -20,8 +20,8 @@ export const getAllTeams = async () => {
         });
         return response.data;
     } catch (error: any) {
-        console.error("Ошибка при получении списка команд:", error.response?.data || error.message);
-        throw new Error("Не удалось получить команды");
+        console.error("Error fetching teams:", error.response?.data || error.message);
+        throw new Error("Failed to fetch teams");
     }
 };
 
@@ -32,8 +32,8 @@ export const updateTeam = async (teamData: any) => {
         });
         return response.data;
     } catch (error: any) {
-        console.error("Ошибка при обновлении команды:", error.response?.data || error.message);
-        throw new Error("Не удалось обновить команду");
+        console.error("Error updating team:", error.response?.data || error.message);
+        throw new Error("Failed to update team");
     }
 };
 
@@ -44,7 +44,7 @@ export const deleteTeam = async (teamId: number) => {
         });
         return response.data;
     } catch (error: any) {
-        console.error("Ошибка при удалении команды:", error.response?.data || error.message);
-        throw new Error("Не удалось удалить команду");
+        console.error("Error deleting team:", error.response?.data || error.message);
+        throw new Error("Failed to delete team");
     }
 };
