@@ -2,9 +2,11 @@ import React from "react";
 import { IAboutUsData } from "@/type/IAboutUsData";
 import Image from "next/image";
 import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
+import { useLanguageStore } from "@/_store/LanguageChanger";
 
 export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
-  const { contrast, fontSize, image } = useInvalidWidgetStore()
+  const { contrast, fontSize, image, fontFamily } = useInvalidWidgetStore()
+  const { language } = useLanguageStore()
   return (
     <div
       style={{
@@ -23,16 +25,14 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
       /> : null}
       <div className="text-[black] h-[auto] ml-[20px] max-lg:ml-[10px]">
         <h1
-          className={`${fontSize ? "text-[44px] max-lg:text-[20px]" : "text-[38px] max-lg:text-[16px]"} text-[center] font-[530] `}
-          style={{ fontFamily: "Montserrat" }}
+          className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"}  ${fontSize ? "text-[44px] max-lg:text-[20px]" : "text-[38px] max-lg:text-[16px]"} text-[center] font-[530] `}
         >
-          {data.name}
+          {language == "ua" ? data.name : data.name_eng}
         </h1>
         <p
-          style={{ fontFamily: "Montserrat" }}
-          className={`${fontSize ? "text-[26px] max-lg:text-[15px]" : "text-[20px] max-lg:text-[11px]"} text-[center]`}
+          className={`${fontSize ? "text-[26px] max-lg:text-[15px]" : "text-[20px] max-lg:text-[11px]"} text-[center] ${fontFamily ? "font-kyivSerif" : "font-montserrat"} `}
         >
-          {data.text}
+          {language == "ua" ? data.text : data.text_eng}
         </p>
       </div>
     </div>

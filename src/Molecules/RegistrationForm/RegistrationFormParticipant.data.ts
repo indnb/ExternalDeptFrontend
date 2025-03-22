@@ -97,18 +97,20 @@ export const useFormConfig = () => {
       {
         name: "password_registration",
         type: "password",
-        placeholder: language == "ua" ? "ПАРОЛЬ КОМАНДИ" : "PASSWORD TEAM",
+        placeholder: language === "ua" ? "ПАРОЛЬ КОМАНДИ" : "PASSWORD TEAM",
         validation: {
-          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+          required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
-            const isValidPassword = (input: string) => {
-              if (input.length < 10 || input.length > 20) return false;
-              return /[A-Z]/.test(input) && /[a-z]/.test(input) && /\d/.test(input) && /[!@#$%^&*()_+=\-{}\[\]|\\:;'<>,.?/~`]/.test(input);
-            };
-            if (!isValidPassword(value)) {
-              return language == "ua" ? "Пароль має бути від 10 до 20 символів і містити цифри, символи, великі та малі літери" : "Password must be 10-20 characters long and include digits, symbols, uppercase, and lowercase letters."
-            }
-            return true;
+            const isValidPassword = value.length >= 10 && value.length <= 20 &&
+              /[A-Z]/.test(value) &&
+              /[a-z]/.test(value) &&
+              /\d/.test(value) &&
+              /[!@#$%^&*()_+=\-{}\[\]|\\:;'<>,.?/~`]/.test(value) &&
+              !/[а-яА-ЯёЁіІїЇєЄґҐ]/.test(value);
+
+            return isValidPassword || (language === "ua"
+              ? "Пароль має бути від 10 до 20 символів, містити цифри, символи, великі та малі літери та не містити кирилицю."
+              : "Password must be between 10 and 20 characters, contain digits, symbols, uppercase, lowercase letters, and not contain Cyrillic.");
           },
         },
       },
