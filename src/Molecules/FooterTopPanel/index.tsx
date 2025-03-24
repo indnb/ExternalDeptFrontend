@@ -5,7 +5,7 @@ export const FooterTopPanel = () => {
   return (
     <div className=' w-[93vw] max-lg:h-[80px] h-[273px] flex items-center justify-between '>
       <div className=''></div>
-      <div className='max-lg:w-[124px] w-[376px] flex justify-between'>
+      <div className='max-lg:w-[74px] w-[250px] flex justify-between'>
         {FooterLogoData.map((elem, key) => (
           <ItemFooterSocailIcon key={key} img={elem.img} link={elem.link} />
         )
