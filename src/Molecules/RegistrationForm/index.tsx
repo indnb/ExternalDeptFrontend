@@ -30,9 +30,13 @@ export interface ICreateTeam {
   name: string; //name command 
   category: string
 }
+interface IMesssageError {
+  message: string
+  message_eng: string
+}
 export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm, setStatusRegister }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<IMesssageError | undefined>()
   const { language } = useLanguageStore()
   const { control, handleSubmit, formState: { errors }, reset } = useForm<ICreateTeam | IRegisterUser>();
   const { participantConfig, isLoading } = useFormConfig();
@@ -56,7 +60,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
       </div>
 
       {formSubmitted && (
-        <p className="text-black text-center mt-4">{message}</p>
+        <p className="text-black text-center mt-4">{language == "ua" ? message?.message : message?.message_eng}</p>
       )}
     </form>
   );

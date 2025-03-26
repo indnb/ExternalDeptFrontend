@@ -20,7 +20,7 @@ export const MainLeftPanel = () => {
         className="text-left text-[20px] text-[black] ml-[0px] w-[48vw] max-lg:text-[0px]"
         style={{ fontFamily: "Montserrat" }}
       >
-        {language == "ua" ? "Відділ зовнішніх зe’язків" : "Eng text"}
+        {language == "ua" ? "Відділ зовнішніх зe’язків" : "Department of External Relations"}
       </p>
 
       <h1

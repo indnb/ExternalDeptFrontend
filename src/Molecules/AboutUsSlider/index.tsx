@@ -29,6 +29,7 @@ export const AboutUsSlider = () => {
     setSlidesToShow(getSliderCount(width, image));
   }, [width, image]);
   return (
+
     <div className="flex w-[98.5vw]  mt-[5px]">
       <Swiper
         slidesPerView={slidesToShow}

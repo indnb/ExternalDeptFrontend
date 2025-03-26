@@ -11,42 +11,57 @@ import { IAboutUsData } from "@/type/IAboutUsData";
 export const aboutUsData: IAboutUsData[] = [
   {
     name: "Дмитро",
+    name_eng: "Dmytro",
     text: "Голова відділу",
+    text_eng: "Head of the department",
     img: Imgdima,
   },
   {
     name: "Владислав",
+    name_eng: "Vladyslav",
     text: "Голова технічного підвідділу",
+    text_eng: "Head of the technical subdepartment",
     img: Vlad,
   },
   {
     name: "Прохор",
+    name_eng: "Prokhor",
     text: "Член проєктного підвідділу",
+    text_eng: "Member of the project subdepartment",
     img: Gleb,
   },
   {
     name: "Ксеня",
+    name_eng: "Kseniya",
     text: "Голова спонсорського підвідділу",
+    text_eng: "Head of the sponsorship subdepartment",
     img: Maria,
   },
   {
     name: "Поліна",
+    name_eng: "Polina",
     text: "Членкиня спонсорського підвідділу",
+    text_eng: "Member of the sponsorship subdepartment",
     img: Ana,
   },
   {
     name: "Владислав",
+    name_eng: "Vladyslav",
     text: "Заступник голови відділу",
+    text_eng: "Deputy head of the department",
     img: Ksenia,
   },
   {
     name: "Артем",
+    name_eng: "Artem",
     text: "Член медійного підвідділу",
+    text_eng: "Member of the media subdepartment",
     img: VladLavr,
   },
   {
     name: "Віолетта",
+    name_eng: "Violetta",
     text: "Членкиня проєктного відділу",
+    text_eng: "Member of the project department",
     img: Violetta,
-  },
-];
+  }]

@@ -55,11 +55,12 @@ export const useRegisterTeam = () => {
               /[A-Z]/.test(value) &&
               /[a-z]/.test(value) &&
               /\d/.test(value) &&
-              /[!@#$%^&*()_+=\-{}\[\]|\\:;'<>,.?/~`]/.test(value);
+              /[!@#$%^&*()_+=\-{}\[\]|\\:;'<>,.?/~`]/.test(value) &&
+              !/[а-яА-ЯёЁіІїЇєЄґҐ]/.test(value);
 
             return isValidPassword || (language === "ua"
-              ? "Пароль має бути від 10 до 20 символів і містити цифри, символи, великі та малі літери."
-              : "Password must be between 10 and 20 characters and contain digits, symbols, uppercase, and lowercase letters.");
+              ? "Пароль має бути від 10 до 20 символів, містити цифри, символи, великі та малі літери та не містити кирилицю."
+              : "Password must be between 10 and 20 characters, contain digits, symbols, uppercase, lowercase letters, and not contain Cyrillic.");
           },
         },
       },

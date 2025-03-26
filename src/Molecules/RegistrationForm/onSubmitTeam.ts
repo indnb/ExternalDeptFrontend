@@ -22,11 +22,25 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
     setMessage("зареєструйтесь як учасник!");
   } catch (error: any) {
     if (error.response?.data?.message) {
-      setMessage(error.response.data.message);
-    } else if (error.response?.data?.error?.description) {
-      setMessage(error.response.data.error.description);
+      if (
+        error.response.data.message ===
+        "Failed to insert team: duplicate key value violates unique constraint \"hackathon_team_2024_nickname_tg_key\""
+      ) {
+        setMessage({
+          message: "Телеграм ім'я зайняте",
+          message_eng: "Telegram username is already taken",
+        });
+      } else {
+        setMessage({
+          message: "Трапилася помилка на бекенді, спробуйте ще раз",
+          message_eng: "An error occurred on the backend, please try again",
+        });
+      }
     } else {
-      setMessage("Произошла неизвестная ошибка");
+      setMessage({
+        message: "Трапилася помилка на бекенді, спробуйте ще раз",
+        message_eng: "An error occurred on the backend, please try again",
+      })
     }
   }
 };

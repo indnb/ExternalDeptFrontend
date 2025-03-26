@@ -13,8 +13,8 @@ export const InvalidWidgetWindow = ({
   const InvalidData = useGetInvalidData();
   return (
     <div
-      className="fixed rounded-[16px]  right-[2vw] top-[36vh] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
-        overflow-hidden max-[450px]:w-[360px] max-[450px]:right-[1vw]  max-lg:w-[383px] max-lg:h-[452px] max-lg:top-[43vh]
+      className="fixed rounded-[16px]  right-[2vw] bottom-[30px] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
+        overflow-hidden max-[450px]:w-[360px] max-[450px]:right-[1vw]  max-lg:w-[383px] max-lg:h-[452px] 
         shadow-md z-40"
     >
       <InvalidWidgetHeader setStateWidget={setStateWidget} />

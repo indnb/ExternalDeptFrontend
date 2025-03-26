@@ -4,6 +4,7 @@ import React from 'react'
 import {useLanguageStore} from "@/_store/LanguageChanger";
 
 export const HackathonInfoPanelTop = ({ firstRow, secondRow }: { firstRow: string, secondRow: string }) => {
+
     const { contrast, fontFamily, fontSize } = useInvalidWidgetStore()
     const { language } = useLanguageStore();
     return (
@@ -23,3 +24,4 @@ export const HackathonInfoPanelTop = ({ firstRow, secondRow }: { firstRow: strin
         </div >
     )
 }
+

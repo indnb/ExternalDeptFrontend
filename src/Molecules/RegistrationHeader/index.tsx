@@ -20,7 +20,7 @@ export const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({ title, o
         <RegistrationText title={title} />
         <RegistrationLable title={language == "ua" ? "*Максимальна кількість учасників в команді - 6." : "Maximum number of team members - 6."} />
       </div>
-      <Image onClick={onClose} src={proiconsCancel} alt="" className="md:hidden absolute right-[30px] min-[850px]:invisible top-[0px]" />
+      <Image onClick={onClose} src={proiconsCancel} alt="" className="md:hidden absolute right-[20px] cursor-pointer  top-[20px]" />
 
 
 

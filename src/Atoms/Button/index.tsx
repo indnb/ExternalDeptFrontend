@@ -5,6 +5,7 @@ type buttonProps = {
   callback?: () => void;
   colorButton?: "blue" | "white";
   type?: "button" | "submit";
+  classCss?: string
 };
 
 export const Button: React.FC<buttonProps> = ({
@@ -12,6 +13,7 @@ export const Button: React.FC<buttonProps> = ({
   callback,
   colorButton = "white",
   type = "button",
+  classCss = ""
 }) => {
   const handleClick = () => {
     if (callback) {
@@ -29,7 +31,7 @@ export const Button: React.FC<buttonProps> = ({
         : "border-[#8D8D8D] text-[#8D8D8D] hover:text-white   hover:bg-[#203C8F] hover:border-[#203C8F]"
         }
     ${contrast && "text-white bg-[#414141]"}
-    max-sm:w-[80vw]
+    max-sm:w-[80vw] ${classCss}
     flex justify-center items-center self-center border-2  rounded-xl
     transition h-12 w-96 ${fontSize ? " text-[24px]" : "text-[16px]"} `}
     >

@@ -6,6 +6,7 @@ import {useLanguageStore} from "@/_store/LanguageChanger";
 
 
 export const HackathonInfoPanelBottom = ({ firstRow, secondRow }: { firstRow: string, secondRow: string }) => {
+
     const { contrast, fontFamily, fontSize } = useInvalidWidgetStore()
     const { language } = useLanguageStore();
     return (
@@ -13,6 +14,7 @@ export const HackathonInfoPanelBottom = ({ firstRow, secondRow }: { firstRow: st
             <div className='w-[47vw] text-center'>
                 <h1 style={{ fontFamily: "Montserrat" }} className={` h-full text-left ${fontSize ?   (language == 'ua' ? "text-[calc(37/1552*100vw)]  max-sm:text-[14px] min-xl2:text-[36px]" : "text-[calc(33/1552*100vw)]  max-sm:text-[12px] min-xl2:text-[30px]")
                     : (language == 'ua' ? "min-xl2:text-[32px] text-[calc(32/1552*100vw)]  max-sm:text-[10px]" : "min-xl2:text-[30px] text-[calc(30/1552*100vw)]  max-sm:text-[9px]")}
+
         text-[#000000] flex items-center justify-center `}>
                     {firstRow}
                 </h1>
