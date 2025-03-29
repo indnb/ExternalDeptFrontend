@@ -14,7 +14,7 @@ export const FooterTopPanel = () => {
           З&apos;вязків
         </div>
       </div>
-      <div className='max-lg:w-[74px] w-[250px] flex justify-between'>
+      <div className='max-lg:w-[74px] w-[200px] flex justify-between'>
         {FooterLogoData.map((elem, key) => (
           <ItemFooterSocailIcon key={key} img={elem.img} link={elem.link} />
         )
