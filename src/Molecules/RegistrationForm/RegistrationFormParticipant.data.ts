@@ -32,7 +32,7 @@ export const useFormConfig = () => {
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
-            if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value)) {
+            if (!/^[a-zA-Zа-яА-Яіїєґ\s]+$/.test(value)) {
               return language == "ua" ? "Можна вводити тільки літери" : "Only letters are allowed";
             }
             const words = value.trim().split(/\s+/);
@@ -50,10 +50,10 @@ export const useFormConfig = () => {
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
-            if (!/^\+?380\d{9}$|^380\d{9}$|^0\d{9}$/.test(value)) {
+            if (!/^\+?(\d{1,3})\d{9}$|^(\d{1,3})\d{9}$|^0\d{9}$/.test(value)) {
               return language == "ua"
-                ? "Формат: +380XXXXXXXXX, 380XXXXXXXXX або 0XXXXXXXXX"
-                : "Format: +380XXXXXXXXX, 380XXXXXXXXX, or 0XXXXXXXXX";
+                ? "Формат: +380XXXXXXXXX, 380XXXXXXXXX, 0XXXXXXXXX, або інші міжнародні формати"
+                : "Format: +380XXXXXXXXX, 380XXXXXXXXX, 0XXXXXXXXX, or other international formats";
             }
             return true;
           },

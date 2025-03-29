@@ -20,19 +20,19 @@ export const MainSecondVariant = () => {
       <div className="relative w-[90vw] msx-w-[1300px] text-[100px] h-[336px] max-lg:h-[195px] 
         max-lg:w-[361px]
         max-lg:text-[50px] font-kharkiv text-[black] max-sm:text-[48px]">
-        <div className="absolute top-0  w-full ">EDUCATION</div>
-        <div className="absolute top-[110px] w-full flex items-center justify-center  transform rotate-[-7deg]
-          max-lg:rotate-[-4deg] max-lg:top-[74px]">
+        <div className="absolute top-0  w-full flex max-xl:items-center  max-xl:justify-center">EDUCATION</div>
+        <div className="absolute min-xl:top-[110px] w-full flex items-center justify-center  transform rotate-[-7deg]
+          max-xl:rotate-[-4deg] top-[145px] max-lg:top-[74px] ">
           <div className='w-[692px] h-[135px] bg-mainBlue text-center text-white
-            max-lg:w-[322px] max-lg:h-[64px] 
-'>
+            max-lg:w-[322px] max-lg:h-[64px]  '>
             WITHOUT
           </div>
 
         </div>
-        <div className="absolute top-[210px] w-full 
-          flex items-end justify-end max-lg:justify-center max-lg:items-center
-          max-lg:top-[155px]          ">BORDERS</div>
+        <div className="absolute top-[300px] w-full 
+          flex items-end justify-end max-xl:justify-center max-lg:items-center
+          max-lg:top-[155px]   min-xl:top-[210px]       ">BORDERS</div>
+
       </div>
       <p
         className="text-left text-[0px] text-[black] max-lg:text-[14px] max-lg:mt-[18px]"
