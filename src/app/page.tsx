@@ -6,13 +6,14 @@ import { InvalidWidget } from "@/Organisms/InvalidWidget";
 import { HackathonInfo } from "@/Organisms/HackathonInfo"
 import { HackathonCategory } from "@/Organisms/HackathonCategory";
 import { TimerStartHackathon } from "@/Organisms/TimerStartHackathon";
+import { MainSecondVariant } from "@/Organisms/MainSeondVariant";
 export default function Home() {
   return (
     <div className="bg-[white] ">
 
       <div className={`w-full flex flex-col gap-10 justify-center overflow-x-hidden`}>
         <InvalidWidget />
-        <Main />
+        <MainSecondVariant />
         <AboutUs />
         <HackathonInfo />
         <HackathonCategory />

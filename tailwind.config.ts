@@ -22,6 +22,7 @@ export default {
       },
 
       colors: {
+        mainBlue: "#203C8F",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
