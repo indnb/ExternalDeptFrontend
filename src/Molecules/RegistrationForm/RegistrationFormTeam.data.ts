@@ -18,7 +18,8 @@ export const useRegisterTeam = () => {
         placeholder: language === "ua" ? "НАЗВА КОМАНДИ" : "TEAM NAME",
         validation: {
           required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
-          validate: (value: string) => /^[a-zA-Zа-яА-Я\s]+$/.test(value) || (language === "ua" ? "Можна вводити тільки літери" : "Only letters are allowed"),
+          validate: (value: string) =>
+            /^[a-zA-Zа-яА-Яіїєґ\s]+$/.test(value) || (language === "ua" ? "Можна вводити тільки літери" : "Only letters are allowed"),
         },
       },
       {
