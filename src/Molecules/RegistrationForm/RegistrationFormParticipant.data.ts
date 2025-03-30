@@ -1,8 +1,8 @@
 import { useLanguageStore } from "@/_store/LanguageChanger";
-import { useTeamApiQuery } from "@/api/useGetTeam";
-import { useUniversityApiQuery } from "@/api/useGetUniversity";
 import { useEffect, useState } from "react";
 import { InputConfig } from "../RegistrationInput";
+import { useTeamStore } from "@/_store/Team";
+import { useUniversityStore } from "@/_store/University";
 export interface IUniversity {
   id: number,
   name: string,
@@ -13,15 +13,12 @@ export interface ITeam {
   name: string,
 }
 export const useFormConfig = () => {
-  const { data: universityData, error: universityError, isLoading: isUniversityLoading } = useUniversityApiQuery();
-  const { data: teamData, error: teamError, isLoading: isTeamLoading } = useTeamApiQuery();
+  const { teams } = useTeamStore()
+  const { university } = useUniversityStore()
   const { language } = useLanguageStore()
 
   const [participantConfig, setParticipantConfig] = useState<InputConfig[]>([])
   useEffect(() => {
-    if (isUniversityLoading || isTeamLoading || universityError || teamError) {
-      return;
-    }
 
 
     const config: InputConfig[] = [
@@ -78,8 +75,8 @@ export const useFormConfig = () => {
         type: "select",
         placeholder: language == "ua" ? "НАЗВА НАВЧАЛЬНОГО ЗАКЛАДУ" : "EDUCATIONAL INSTITUTION NAME",
         options: [
-          ...universityData.map((university) => ({ id: university.id, name: language === "ua" ? university.name : university.name_eng })),
-          ...universityData.map((university) => ({ id: university.id, name: language === "ua" ? university.name_eng : university.name }))
+          ...university.map((university) => ({ id: university.id, name: language === "ua" ? university.name : university.name_eng })),
+          ...university.map((university) => ({ id: university.id, name: language === "ua" ? university.name_eng : university.name }))
         ],
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
@@ -89,7 +86,7 @@ export const useFormConfig = () => {
         name: "teamName",
         type: "select",
         placeholder: language == "ua" ? "ОБЕРІТЬ КОМАНДУ" : "CHOOSE A TEAM",
-        options: teamData.map((team) => ({ name: team.name, id: team.id })),
+        options: teams.map((team) => ({ name: team.name, id: team.id })),
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
         },
@@ -118,8 +115,8 @@ export const useFormConfig = () => {
     ];
     setParticipantConfig(config)
 
-  }, [language, universityData, teamData, isUniversityLoading, isTeamLoading, universityError, teamError]);
-  return { participantConfig, isLoading: isUniversityLoading, error: universityError };
+  }, [language, teams, university]);
+  return { participantConfig };
 
 
 

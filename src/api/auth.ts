@@ -2,47 +2,47 @@ import api from "./axiosInstance";
 
 
 export interface LoginData {
-    admin_name: string;
-    admin_password: string;
+  admin_name: string;
+  admin_password: string;
 }
 
 
 export const login = async (data: LoginData) => {
-    const response = await api.post("/api/admin/login", data);
+  const response = await api.post("/admin/login", data);
 
-    const token = response.data;
-    if (!token) {
-        throw new Error("Ошибка при получении токена.");
-    }
+  const token = response.data;
+  if (!token) {
+    throw new Error("Ошибка при получении токена.");
+  }
 
-    localStorage.setItem("token", token);
-    return token;
+  localStorage.setItem("token", token);
+  return token;
 };
 
 
 export const checkAdminAuth = async () => {
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-    if (!token) {
-        throw new Error("Токен отсутствует. Авторизуйтесь заново.");
-    }
+  if (!token) {
+    throw new Error("Токен отсутствует. Авторизуйтесь заново.");
+  }
 
-    const response = await api.get("/api/admin/get", {
-        headers: { Authorization: `Bearer ${token}` },
-    });
+  const response = await api.get("/admin/get", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 
-    return response.data;
+  return response.data;
 };
 
 
 export const isTokenValid = () => {
-    const token = localStorage.getItem("token");
-    if (!token) return false;
+  const token = localStorage.getItem("token");
+  if (!token) return false;
 
-    try {
-        const payload = JSON.parse(atob(token.split(".")[1]));
-        return payload.exp * 1000 > Date.now();
-    } catch {
-        return false;
-    }
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.exp * 1000 > Date.now();
+  } catch {
+    return false;
+  }
 };

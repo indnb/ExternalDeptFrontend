@@ -38,6 +38,7 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
           options={selectOptions}
           placeholder={placeholder}
           classNamePrefix="selectOption"
+          menuPortalTarget={document.body}
           styles={{
             control: (provided) => ({
               ...provided,
@@ -48,6 +49,7 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
               border: 'none',
               borderBottom: '2px solid #D1D5DB',
               boxShadow: 'none',
+              backgroundColor: 'transparent',
               '&:hover': {
                 border: 'none',
                 borderBottom: '2px solid #D1D5DB',
@@ -58,7 +60,7 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
             }),
             option: (provided, state) => ({
               ...provided,
-              backgroundColor: state.isSelected ? '#203C8F' : 'white',
+              backgroundColor: state.isSelected ? '#203C8F' : 'transparent',
               color: state.isSelected ? 'white' : 'black',
               '&:hover': {
                 backgroundColor: '#203C8F',
@@ -69,8 +71,12 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
               ...provided,
               color: '#A0A0A0',
               '@media (max-width: 850px)': {
-                fontSize: '12px',
+                fontSize: '16px',
               },
+            }),
+            menu: (provided) => ({
+              ...provided,
+              zIndex: 0,
             }),
           }}
         />) : (
@@ -80,7 +86,8 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
             type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
             value={field.value || ""}
             placeholder={placeholder}
-            className={` text-black border-b-2 border-gray-300 max-[450px]:text-[10px] focus:border-[#203C8F] max-lg:text-[12px] outline-none p-2 w-full ${error ? 'border-red-500' : ''}`}
+            className={` text-black  bg-transparent
+border-b-2 border-gray-300  focus:border-[#203C8F] max-lg:text-[16px] outline-none p-2 w-full ${error ? 'border-red-500' : ''}`}
           />
           {type === 'password' && (
             <button

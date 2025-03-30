@@ -39,7 +39,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
   const [message, setMessage] = useState<IMesssageError | undefined>()
   const { language } = useLanguageStore()
   const { control, handleSubmit, formState: { errors }, reset } = useForm<ICreateTeam | IRegisterUser>();
-  const { participantConfig, isLoading } = useFormConfig();
+  const { participantConfig } = useFormConfig();
   const { teamConfig } = useRegisterTeam()
   const inputsConfig = selectedForm === "participant" ? participantConfig : teamConfig;
   const handleFormSubmit = async (data: ICreateTeam | IRegisterUser) => {
@@ -54,7 +54,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
 
   return (
     <form className="w-full max-[450px]:w-[auto] flex flex-col  justify-center items-center" onSubmit={handleSubmit(handleFormSubmit)}>
-      {inputsConfig && !isLoading && <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />}
+      {inputsConfig && <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />}
       <div className=" mt-[90px] max-lg:mt-[70px]">
         <RegistrationButton width="300" title={language == "ua" ? "Надіслати" : "Send"} />
       </div>

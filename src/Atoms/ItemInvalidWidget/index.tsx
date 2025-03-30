@@ -15,7 +15,7 @@ export const ItemInvalidWidget = ({ elem }: { elem: ItemInvalidWidgetProps }) =>
       className={`${typeof elem.state == "boolean" && elem.state ? contrast ? "bg-[#414141]" : "bg-[#203C8F]" : "bg-white border-[black] border-[3px]"}
       w-[208px] h-[139px] rounded-[16px] border-solid   
       flex flex-col items-center justify-center gap-[auto] cursor-pointer  
-      max-lg:w-[155px]  max-lg:h-[117px]`}
+      max-lg:w-[155px] max-sm:w-[120px]  max-lg:h-[117px]`}
     >
       <Image src={elem.icon} alt="" className={` ${typeof elem.state == "boolean" && elem.state ? "invert" : null} `} />
       <h1

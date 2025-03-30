@@ -1,15 +1,21 @@
+"use client"
 import { useInvalidWidgetStore } from '@/_store/InvalidWidget';
 import { useLanguageStore } from '@/_store/LanguageChanger';
 import { BackButton } from '@/Atoms/BackButton';
-import React from 'react'
+import React, { useEffect } from 'react'
 interface RegisterSuccessProps {
   onClose: () => void;
 }
 import proiconsCancel from "@/public/proicons_cancel.svg"
 import Image from "next/image";
+import { useQueryClient } from '@tanstack/react-query';
 export default function RegisterSuccess({ onClose }: RegisterSuccessProps) {
   const { language } = useLanguageStore();
   const { fontFamily } = useInvalidWidgetStore()
+  const queryClient = useQueryClient();
+  useEffect(() => {
+    queryClient.invalidateQueries<any>(["team"]);
+  }, [])
 
   return (
     <div className={`   h-[500px] max-lg:h-[450px]  justify-center text-black relative flex items-center w-full  p-2`}>

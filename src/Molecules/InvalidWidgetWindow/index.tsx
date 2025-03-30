@@ -13,19 +13,17 @@ export const InvalidWidgetWindow = ({
   const InvalidData = useGetInvalidData();
   return (
     <div
-      className="fixed rounded-[16px]  right-[2vw] bottom-[30px] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center rounded-md shadow-md
-        overflow-hidden max-[450px]:w-[360px] max-[450px]:right-[1vw]  max-lg:w-[383px] max-lg:h-[452px] 
+      className="fixed rounded-[16px]  right-[2vw] bottom-[30px] h-[537px] w-[546px] bg-[white] text-white flex flex-col  items-center 
+        overflow-hidden max-sm:w-[300px] max-sm:right-[1vw]  max-lg:w-[383px] max-lg:h-[442px] 
         shadow-md z-40"
     >
       <InvalidWidgetHeader setStateWidget={setStateWidget} />
-      <div className="flex flex-wrap gap-[31px] items-center justify-center mt-[34px]">
+      <div className="flex flex-wrap gap-[31px] items-center justify-center mt-[34px] mb-[20px] max-lg:mb-0">
         {InvalidData.map((elem, index) => (
           <ItemInvalidWidget key={index} elem={elem} />
         ))}
       </div>
-      <h1 className="text-[0px] max-lg:text-[16px] text-[black] mt-[20px]">
-        Вимкнути
-      </h1>
+
     </div>
   );
 };

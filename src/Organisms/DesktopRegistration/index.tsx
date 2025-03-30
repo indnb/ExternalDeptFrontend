@@ -4,6 +4,7 @@ import { RegistrationForm } from "@/Molecules/RegistrationForm";
 import { useLanguageStore } from "@/_store/LanguageChanger";
 import { useState } from "react";
 import RegisterSuccess from "@/Molecules/RegisterSuccess";
+import { RegisterInfo } from "@/Molecules/RegisterInfo";
 
 interface DesktopRegistrationProps {
   selectedForm: "participant" | "team";
@@ -21,12 +22,13 @@ export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ select
 
 
   return (
-    <div className="bg-white">
+    <div>
       {statusRegister ?
         <RegisterSuccess onClose={onClose} />
         :
         <>
           <RegistrationHeader onClose={onClose} title={language == "ua" ? formTitles[selectedForm].text : formTitles[selectedForm].text_eng} />
+          {selectedForm == "team" && <RegisterInfo />}
           <RegistrationForm selectedForm={selectedForm} setStatusRegister={setStatusRegister} />
         </>
       }

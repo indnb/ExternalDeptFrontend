@@ -1,10 +1,12 @@
 import { useLanguageStore } from "@/_store/LanguageChanger";
 import { InputConfig } from "../RegistrationInput";
 import { useEffect, useState } from "react";
+import { useTeamStore } from "@/_store/Team";
 
 export const useRegisterTeam = () => {
   const { language } = useLanguageStore();
   const [teamConfig, setTeamConfig] = useState<InputConfig[]>([]);
+  const { teams } = useTeamStore()
 
   useEffect(() => {
     if (!language) {
@@ -18,8 +20,16 @@ export const useRegisterTeam = () => {
         placeholder: language === "ua" ? "НАЗВА КОМАНДИ" : "TEAM NAME",
         validation: {
           required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
-          validate: (value: string) =>
-            /^[a-zA-Zа-яА-Яіїєґ\s]+$/.test(value) || (language === "ua" ? "Можна вводити тільки літери" : "Only letters are allowed"),
+          validate: (value: string) => {
+            if (!/^[a-zA-Zа-яА-Яіїєґ\s]+$/.test(value)) {
+              return language === "ua" ? "Можна вводити тільки літери" : "Only letters are allowed";
+            }
+            const isTaken = teams.some((team) => team.name === value);
+            if (isTaken) {
+              return language === "ua" ? "Назва зайнята" : "Name was taken";
+            }
+            return true;
+          },
         },
       },
       {

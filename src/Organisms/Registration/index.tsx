@@ -5,9 +5,13 @@ import { DesktopRegistration } from "@/Organisms/DesktopRegistration";
 import { useEffect, useRef, useState } from "react";
 import { useLanguageStore } from "@/_store/LanguageChanger";
 import { useRefStore } from "@/_store/RegistrationSectionLink";
+import { useGetEntity } from "@/hook/useGetTeam";
 
 export const Registration = () => {
   const { language } = useLanguageStore();
+  useGetEntity("team")
+  useGetEntity("university")
+
   const refRegistrationSection = useRef<any>(null);
   const [selectedForm, setSelectedForm] = useState<
     "participant" | "team" | null

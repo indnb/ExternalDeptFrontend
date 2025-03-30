@@ -4,6 +4,7 @@ import Header from "@/Organisms/Header";
 import "./globals.css";
 import ReactQueryProvider from "../utils/ReactQueryProvider";
 import { Footer } from "@/Organisms/Footer";
+import bgImg from "../../public/image4.jpg"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-[100vw] overflow-x-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable}  antialiased w-[100vw] overflow-x-hidden`}
+        style={{ backgroundImage: `url(${bgImg.src})` }}
       >
 
         <ReactQueryProvider>
