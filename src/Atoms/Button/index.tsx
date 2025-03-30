@@ -20,7 +20,7 @@ export const Button: React.FC<buttonProps> = ({
       callback();
     }
   };
-  const { contrast, fontSize } = useInvalidWidgetStore()
+  const { contrast, fontFamily, fontSize, } = useInvalidWidgetStore()
 
   return (
     <button
@@ -30,6 +30,7 @@ export const Button: React.FC<buttonProps> = ({
         ? " bg-[#203C8F] text-white border-[#203C8F] hover:border-[#8D8D8D] hover:text-[#8D8D8D] hover:bg-[white]"
         : "border-[#8D8D8D] text-[#8D8D8D] hover:text-white   hover:bg-[#203C8F] hover:border-[#203C8F]"
         }
+${fontFamily ? "font-montserrat" : ""}
     ${contrast && "text-white bg-[#414141]"}
     max-sm:w-[80vw] ${classCss}
     flex justify-center items-center self-center border-2  rounded-xl

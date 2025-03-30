@@ -10,10 +10,10 @@ export const Footer = () => {
   return (
     <footer className={`overflow-x-hidden max-lg:h-[165px] ${contrast ? "bg-[#414141]" : "bg-[#203C8F]"} w-[100vw] h-[370px] flex items-center flex-col `}>
       <FooterTopPanel />
-      <div className="w-[93vw] mt-[12px] max-lg:text-[12px] text-[22px] flex flex-col text-white">
-        <Link href="/privacy" className="cursor-pointer" style={{ fontFamily: "Montserrat" }}
+      <div className="w-[93vw] mt-[12px] max-lg:text-[12px] items-start text-[22px] flex flex-col text-white">
+        <Link href="/privacy" className="cursor-pointer   " style={{ fontFamily: "Montserrat" }}
         >{language === "ua" ? "Політика конфіденційності" : "Privacy Policy"}</Link>
-        <Link href="/privacy" className="cursor-pointer" style={{ fontFamily: "Montserrat" }}
+        <Link href="/privacy" className="cursor-pointer inline-block" style={{ fontFamily: "Montserrat" }}
         >{language === "ua" ? "© 2025 Відділ зовнішніх зв’язків ДУІКТ" : "© 2025 Department of External Relations of DUIKT"}</Link>
       </div>
     </footer>

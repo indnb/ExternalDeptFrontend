@@ -14,10 +14,11 @@ export const HackathonInfoPanelTop = ({ firstRow, secondRow }: { firstRow: strin
           {firstRow}
         </p>
       </div>
-      <div style={{ fontFamily: "Montserrat" }}
-        className={`font-normal w-[48vw]  text-[#000000] ${fontSize ?
-          (language == 'ua' ? "text-[calc(37/1552*100vw)]  max-sm:text-[14px] min-xl2:text-[36px]" : "text-[calc(33/1552*100vw)]  max-sm:text-[12px] min-xl2:text-[30px]")
-          : (language == 'ua' ? "min-xl2:text-[32px] text-[calc(32/1552*100vw)]  max-lg:text-[12px]" : "min-xl2:text-[30px] text-[calc(30/1552*100vw)]  max-lg:text-[12px]")}
+      <div
+        className={`font-normal w-[48vw]  text-[#000000]
+${fontFamily ? "font-kharkiv" : "font-montserrat"}
+${fontSize ? (language == 'ua' ? "text-[calc(37/1552*100vw)]  max-sm:text-[14px] min-xl2:text-[36px]" : "text-[calc(33/1552*100vw)]  max-sm:text-[12px] min-xl2:text-[30px]")
+            : (language == 'ua' ? "min-xl2:text-[32px] text-[calc(32/1552*100vw)]  max-lg:text-[12px]" : "min-xl2:text-[30px] text-[calc(30/1552*100vw)]  max-lg:text-[12px]")}
           flex items-center justify-center`}>
         {secondRow}
       </div>

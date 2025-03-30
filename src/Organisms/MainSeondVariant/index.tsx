@@ -8,7 +8,7 @@ import "./mainSecondVariant.css"
 export const MainSecondVariant = () => {
   const { language } = useLanguageStore();
   const { refRegistrationSection } = useRefStore();
-  const { fontFamily } = useInvalidWidgetStore()
+  const { fontFamily, contrast } = useInvalidWidgetStore()
   const handlerScroll = () => {
     if (refRegistrationSection?.current) {
       refRegistrationSection.current.scrollIntoView({ behavior: "smooth" });
@@ -20,7 +20,7 @@ export const MainSecondVariant = () => {
       <div className={`education-container ${fontFamily ? "font-kyivSerif" : "font-kharkiv"}`}>
         <div className="education-title">EDUCATION</div>
         <div className="education-without-border">
-          <div className="content">
+          <div className={`content ${fontFamily ? " flex justify-center items-center" : "text-center"} ${contrast ? "bg-[#414141]" : "bg-[#203C8F]"}`}>
             WITHOUT
           </div>
 
@@ -29,12 +29,12 @@ export const MainSecondVariant = () => {
 
       </div>
       <p
-        className="text-left text-[0px] text-[black] max-lg:text-[14px] max-lg:mt-[18px]"
-        style={{ fontFamily: "Montserrat" }}
+        className={`text-left text-[0px] text-[black] max-lg:text-[14px] max-lg:mt-[12px]
+         ${fontFamily ? "font-kharkiv" : "font-montserrat"} `}
       >
         {language == "ua" ? "Відділ зовнішніх зe’язків" : "Department of External Relations"}
       </p>
-      <div className=" max-sm:mt-[20px] max-lg:w-[auto] mt-[140px] max-lg:mt-[58px]">
+      <div className="  max-lg:w-[auto] mt-[140px] max-lg:mt-[58px]">
         <Button
           callback={handlerScroll}
           title={

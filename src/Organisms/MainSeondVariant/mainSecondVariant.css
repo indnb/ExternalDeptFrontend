@@ -29,8 +29,7 @@
 .education-without-border .content {
   width: 692px;
   height: 125px;
-  background-color: #203C8F;
-  text-align: center;
+
   color: white;
 }
 
@@ -82,7 +81,7 @@
   }
 
   .education-borders {
-    top: 145px;
+    top: 140px;
   }
 
   .education-without-border .content {
