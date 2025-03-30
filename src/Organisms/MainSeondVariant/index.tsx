@@ -17,21 +17,21 @@ export const MainSecondVariant = () => {
 
   return (
     <div className='mt-[80px] h-[690px] max-lg:mt-[30px] max-lg:[407px] flex flex-col justify-center items-center w-[100vw] max-lg:h-[431px] '>
-      <div className="relative w-[90vw] msx-w-[1300px] text-[100px] h-[336px] max-lg:h-[195px] 
-        max-lg:w-[361px]
-        max-lg:text-[50px] font-kharkiv text-[black] max-sm:text-[48px]">
+      <div className={`relative w-[90vw] msx-w-[1300px] text-[100px] h-[336px] max-lg:h-[195px] 
+        max-lg:w-[361px] max-sm:text-[40px]
+        max-lg:text-[50px]  ${fontFamily ? "font-kyivSerif" : "font-kharkiv"} text-[black] max-sm:text-[48px]`}>
         <div className="absolute top-0  w-full flex max-xl:items-center  max-xl:justify-center">EDUCATION</div>
         <div className="absolute min-xl:top-[110px] w-full flex items-center justify-center  transform rotate-[-7deg]
-          max-xl:rotate-[-4deg] top-[145px] max-lg:top-[74px] ">
+          max-xl:rotate-[-4deg] top-[145px] max-lg:top-[74px] max-sm:top-[60px] ">
           <div className='w-[692px] h-[135px] bg-mainBlue text-center text-white
-            max-lg:w-[322px] max-lg:h-[64px]  '>
+            max-lg:w-[322px] max-lg:h-[64px]   max-sm:h-[54px]'>
             WITHOUT
           </div>
 
         </div>
         <div className="absolute top-[300px] w-full 
           flex items-end justify-end max-xl:justify-center max-lg:items-center
-          max-lg:top-[155px]   min-xl:top-[210px]       ">BORDERS</div>
+          max-lg:top-[155px]   min-xl:top-[210px]       max-sm:top-[130px] ">BORDERS</div>
 
       </div>
       <p
