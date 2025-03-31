@@ -21,6 +21,7 @@ export const aboutUsData: IAboutUsData[] = [
     text: "Голова технічного підвідділу",
     text_eng: "Head of the technical subdepartment",
     img: Vlad,
+    rustyDock: true
   },
   {
     name: "Прохор",

@@ -1,8 +1,15 @@
 "use client"
 import { useLanguageStore } from "@/_store/LanguageChanger";
+import { Button } from "@/Atoms/Button";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { language } = useLanguageStore()
+  const router = useRouter()
+  const handlerReturn = () => {
+    router.push("/")
+  }
+
   if (language == "ua") {
     return (
       <div className="min-h-screen  text-gray-900 flex items-center justify-center w-screen px-4">
@@ -52,6 +59,17 @@ export default function Home() {
           <p className="mb-4">Ми залишаємо за собою право змінювати цю політику. Оновлення будуть публікуватися на цій сторінці.</p>
 
           <p className="mt-6 font-semibold text-center sm:text-left">Дякуємо за довіру та бажаємо успіхів у хакатоні!</p>
+          <div className="w-[100%] mt-[30px] flex justify-center items-center">
+            <Button
+              callback={handlerReturn}
+              title={
+                "Повернутися на головну сторінку"
+              }
+              colorButton="blue"
+            />
+          </div>
+
+
         </div>
       </div>
     )
@@ -104,6 +122,16 @@ export default function Home() {
           <p className="mb-4">We reserve the right to change this policy. Updates will be posted on this page.</p>
 
           <p className="mt-6 font-semibold text-center sm:text-left">Thank you for your trust, and good luck in the hackathon!</p>
+          <div className="w-[100%] mt-[30px] flex justify-center items-center">
+            <Button
+              callback={handlerReturn}
+              title={
+                "Return to the main page"
+              }
+              colorButton="blue"
+            />
+          </div>
+
         </div>
       </div>
     );

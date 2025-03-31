@@ -3,7 +3,8 @@ import { IAboutUsData } from "@/type/IAboutUsData";
 import Image from "next/image";
 import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 import { useLanguageStore } from "@/_store/LanguageChanger";
-
+import rustCrad from "@/public/708853-middle.png"
+import Link from "next/link";
 export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
   const { contrast, fontSize, image, fontFamily } = useInvalidWidgetStore()
   const { language } = useLanguageStore()
@@ -13,7 +14,7 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
         boxShadow: "2px -4px 3px 1px rgba(173, 159, 173, 0.05)",
       }}
       className={`${!image ? "w-[721px] max-lg:w-[314px]" :
-        "w-[400px] max-lg:w-[200px]"} h-[auto]
+        "w-[400px] max-lg:w-[200px]"} h-[auto] relative
        max-lg:h-[auto] flex bg-[white] ml-[20px] items-center justify-start rounded-[8px] mt-[5px]` }
     >
       {!image ? <Image
@@ -34,6 +35,15 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
         >
           {language == "ua" ? data.text : data.text_eng}
         </p>
+        {data.rustyDock &&
+          <Link
+            className="absolute cursor-pointer h-auto msx-lg:w-[45px] w-[75px] right-[10px] bottom-0 transition-transform duration-300 hover:scale-110"
+            href="/rusty/index.html"
+          >
+            <Image src={rustCrad} alt="" />
+          </Link>
+
+        }
       </div>
     </div>
   );

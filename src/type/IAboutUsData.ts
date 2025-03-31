@@ -6,4 +6,5 @@ export interface IAboutUsData {
   name_eng: string;
   text_eng: string
   img: StaticImageData;
+  rustyDock?: boolean
 }
