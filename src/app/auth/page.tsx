@@ -13,9 +13,8 @@ export default function AuthPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await login({ admin_name: username, admin_password: password });
-
-      router.push("/admin");
+      const token = await login({ admin_name: username, admin_password: password });
+      router.push(`/admin/${token}`);
     } catch (err: any) {
       setError(err.response?.data?.message || "registration error");
     }

@@ -32,7 +32,7 @@ export const MainSecondVariant = () => {
         className={`text-left text-[0px] text-[black] max-lg:text-[14px] max-lg:mt-[12px]
          ${fontFamily ? "font-kharkiv" : "font-montserrat"} `}
       >
-        {language == "ua" ? "Відділ зовнішніх зe’язків" : "Department of External Relations"}
+        {language == "ua" ? "Відділ зовнішніх зв’язків" : "Department of External Relations"}
       </p>
       <div className="  max-lg:w-[auto] mt-[140px] max-lg:mt-[58px]">
         <Button

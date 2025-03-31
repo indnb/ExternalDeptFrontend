@@ -14,31 +14,30 @@ export const login = async (data: LoginData) => {
   if (!token) {
     throw new Error("Ошибка при получении токена.");
   }
-  await fetch("/api/set-cookie", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token }),
-  });
-
   localStorage.setItem("token", token);
 
   return token;
 };
 
 
-export const checkAdminAuth = async () => {
-  const token = localStorage.getItem("token");
+export const checkAdminAuthToken = async (token: string) => {
+  try {
+    const response = await fetch(`${process.env.API_PORT}/admin/get`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-  if (!token) {
-    throw new Error("Токен отсутствует. Авторизуйтесь заново.");
+    if (response.status == 200) {
+      return true
+    }
+    return false
+
+  } catch (e) {
+    console.log(e)
   }
-
-  const response = await api.get("/admin/get", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-
-  return response.data;
-};
+}
 
 
 export const isTokenValid = () => {
