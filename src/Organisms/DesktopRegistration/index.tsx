@@ -24,7 +24,7 @@ export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ select
   return (
     <div>
       {statusRegister ?
-        <RegisterSuccess onClose={onClose} />
+        <RegisterSuccess registerType={selectedForm} onClose={onClose} />
         :
         <>
           <RegistrationHeader onClose={onClose} title={language == "ua" ? formTitles[selectedForm].text : formTitles[selectedForm].text_eng} />

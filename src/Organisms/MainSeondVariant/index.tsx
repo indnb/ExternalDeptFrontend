@@ -16,7 +16,7 @@ export const MainSecondVariant = () => {
   };
 
   return (
-    <div className='mt-[80px] h-[690px] max-lg:mt-[30px] max-lg:[407px] flex flex-col justify-center items-center w-[100vw] max-lg:h-[431px] '>
+    <div className='mt-[80px] h-[870px] max-lg:mt-[30px] max-lg:[407px] flex flex-col justify-center items-center w-[100vw] max-lg:h-[465px] '>
       <div className={`education-container ${fontFamily ? "font-kyivSerif" : "font-kharkiv"}`}>
         <div className="education-title">EDUCATION</div>
         <div className="education-without-border">

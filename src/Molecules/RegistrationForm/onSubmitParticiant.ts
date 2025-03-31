@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IRegisterUser } from ".";
+import { checkError } from "@/utils/checkError";
 
 
 export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMessage: any, setStatusRegister: any) => {
@@ -39,35 +40,27 @@ export const onSubmitParticipant = async (data: IRegisterUser, reset: any, setMe
     console.log("Success answer participant:", response);
     setMessage("Форма надіслана!");
   } catch (error: any) {
-    if (error.response?.data?.message) {
-      if (
-        error.response.data.message ===
-        "Failed to insert team: duplicate key value violates unique constraint \"hackathon_team_2024_nickname_tg_key\""
-      ) {
-        setMessage({
-          message: "Телеграм ім'я зайняте",
-          message_eng: "Telegram username is already taken",
-        });
-      } else {
-        setMessage({
-          message: "Трапилася помилка на бекенді, спробуйте ще раз",
-          message_eng: "An error occurred on the backend, please try again",
-        });
-      }
-    } else {
-      setMessage({
-        message: "Трапилася помилка на бекенді, спробуйте ще раз",
-        message_eng: "An error occurred on the backend, please try again",
-      })
-    }
+    checkError(error, setMessage)
+
   }
 };
 
 
+function formatPhoneNumber(phone: string) {
+  const digits = phone.replace(/\D/g, '');
 
-function formatPhoneNumber(number: string) {
-  if (number.startsWith("+380")) return "0" + number.slice(4);
-  if (number.startsWith("380")) return "0" + number.slice(3);
-  return number;
+  if (digits.startsWith('0')) {
+    return digits;
+  }
+
+  let formatted = digits;
+  if (digits.length > 10) {
+    formatted = digits.slice(digits.length - 10);
+  }
+
+  if (!formatted.startsWith('0')) {
+    formatted = '0' + formatted;
+  }
+
+  return formatted;
 }
-

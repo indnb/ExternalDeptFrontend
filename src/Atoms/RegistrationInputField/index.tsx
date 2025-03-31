@@ -1,3 +1,4 @@
+import { NoOptionsMessage } from "../NoOptions"
 import React, { useState } from 'react';
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
@@ -37,6 +38,8 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
           onChange={handleChange}
           options={selectOptions}
           placeholder={placeholder}
+          components={{ NoOptionsMessage }}
+
           classNamePrefix="selectOption"
           menuPortalTarget={document.body}
           styles={{
@@ -57,6 +60,11 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
               '&:focus-within': {
                 borderBottom: '2px solid #203C8F',
               },
+            }),
+            noOptionsMessage: (provided) => ({
+              ...provided,
+              fontSize: "14px",
+              color: "#A0A0A0",
             }),
             option: (provided, state) => ({
               ...provided,

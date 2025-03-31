@@ -10,7 +10,7 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
   return (
     <div
       style={{
-        boxShadow: "2px -4px 3px 1px rgba(173, 159, 173, 0.35)",
+        boxShadow: "2px -4px 3px 1px rgba(173, 159, 173, 0.05)",
       }}
       className={`${!image ? "w-[721px] max-lg:w-[314px]" :
         "w-[400px] max-lg:w-[200px]"} h-[auto]

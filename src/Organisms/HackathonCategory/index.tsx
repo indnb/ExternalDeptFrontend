@@ -9,7 +9,9 @@ export const HackathonCategory = () => {
   const { language } = useLanguageStore();
   const { fontFamily } = useInvalidWidgetStore()
   return (
-    <div className={` ${fontFamily ? "font-kyivSerif" : "font-kyivSans"} flex justify-center flex-col items-center  text-black `}>
+    <div className={` mb-[62px] max-lg:mb-[23px]
+${fontFamily ? "font-kyivSerif" : "font-kyivSans"} 
+flex justify-center flex-col items-center  text-black `}>
       <h1 className='max-lg:text-[28px] max-lg:mb-[16px] text-[48px] mb-[71px]'>
         {language == 'ua' ? "Категорії на хакатон" : "Category hackathon"} </h1>
       {CategoryData.map((elem, index) => (

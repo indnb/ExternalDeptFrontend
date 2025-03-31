@@ -4,6 +4,7 @@ import { RegisterButton } from "@/Atoms/RegisterButton";
 
 interface RegistrationButtonsProps {
   setSelectedForm: (form: "participant" | "team") => void;
+
 }
 
 export const RegistrationButtons: React.FC<RegistrationButtonsProps> = ({ setSelectedForm }) => {
@@ -18,7 +19,9 @@ export const RegistrationButtons: React.FC<RegistrationButtonsProps> = ({ setSel
           text={language == "ua" ? elem.text : elem.text_eng}
           callback={() => {
             setSelectedForm(elem.formType as "participant" | "team");
-            window.scrollBy({ top: window.innerHeight + 10000, behavior: "smooth" });
+            setTimeout(() => {
+
+            }, 1000)
           }}
         />
       ))}

@@ -68,13 +68,13 @@
   }
 
   .education-borders {
-    top: 155px;
+    top: 149px;
     justify-content: center;
     align-items: center;
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 450px) {
   .education-container {
     justify-content: center;
     align-items: center;
@@ -84,6 +84,10 @@
     top: 140px;
   }
 
+  .education-title {
+    top: 8px;
+  }
+
   .education-without-border .content {
     width: 322px;
     height: 54px;
@@ -91,7 +95,6 @@
 
   .education-container {
     font-size: 40px;
-
   }
 
 }

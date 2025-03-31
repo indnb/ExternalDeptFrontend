@@ -9,10 +9,10 @@ export const AboutUs = () => {
   const { fontFamily } = useInvalidWidgetStore()
 
   return (
-    <div className="w-[100vw]">
+    <div className="w-[100vw] mb-[185px] max-lg:mb-[70px]">
       <h1
         className={`text-[48px] ${fontFamily ? "font-kyivSerif" : "font-kyivSans"}
-text-black font-normal  max-lg:text-[32px] ml-[25px] mb-[35px] mt-[138px] max-lg:mb-[10px] max-lg:mt-[30px]`}
+text-black font-normal  max-lg:text-[32px] ml-[25px] mb-[35px]  max-lg:mb-[10px] `}
       >
         {language == "ua" ? "Про нас" : "About Us"}
       </h1>

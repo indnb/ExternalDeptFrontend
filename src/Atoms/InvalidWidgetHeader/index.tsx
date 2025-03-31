@@ -15,7 +15,7 @@ export const InvalidWidgetHeader = ({
   const { contrast } = useInvalidWidgetStore()
   return (
 
-    <div className={`${contrast ? "bg-[#414141]" : "bg-[#203C8F]"} h-[164px] w-[100%] flex items-center justify-center max-lg:h-[94px]`}>
+    <div className={`${contrast ? "bg-[#414141]" : "bg-[#203C8F]"} h-[164px] w-[100%] flex items-center justify-center max-lg:h-[94px] max-sm:h-[84px]`}>
       <h1
         className="text-[24px] text-[bold] font-semibold flex max-lg:text-[20px]"
         style={{ fontFamily: "Montserrat" }}
