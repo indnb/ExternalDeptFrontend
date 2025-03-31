@@ -14,8 +14,14 @@ export const login = async (data: LoginData) => {
   if (!token) {
     throw new Error("Ошибка при получении токена.");
   }
+  await fetch("/api/set-cookie", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token }),
+  });
 
   localStorage.setItem("token", token);
+
   return token;
 };
 
