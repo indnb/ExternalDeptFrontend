@@ -52,7 +52,6 @@
   </style>
 </head>
 <body>
-  <button id="start-button">▶ Start Game</button>
   <div id="loader">
     <progress id="loader-progress"></progress>
     <div>Loading...</div>
@@ -62,7 +61,6 @@
   <script type="module">
     import init from './rustydoku.js';
 
-    const startButton = document.getElementById('start-button');
     const canvas = document.getElementById('rustycanvas');
     const loader = document.getElementById('loader');
 
@@ -74,14 +72,13 @@
       canvas.style.height = window.innerHeight + 'px';
     }
 
-    startButton.addEventListener('click', () => {
+  function start(){
       const hasWebGL2 = !!canvas.getContext('webgl2');
       if (!hasWebGL2) {
         alert("WebGL2 is not supported or disabled in your browser.\n\nPlease try using Chrome or enable WebGL2 in your browser settings.");
         return;
       }
 
-      startButton.style.display = 'none';
       loader.style.display = 'block';
       canvas.style.display = 'block';
 
@@ -98,7 +95,9 @@
         loader.style.display = 'none';
         resizeCanvas();
       });
-    });
-  </script>
+    }  
+          start()
+
+    </script>
 </body>
 </html>
