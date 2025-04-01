@@ -14,7 +14,7 @@ export const RegisterInfo = () => {
 ${fontFamily ? "font-kharkiv" : "font-montserrat"}
 ${fontSize ? "text-[18px] max-lg:text-[16px]" : "text-[16px] max-lg:text-[14px]"}
         border-[2px]   max-lg:h-[130px]   max-lg:p-[5px] max-lg:w-[369px] max-lg:border-[1.5px]`}>
-        {language ? "Після реєстрації команди збережіть пароль та поділіться ним з іншими учасниками вашої команди. Не забудьте також зареєструватися самі."
+        {language == "ua" ? "Після реєстрації команди збережіть пароль та поділіться ним з іншими учасниками вашої команди. Не забудьте також зареєструватися самі."
           :
           "After registering the team, save the password and share it with other members of your team. Don't forget to register yourself as well."
         }

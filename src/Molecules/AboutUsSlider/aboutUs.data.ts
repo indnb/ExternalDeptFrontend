@@ -18,6 +18,13 @@ export const aboutUsData: IAboutUsData[] = [
   {
     name: "Владислав",
     name_eng: "Vladyslav",
+    text: "Заступник голови відділу",
+    text_eng: "Deputy head of the department",
+    img: Ksenia,
+  },
+  {
+    name: "Владислав",
+    name_eng: "Vladyslav",
     text: "Голова технічного підвідділу",
     text_eng: "Head of the technical subdepartment",
     img: Vlad,
@@ -43,13 +50,6 @@ export const aboutUsData: IAboutUsData[] = [
     text: "Членкиня спонсорського підвідділу",
     text_eng: "Member of the sponsorship subdepartment",
     img: Ana,
-  },
-  {
-    name: "Владислав",
-    name_eng: "Vladyslav",
-    text: "Заступник голови відділу",
-    text_eng: "Deputy head of the department",
-    img: Ksenia,
   },
   {
     name: "Артем",
