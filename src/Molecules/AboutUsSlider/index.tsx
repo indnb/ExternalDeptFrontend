@@ -4,7 +4,7 @@ import { ItemAboutUs } from "@/Atoms/ItemAboutUs";
 import useScreenSize from "@/hook/useScreenSize";
 import 'swiper/swiper-bundle.css';
 import "./AboutUsSlider.css";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 
