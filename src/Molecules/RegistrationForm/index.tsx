@@ -66,11 +66,14 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
     setFormSubmitted(true);
   };
   const handlerAddMembers = () => {
+    if (countMembers >= 6) {
+      return
+    }
     setCountMembers(countMembers + 1)
   }
 
   const handlerRemoveMember = async (index: number) => {
-    if (countMembers <= 0) {
+    if (countMembers <= 1) {
       return;
     }
 
@@ -162,7 +165,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
 
         )
         )}
-      {page == 1 && selectedForm == "team" &&
+      {page == 1 && selectedForm == "team" && countMembers < 6 &&
         <div className="mt-[50px] max-lg:mt-[25px]">
           <Button title={language === "ua" ? "Додати учасника" : "Add participant"} callback={handlerAddMembers} />
         </div>}
