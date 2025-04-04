@@ -25,20 +25,32 @@ export const useFormConfig = () => {
       {
         name: "captain_name",
         type: "text",
-        placeholder: language == "ua" ? "ІМ'Я ПРІЗВИЩЕ" : "FIRST AND LAST NAME",
+        placeholder: language === "ua" ? "ІМ'Я ТА ПРІЗВИЩЕ ЛІДЕРА КОМАНДИ" : "FIRST AND LAST NAME",
         validation: {
-          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+          required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
             if (!/^[a-zA-Zа-яА-Яіїєґ\s]+$/.test(value)) {
-              return language == "ua" ? "Можна вводити тільки літери" : "Only letters are allowed";
+              return language === "ua" ? "Можна вводити тільки літери" : "Only letters are allowed";
             }
             const words = value.trim().split(/\s+/);
             if (words.length !== 2) {
-              return language == "ua" ? "Має бути прізвище та ім'я" : "Must include first and last name";
+              return language === "ua"
+                ? "Має бути ім'я та прізвище"
+                : "Must include first and last name";
+            }
+            if (words.some(word => word.length < 2 || word.length > 20)) {
+              return language === "ua"
+                ? "Кожне слово має містити від 2 до 20 символів"
+                : "Each word must be between 2 and 20 characters long";
+            }
+            if (value.replace(/\s+/g, "").length > 20) {
+              return language === "ua"
+                ? "Загальна кількість символів не повинна перевищувати 20"
+                : "Total character count must not exceed 20";
             }
             return true;
           },
-        }
+        },
       },
       {
         name: "captain_phone",
@@ -47,10 +59,10 @@ export const useFormConfig = () => {
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
-            if (!/^\+?(\d{1,3})\d{9}$|^(\d{1,3})\d{9}$|^0\d{9}$/.test(value)) {
+            if (!/^(?:\+380\d{9}|380\d{9}|0\d{9})$/.test(value)) {
               return language == "ua"
-                ? "Формат: +380XXXXXXXXX, 380XXXXXXXXX, 0XXXXXXXXX, або інші міжнародні формати"
-                : "Format: +380XXXXXXXXX, 380XXXXXXXXX, 0XXXXXXXXX, or other international formats";
+                ? "Формат:  380XXXXXXXXX, 0XXXXXXXXX, або інші міжнародні формати"
+                : "Format:  380XXXXXXXXX, 0XXXXXXXXX, or other international formats";
             }
             return true;
           },
@@ -63,8 +75,10 @@ export const useFormConfig = () => {
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
-            if (!/^[a-zA-Z0-9](?:[a-zA-Z0-9_]{3,30}[a-zA-Z0-9])?$/.test(value)) {
-              return language == "ua" ? "Нікнейм Телеграма не відповідає формату" : "Invalid Telegram username format"
+            if (!/^@?[a-zA-Z0-9](?:[a-zA-Z0-9_]{3,30}[a-zA-Z0-9])?$/.test(value)) {
+              return language == "ua"
+                ? "Нікнейм Телеграма не відповідає формату"
+                : "Invalid Telegram username format";
             }
             return true;
           },
@@ -101,10 +115,11 @@ export const useFormConfig = () => {
         type: "text",
         placeholder: language === "ua" ? "НАЗВА КОМАНДИ" : "TEAM NAME",
         validation: {
-          required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
-            if (!/^[a-zA-Zа-яА-Яіїєґ\s]+$/.test(value)) {
-              return language === "ua" ? "Можна вводити тільки літери" : "Only letters are allowed";
+            if (!/^[a-zA-Zа-яА-Яіїєґ0-9\s]{2,50}$/.test(value)) {
+              return language === "ua"
+                ? "Можна вводити тільки літери та числа (2-50 символів)"
+                : "Only letters and numbers allowed (2-50 characters)";
             }
             const isTaken = teams.some((team) => team.name === value);
             if (isTaken) {
@@ -113,7 +128,7 @@ export const useFormConfig = () => {
             return true;
           },
         },
-      },
+      }
 
     ];
     setParticipantConfig(config)

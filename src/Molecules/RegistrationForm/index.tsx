@@ -62,11 +62,11 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
   const inputsConfig = selectedForm === "participant" ? participantConfig : teamConfig;
   const handleFormSubmit = async (data: ICreateTeam) => {
 
-    await onSubmitTeam(data, reset, setMessage, setStatusRegister);
+    await onSubmitTeam(data, reset, setMessage, setStatusRegister, setPage);
     setFormSubmitted(true);
   };
   const handlerAddMembers = () => {
-    if (countMembers >= 6) {
+    if (countMembers >= 5) {
       return
     }
     setCountMembers(countMembers + 1)
@@ -143,13 +143,17 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
     reset(updatedObj);
     setCountMembers(countMembers - 1);
   };
+  const handlerBack = () => {
+    setPage(0)
+  }
   return (
     <form className="w-full max-[450px]:w-[auto] flex flex-col  justify-center items-center" onSubmit={handleSubmit(handleFormSubmit)}>
+
       {inputsConfig && page == 0 && <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />}
       {page == 1 &&
         membersConfig.map((elem, index) => (
-          <div key={index} className="h-[300px] max-lg:h-[400px] mt-[95px]">
-            <div className="max-lg:mt-[-0px] mt-[-70px] flex justify-between">
+          <div key={index} className="h-[210px] max-lg:h-[400px] mt-[95px]">
+            <div className=" mt-[-70px] flex justify-between">
               <h1 className="font-montserrat text-[18px]">
                 {language == 'ua' ?
                   `Учасник ${index + 1}`
@@ -158,8 +162,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
                 }
               </h1>
               <Image onClick={() => handlerRemoveMember(index)} src={proiconsCancel} alt="" className="  cursor-pointer  " />
-
             </div>
+
             <RegistrationInput inputsConfig={elem} control={control} errors={errors} />
           </div>
 
@@ -167,15 +171,19 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
         )}
       {page == 1 && selectedForm == "team" && countMembers < 6 &&
         <div className="mt-[50px] max-lg:mt-[25px]">
-          <Button title={language === "ua" ? "Додати учасника" : "Add participant"} callback={handlerAddMembers} />
+          <Button colorButton="blue" title={language === "ua" ? "Додати учасника" : "Add participant"} callback={handlerAddMembers} />
         </div>}
 
       <div className=" mt-[90px] max-lg:mt-[70px]" >
         {page == 0 && selectedForm == "team" && <RegistrationButton tpyeButton="button" handler={handlerNextPage} width="300" title={language == "ua" ? "Далі" : "Next"} />}
         {(selectedForm === "participant" || (page === 1 && selectedForm === "team")) && (
           <RegistrationButton width="300" title={language === "ua" ? "Надіслати" : "Send"} />
-        )}      </div>
-
+        )}
+      </div>
+      {page == 1 && selectedForm == "team" &&
+        <div className="w-[300px] mt-[25px]">
+          <Button classCss="w-[300px] max-sm:w-[300px]" title={language === "ua" ? "Повернутися назад" : "Go back"} callback={handlerBack} />
+        </div>}
       {formSubmitted && (
         <p className="text-black text-center mt-4">{language == "ua" ? message?.message : message?.message_eng}</p>
       )}

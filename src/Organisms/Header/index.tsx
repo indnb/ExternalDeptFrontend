@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-[100vw] overflow-hidden h-[70px] md:h-[120px] bg-white border-2 border-grey flex items-center justify-between px-4 transition-transform duration-300 z-50 ${isVisible ? "translate-y-0" : "-translate-y-full"
+      className={`fixed top-0 left-0 w-[100vw] overflow-hidden max-lg:h-[70px] h-[107px] bg-white border-2 border-grey flex items-center justify-between px-4 transition-transform duration-300 z-50 ${isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
     >
       <HeaderDyikt />

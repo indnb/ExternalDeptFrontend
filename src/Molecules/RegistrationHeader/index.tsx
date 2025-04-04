@@ -7,8 +7,10 @@ import { useLanguageStore } from "@/_store/LanguageChanger";
 interface RegistrationHeaderProps {
   title: string;
   onClose: () => void;
+  selectedForm: "participant" | "team";
+
 }
-export const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({ title, onClose }) => {
+export const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({ title, onClose, selectedForm }) => {
   const { language } = useLanguageStore()
   return (
     <div className="relative flex items-center w-full  p-2">
@@ -18,7 +20,7 @@ export const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({ title, o
 
       <div className="flex flex-col justify-center flex-1 text-center">
         <RegistrationText title={title} />
-        <RegistrationLable title={language == "ua" ? "*Максимальна кількість учасників в команді - 6." : "Maximum number of team members - 6."} />
+        {selectedForm == "team" && <RegistrationLable title={language == "ua" ? "*Максимальна кількість учасників в команді - 6." : "Maximum number of team members - 6."} />}
       </div>
       <Image onClick={onClose} src={proiconsCancel} alt="" className="md:hidden absolute right-[20px] cursor-pointer  top-[20px]" />
 

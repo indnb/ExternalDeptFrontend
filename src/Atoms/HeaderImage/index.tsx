@@ -8,7 +8,7 @@ export const Headerimage = () => {
   return (
     <div>
       <Image
-        className={`max-w-none w-auto h-[50px] md:h-[90px] object-contain  ${contrast ? "grayscale" : null} `}
+        className={`max-w-none w-auto max-lg:h-[50px] h-[80px] object-contain  ${contrast ? "grayscale" : null} `}
 
         src={Dyikt}
 

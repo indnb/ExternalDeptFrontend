@@ -4,8 +4,8 @@ import { checkError } from "@/utils/checkError";
 type TeamMember = {
   first_name: string;
   last_name: string;
-  nickname_tg: string;
-  phone: string;
+  nickname_tg?: string;
+  phone?: string;
   university_id: number;
 };
 
@@ -19,7 +19,7 @@ type TeamData = {
   members?: TeamMember[];
   team: Team;
 };
-export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: any, setStatusRegister: any) => {
+export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: any, setStatusRegister: any, setPage: any) => {
   const members: TeamMember[] = [];
 
   for (let i = 1; i <= 6; i++) {
@@ -28,14 +28,14 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
     const phone = data[`member_phone${i}` as keyof ICreateTeam] as string;
     const nickname = data[`member_nickname_tg${i}` as keyof ICreateTeam] as string;
 
-    if (name && university && phone && nickname) {
+    if (name && university) {
       const nameMatch = name.match(/^(\S+)\s+(\S+)/);
       members.push({
         first_name: nameMatch ? nameMatch[1] : "",
         last_name: nameMatch ? nameMatch[2] : "",
         university_id: Number(university),
-        phone: formatPhoneNumber(phone),
-        nickname_tg: nickname
+        phone: phone ? formatPhoneNumber(phone) : undefined,
+        nickname_tg: nickname ? removeAtSymbol(nickname) : undefined
       });
     }
   }
@@ -44,13 +44,13 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
     captain: {
       first_name: captainMatch ? captainMatch[2] : "",
       last_name: captainMatch ? captainMatch[1] : "",
-      nickname_tg: data.captain_nickname_tg,
+      nickname_tg: removeAtSymbol(data.captain_nickname_tg),
       phone: formatPhoneNumber(data.captain_phone),
       university_id: Number(data.captain_university)
     },
     team: {
       category: data.category,
-      name: data.team_name
+      name: data.team_name ? data.team_name : data.captain_name
     },
     ...(members.length ? { members } : {})
   };
@@ -71,6 +71,7 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
     reset();
     setMessage("зареєструйтесь як учасник!");
   } catch (error: any) {
+    setPage(0)
     checkError(error, setMessage)
 
 
@@ -95,4 +96,7 @@ function formatPhoneNumber(phone: string) {
 
   return formatted;
 }
-
+function removeAtSymbol(tg: string) {
+  const str = tg.replace('@', '');
+  return str
+}
