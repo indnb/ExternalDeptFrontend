@@ -8,6 +8,9 @@ export interface InputConfig {
   validation: any
   options?: IOption[];
 }
+export interface IMembers {
+  memebers: InputConfig[]
+}
 export interface IOption {
   name: string;
   id: number | string;

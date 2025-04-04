@@ -5,7 +5,7 @@ import { axiosGet } from "./axiosGet";
 export const useTeamApiQuery = () => {
   return useQuery({
     queryKey: ["team"],
-    queryFn: async () => await axiosGet({ path: "/hackathon_2024/team/all" }),
+    queryFn: async () => await axiosGet({ path: "/hackathon_2025/team/all" }),
   });
 };
 

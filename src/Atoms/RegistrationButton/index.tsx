@@ -5,13 +5,16 @@ import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 type buttonProps = {
   title: string;
   width: string;
+  handler?: () => void
+  tpyeButton?: "button" | "submit"
 }
 
-export const RegistrationButton: React.FC<buttonProps> = ({ title, width }) => {
+export const RegistrationButton: React.FC<buttonProps> = ({ title, width, tpyeButton = "submit", handler }) => {
   const { fontSize, fontFamily, contrast } = useInvalidWidgetStore()
   return (
     <button
-      type="submit"
+      type={tpyeButton}
+      onClick={handler}
       style={{ width: `${width}px` }}
       className={`
 

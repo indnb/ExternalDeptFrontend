@@ -23,7 +23,7 @@ export const useFormConfig = () => {
 
     const config: InputConfig[] = [
       {
-        name: "name",
+        name: "captain_name",
         type: "text",
         placeholder: language == "ua" ? "ІМ'Я ПРІЗВИЩЕ" : "FIRST AND LAST NAME",
         validation: {
@@ -41,7 +41,7 @@ export const useFormConfig = () => {
         }
       },
       {
-        name: "phone",
+        name: "captain_phone",
         type: "text",
         placeholder: language == "ua" ? "НОМЕР ТЕЛЕФОНУ" : "PHONE NUMBER",
         validation: {
@@ -57,7 +57,7 @@ export const useFormConfig = () => {
         },
       },
       {
-        name: "nickname_tg",
+        name: "captain_nickname_tg",
         type: "text",
         placeholder: language == "ua" ? "НІКНЕЙМ В ТЕЛЕГРАМІ" : "TELEGRAM NICKNAME",
         validation: {
@@ -71,7 +71,7 @@ export const useFormConfig = () => {
         },
       },
       {
-        name: "university",
+        name: "captain_university",
         type: "select",
         placeholder: language == "ua" ? "НАЗВА НАВЧАЛЬНОГО ЗАКЛАДУ" : "EDUCATIONAL INSTITUTION NAME",
         options: [
@@ -83,31 +83,34 @@ export const useFormConfig = () => {
         },
       },
       {
-        name: "teamName",
+        name: "category",
         type: "select",
-        placeholder: language == "ua" ? "ОБЕРІТЬ КОМАНДУ" : "CHOOSE A TEAM",
-        options: teams.map((team) => ({ name: team.name, id: team.id })),
+        placeholder: language === "ua" ? "КАТЕГОРІЯ НА ХАКАТОН" : "HACKATHON CATEGORY",
+        options: [
+          { id: "Software", name: "Software" },
+          { id: "Gamedev", name: "GameDev" },
+          { id: "Blockchain", name: "Blockchain" },
+          { id: "IoT", name: "IoT" },
+        ],
         validation: {
-          required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
+          required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
         },
       },
       {
-        name: "password_registration",
-        type: "password",
-        placeholder: language === "ua" ? "ПАРОЛЬ КОМАНДИ" : "PASSWORD TEAM",
+        name: "team_name",
+        type: "text",
+        placeholder: language === "ua" ? "НАЗВА КОМАНДИ" : "TEAM NAME",
         validation: {
           required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
-            const isValidPassword = value.length >= 10 && value.length <= 20 &&
-              /[A-Z]/.test(value) &&
-              /[a-z]/.test(value) &&
-              /\d/.test(value) &&
-              /[!@#$%^&*()_+=\-{}\[\]|\\:;'<>,.?/~`]/.test(value) &&
-              !/[а-яА-ЯёЁіІїЇєЄґҐ]/.test(value);
-
-            return isValidPassword || (language === "ua"
-              ? "Пароль має бути від 10 до 20 символів, містити цифри, символи, великі та малі літери та не містити кирилицю."
-              : "Password must be between 10 and 20 characters, contain digits, symbols, uppercase, lowercase letters, and not contain Cyrillic.");
+            if (!/^[a-zA-Zа-яА-Яіїєґ\s]+$/.test(value)) {
+              return language === "ua" ? "Можна вводити тільки літери" : "Only letters are allowed";
+            }
+            const isTaken = teams.some((team) => team.name === value);
+            if (isTaken) {
+              return language === "ua" ? "Назва зайнята" : "Name was taken";
+            }
+            return true;
           },
         },
       },

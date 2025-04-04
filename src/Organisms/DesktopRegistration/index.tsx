@@ -14,7 +14,7 @@ interface DesktopRegistrationProps {
 export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ selectedForm, onClose }) => {
   const { language } = useLanguageStore();
   const [statusRegister, setStatusRegister] = useState<boolean>(false)
-
+  const [page, setPage] = useState<number>(0)
   const formTitles: Record<DesktopRegistrationProps["selectedForm"], { text: string, text_eng: string }> = {
     participant: { text: "Реєстрація учасника", text_eng: "Participant Registration" },
     team: { text: "Реєстрація команди", text_eng: "Team Registration" }
@@ -24,12 +24,12 @@ export const DesktopRegistration: React.FC<DesktopRegistrationProps> = ({ select
   return (
     <div>
       {statusRegister ?
-        <RegisterSuccess registerType={selectedForm} onClose={onClose} />
+        <RegisterSuccess onClose={onClose} />
         :
         <>
           <RegistrationHeader onClose={onClose} title={language == "ua" ? formTitles[selectedForm].text : formTitles[selectedForm].text_eng} />
           {selectedForm == "team" && <RegisterInfo />}
-          <RegistrationForm selectedForm={selectedForm} setStatusRegister={setStatusRegister} />
+          <RegistrationForm page={page} setPage={setPage} selectedForm={selectedForm} setStatusRegister={setStatusRegister} />
         </>
       }
 
