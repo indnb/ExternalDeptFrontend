@@ -16,7 +16,7 @@ type Team = {
 
 type TeamData = {
   captain: TeamMember;
-  members: TeamMember[];
+  members?: TeamMember[];
   team: Team;
 };
 export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: any, setStatusRegister: any) => {
@@ -52,8 +52,9 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
       category: data.category,
       name: data.team_name
     },
-    members
-  }; try {
+    ...(members.length ? { members } : {})
+  };
+  try {
     const response = await axios.post(
       `${process.env.API_PORT}/hackathon_2025/team/registration`,
       JSON.stringify(body),
