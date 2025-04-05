@@ -1,13 +1,13 @@
 import { ActionButton } from "@/Atoms/ActionButton";
 
-interface Captain {
+export interface ICaptain {
   captain_id: number
   team_id: number;
 }
 
 interface CaptainRowProps {
-  participant: Captain;
-  onEdit: (participant: Captain) => void;
+  participant: ICaptain;
+  onEdit: (participant: ICaptain) => void;
   onDelete: (id: number) => void;
 }
 
@@ -25,7 +25,7 @@ export function CaptinRow({ participant, onEdit, onDelete }: CaptainRowProps) {
       ))}
       <td className="p-2 border border-gray-700 text-center">
         <ActionButton onClick={() => onEdit(participant)} text="Edit" icon="✏️" className="bg-blue-500 text-white hover:bg-blue-600" />
-        <ActionButton onClick={() => onDelete(participant.id)} text="Delete" icon="🗑️" className="bg-red-500 text-white hover:bg-red-600 ml-2" />
+        <ActionButton onClick={() => onDelete(participant.team_id)} text="Delete" icon="🗑️" className="bg-red-500 text-white hover:bg-red-600 ml-2" />
       </td>
     </tr>
   );
