@@ -4,17 +4,21 @@ import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import Select from 'react-select';
 import { IOption } from '@/Molecules/RegistrationInput';
+import { useLanguageStore } from "@/_store/LanguageChanger";
 export interface InputFieldProps {
   field: any;
   placeholder: string;
   error?: string;
   type: string;
   options?: IOption[];
+  setUniversity?: React.Dispatch<React.SetStateAction<any | undefined>>;
+  university?: any
+  validation: any
 }
 
-export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, placeholder, error, type, options }) => {
+export const RegistrationInputField: React.FC<InputFieldProps> = ({ validation, university, setUniversity, field, placeholder, error, type, options }) => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const { language } = useLanguageStore()
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -22,8 +26,13 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
     value: option.id,
     label: option.name
   }));
-  const handleChange = selectedOption => {
+  const handleChange = (selectedOption) => {
     field.onChange(selectedOption ? selectedOption.value : '');
+
+    if (selectedOption && setUniversity && options && options?.length > 10) {
+
+      setUniversity({ label: selectedOption?.label, value: selectedOption?.value });
+    }
   };
 
   const selectedValue = selectOptions?.find(option => option.value === field.value);
@@ -39,7 +48,7 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
           options={selectOptions}
           placeholder={placeholder}
           components={{ NoOptionsMessage }}
-
+          defaultValue={university}
           classNamePrefix="selectOption"
           menuPortalTarget={document.body}
           styles={{
@@ -87,7 +96,8 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ field, place
               zIndex: 0,
             }),
           }}
-        />) : (
+        />
+      ) : (
         <div className="relative">
           <input
             {...field}
@@ -108,6 +118,12 @@ border-b-2 border-gray-300  focus:border-[#203C8F] max-lg:text-[16px] outline-no
           )}
         </div>
       )}
+      {!error && !validation.required &&
+        <p className="text-[#6A6A6A] opacity-65 text-sm">
+          {language == "ua" ? "*Це поле не обов'язкове"
+            :
+            "*This field is optional"}
+        </p>}
       {error && <p className="text-red-500 text-sm">{error}</p>}
     </div>
   );

@@ -1,5 +1,4 @@
-
-export const checkError = (error: any, setMessage: any) => {
+export const checkError = (error: any, setMessage: any, setPage?: any) => {
   const errorCode = error.response?.data?.code;
   const errorMesssage = error.response?.data?.message;
 
@@ -237,22 +236,19 @@ export const checkError = (error: any, setMessage: any) => {
       {
         const match = errorMesssage.match(/index user (\d+)/);
         const indexUser = match ? parseInt(match[1], 10) : null;
-
-        if (indexUser === -1) {
-          setMessage({
-            message: "Не вдалося створити команду. Телефон командира вже використовується.",
-            message_eng: "Failed to insert team because of duplicate phone of the commander.",
-          });
-        } else if (indexUser != null) {
+        if (indexUser != null) {
           setMessage({
             message: `Не вдалося створити команду. Телефон учасника №${indexUser + 1} вже використовується.`,
             message_eng: `Failed to insert team because of duplicate phone of participant #${indexUser + 1}.`,
           });
         } else {
           setMessage({
-            message: "Не вдалося створити команду через дублікат телефону.",
-            message_eng: "Failed to insert team because of duplicate phone.",
+            message: "Не вдалося створити команду. Телефон командира вже використовується.",
+            message_eng: "Failed to insert team because of duplicate phone of the commander.",
           });
+          if (setPage) {
+            setPage(0);
+          }
         }
       }
       break;
@@ -261,26 +257,30 @@ export const checkError = (error: any, setMessage: any) => {
         const match = errorMesssage.message?.match(/index user (-?\d+)/);
         const indexUser = match ? parseInt(match[1], 10) : null;
 
-        if (indexUser === -1) {
-          setMessage({
-            message: "Не вдалося створити команду. Нікнейм командира вже використовується.",
-            message_eng: "Failed to insert team because of duplicate nickname of the commander.",
-          });
-        } else if (indexUser !== null) {
+        if (indexUser != null) {
           setMessage({
             message: `Не вдалося створити команду. Нікнейм учасника №${indexUser + 1} вже використовується.`,
             message_eng: `Failed to insert team because of duplicate nickname of participant #${indexUser + 1}.`,
           });
         } else {
           setMessage({
-            message: "Не вдалося створити команду через дублікат нікнейму.",
-            message_eng: "Failed to insert team because of duplicate nickname.",
+            message: "Не вдалося створити команду. Нікнейм командира вже використовується.",
+            message_eng: "Failed to insert team because of duplicate nickname of the commander.",
           });
+          if (setPage) {
+            setPage(0);
+          }
+
         }
       }
       break;
 
     default:
+      if (setPage) {
+        setPage(1);
+      }
+
+
       setMessage({
         message: `Невідома помилка (код: ${errorCode}). Зверніться до підтримки.`,
         message_eng: `Unknown error (code: ${errorCode}). Contact support.`,

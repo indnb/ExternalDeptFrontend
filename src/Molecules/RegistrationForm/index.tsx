@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { onSubmitTeam } from "./onSubmitTeam";
-import { RegistrationInput } from "@/Molecules/RegistrationInput";
+import { IOption, RegistrationInput } from "@/Molecules/RegistrationInput";
 import { RegistrationButton } from "src/Atoms/RegistrationButton";
 import { useFormConfig } from "./RegistrationFormParticipant.data";
 import { useRegisterTeam } from "./RegistrationFormTeam.data";
 import { useLanguageStore } from "@/_store/LanguageChanger";
 import { Button } from "@/Atoms/Button";
 import proiconsCancel from "@/public/proicons_cancel.svg"
+import plus from "@/public/plus.svg"
+
 import Image from "next/image";
 
 interface RegistrationFormProps {
@@ -37,10 +39,6 @@ export interface ICreateTeam extends Partial<MemberFormFields> {
   captain_university: number;
 }
 
-
-
-
-
 interface IMesssageError {
   message: string
   message_eng: string
@@ -48,6 +46,7 @@ interface IMesssageError {
 export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm, setStatusRegister, page, setPage }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [message, setMessage] = useState<IMesssageError | undefined>()
+  const [university, setUniversity] = useState<IOption | undefined>()
   const { language } = useLanguageStore()
   const { control, handleSubmit, formState: { errors }, reset, trigger, getValues } = useForm<ICreateTeam>();
   const { participantConfig } = useFormConfig();
@@ -149,7 +148,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
   return (
     <form className="w-full max-[450px]:w-[auto] flex flex-col  justify-center items-center" onSubmit={handleSubmit(handleFormSubmit)}>
 
-      {inputsConfig && page == 0 && <RegistrationInput inputsConfig={inputsConfig} control={control} errors={errors} />}
+      {inputsConfig && page == 0 && <RegistrationInput inputsConfig={inputsConfig} setUniversity={setUniversity} control={control} errors={errors} />}
       {page == 1 &&
         membersConfig.map((elem, index) => (
           <div key={index} className="h-[210px] max-lg:h-[400px] mt-[95px]">
@@ -161,17 +160,18 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
                   `Participant ${index + 1}`
                 }
               </h1>
-              <Image onClick={() => handlerRemoveMember(index)} src={proiconsCancel} alt="" className="  cursor-pointer  " />
+              {countMembers != 1 && <Image onClick={() => handlerRemoveMember(index)} src={proiconsCancel} alt="" className="  cursor-pointer  " />}
             </div>
 
-            <RegistrationInput inputsConfig={elem} control={control} errors={errors} />
+            <RegistrationInput university={university} inputsConfig={elem} control={control} errors={errors} />
           </div>
 
         )
         )}
-      {page == 1 && selectedForm == "team" && countMembers < 6 &&
+      {page == 1 && selectedForm == "team" && countMembers < 5 &&
         <div className="mt-[50px] max-lg:mt-[25px]">
-          <Button colorButton="blue" title={language === "ua" ? "Додати учасника" : "Add participant"} callback={handlerAddMembers} />
+          <Image onClick={handlerAddMembers} src={plus} alt="" className="  cursor-pointer  " />
+
         </div>}
 
       <div className=" mt-[90px] max-lg:mt-[70px]" >

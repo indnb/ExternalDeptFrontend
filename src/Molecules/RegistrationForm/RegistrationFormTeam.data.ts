@@ -69,7 +69,7 @@ export const useRegisterTeam = () => {
       {
         name: "captain_name",
         type: "text",
-        placeholder: language === "ua" ? "ІМ'Я ТА ПРІЗВИЩЕ ЛІДЕРА КОМАНДИ" : "FIRST AND LAST NAME",
+        placeholder: language === "ua" ? "ІМ'Я ТА ПРІЗВИЩЕ " : "FIRST AND LAST NAME",
         validation: {
           required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
           validate: (value: string) => {
@@ -112,9 +112,22 @@ export const useRegisterTeam = () => {
         type: "select",
         placeholder: language == "ua" ? "НАЗВА НАВЧАЛЬНОГО ЗАКЛАДУ" : "EDUCATIONAL INSTITUTION NAME",
         options: [
-          ...university.map((university) => ({ id: university.id, name: language === "ua" ? university.name : university.name_eng })),
-          ...university.map((university) => ({ id: university.id, name: language === "ua" ? university.name_eng : university.name }))
-        ],
+          ...university.map((university) => ({
+            id: university.id,
+            name: language === "ua" ? university.name : university.name_eng,
+          })),
+          ...university.map((university) => ({
+            id: university.id,
+            name: language === "ua" ? university.name_eng : university.name,
+          })),
+        ].sort((a, b) => {
+          const startsWithQuoteA = a.name.startsWith('"');
+          const startsWithQuoteB = b.name.startsWith('"');
+
+          if (startsWithQuoteA && !startsWithQuoteB) return 1;
+          if (!startsWithQuoteA && startsWithQuoteB) return -1;
+          return a.name.localeCompare(b.name);
+        }),
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
         },
@@ -154,13 +167,20 @@ export const useRegisterTeam = () => {
           options: [
             ...university.map((university) => ({
               id: university.id,
-              name: language === "ua" ? university.name : university.name_eng
+              name: language === "ua" ? university.name : university.name_eng,
             })),
             ...university.map((university) => ({
               id: university.id,
-              name: language === "ua" ? university.name_eng : university.name
-            }))
-          ],
+              name: language === "ua" ? university.name_eng : university.name,
+            })),
+          ].sort((a, b) => {
+            const startsWithQuoteA = a.name.startsWith('"');
+            const startsWithQuoteB = b.name.startsWith('"');
+
+            if (startsWithQuoteA && !startsWithQuoteB) return 1;
+            if (!startsWithQuoteA && startsWithQuoteB) return -1;
+            return a.name.localeCompare(b.name);
+          }),
           validation: {
             required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
           },

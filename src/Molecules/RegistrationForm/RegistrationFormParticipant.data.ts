@@ -89,9 +89,22 @@ export const useFormConfig = () => {
         type: "select",
         placeholder: language == "ua" ? "НАЗВА НАВЧАЛЬНОГО ЗАКЛАДУ" : "EDUCATIONAL INSTITUTION NAME",
         options: [
-          ...university.map((university) => ({ id: university.id, name: language === "ua" ? university.name : university.name_eng })),
-          ...university.map((university) => ({ id: university.id, name: language === "ua" ? university.name_eng : university.name }))
-        ],
+          ...university.map((university) => ({
+            id: university.id,
+            name: language === "ua" ? university.name : university.name_eng,
+          })),
+          ...university.map((university) => ({
+            id: university.id,
+            name: language === "ua" ? university.name_eng : university.name,
+          })),
+        ].sort((a, b) => {
+          const startsWithQuoteA = a.name.startsWith('"');
+          const startsWithQuoteB = b.name.startsWith('"');
+
+          if (startsWithQuoteA && !startsWithQuoteB) return 1;
+          if (!startsWithQuoteA && startsWithQuoteB) return -1;
+          return a.name.localeCompare(b.name);
+        }),
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
         },
