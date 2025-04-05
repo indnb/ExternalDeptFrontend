@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = `${process.env.API_PORT}/hackathon_2024/team`;
+const API_URL = `${process.env.API_PORT}/hackathon_2025/team`;
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
