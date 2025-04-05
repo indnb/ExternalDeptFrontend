@@ -1,33 +1,30 @@
-import { updateTeam } from "@/api/teams";
+import { useChangeCaptain } from "@/hook/useCaptain";
 import { useFormHandler } from "@/hook/useFormHandler";
+import { ICaptain } from "@/Molecules/CaptainRow";
 import { InputField } from "@/Molecules/InputFieldTeams";
 import { ModalForm } from "@/Molecules/ModalForm";
 
-interface Team {
-  id: number;
-  name: string;
-  category: string;
-  count_members: string;
-}
 
 interface EditTeamModalProps {
-  team: Team;
+  team: ICaptain;
   closeModal: () => void;
   onSave: () => void;
 }
 
-export function EditTeamModal({ team, closeModal, onSave }: EditTeamModalProps) {
+export const EditCaptainModal = ({ team, closeModal, onSave }: EditTeamModalProps) => {
+  const { changeCaptain } = useChangeCaptain()
   const { formData, loading, error, handleChange, handleSubmit } = useFormHandler({
     initialData: team,
-    submitData: updateTeam,
+    submitData: changeCaptain,
     onSave,
     onClose: closeModal,
   });
 
   return (
     <ModalForm title="Edit Team" error={error} loading={loading} onSubmit={handleSubmit} onClose={closeModal}>
-      <InputField name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
-      <InputField name="category" value={formData.category} onChange={handleChange} placeholder="Category" />
+      <InputField name="team Id" value={formData.team_id} onChange={handleChange} placeholder="Name" />
+      <InputField name="captain_id" value={formData.captain_id} onChange={handleChange} placeholder="Category" />
     </ModalForm>
   );
 }
+

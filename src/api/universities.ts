@@ -1,6 +1,6 @@
 import api from "@/api/axiosInstance";
 
-const API_BASE_URL = "/hackathon_2024/university";
+const API_BASE_URL = "/hackathon_2025/university";
 
 export const getAllUniversities = async () => {
   try {
