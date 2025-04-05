@@ -71,8 +71,7 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
     reset();
     setMessage("зареєструйтесь як учасник!");
   } catch (error: any) {
-    setPage(0)
-    checkError(error, setMessage)
+    checkError(error, setMessage, setPage)
 
 
   }
