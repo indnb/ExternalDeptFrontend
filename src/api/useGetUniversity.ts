@@ -6,7 +6,10 @@ export const useUniversityApiQuery = () => {
   return useQuery({
     queryKey: ["hackathon"],
     queryFn: async () => await axiosGet({ path: "/hackathon_2025/university/all" }),
-    enabled: false,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    staleTime: Infinity
   });
 };
 

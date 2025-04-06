@@ -164,15 +164,18 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
             </div>
 
             <RegistrationInput university={university} inputsConfig={elem} control={control} errors={errors} />
+            {page == 1 && selectedForm == "team" && countMembers == index + 1 && countMembers < 5 &&
+              <div onClick={handlerAddMembers} className="mt-[50px] max-lg:mt-[25px] flex justify-end text-[18px] w-[100%] items-center text-center cursor-pointer">
+                <h1> {language == "ua" ? "Додати учасника" : "Add participant"}</h1>
+                <Image src={plus} alt="" className="    ml-[5px]" />
+
+              </div>}
+
           </div>
 
         )
         )}
-      {page == 1 && selectedForm == "team" && countMembers < 5 &&
-        <div className="mt-[50px] max-lg:mt-[25px]">
-          <Image onClick={handlerAddMembers} src={plus} alt="" className="  cursor-pointer  " />
 
-        </div>}
 
       <div className=" mt-[90px] max-lg:mt-[70px]" >
         {page == 0 && selectedForm == "team" && <RegistrationButton tpyeButton="button" handler={handlerNextPage} width="300" title={language == "ua" ? "Далі" : "Next"} />}
