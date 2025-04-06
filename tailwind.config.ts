@@ -21,6 +21,8 @@ export default {
         "max-xl": { max: "1300px" },
         "min-xl": { min: "1300px" },
         "min-xl2": { min: "1800px" },
+        "max-xl2": { max: "1800px" },
+
       },
 
       colors: {

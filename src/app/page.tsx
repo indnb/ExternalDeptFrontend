@@ -9,7 +9,6 @@ import { MainSecondVariant } from "@/Organisms/MainSeondVariant";
 export default function Home() {
   return (
     <div className=" ">
-
       <div className={`w-full flex flex-col  justify-center overflow-x-hidden`}>
         <InvalidWidget />
         <MainSecondVariant />
