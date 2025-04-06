@@ -11,7 +11,9 @@ export const Footer = () => {
     <footer className={`overflow-x-hidden max-lg:h-[165px] ${contrast ? "bg-[#414141]" : "bg-[#203C8F]"} w-[100vw] h-[370px] flex items-center flex-col `}>
       <FooterTopPanel />
       <div className="w-[93vw] mt-[12px] max-lg:text-[12px] items-start text-[22px] flex flex-col text-white">
-        <a href="https://t.me/skalse_456" target="_blank" style={{ fontFamily: "Montserrat" }} rel="noopener noreferrer" >{language == "ua" ? "Служба підтримки" : "Contacts"}: skalse@yacode.dev</a>
+        <a href="https://t.me/skalse_456" target="_blank" style={{ fontFamily: "Montserrat" }} rel="noopener noreferrer" >
+          {language == "ua" ? "Служба підтримки" : "Contacts"}:
+          @skalse_456</a>
         <Link href="/privacy" className="cursor-pointer   " style={{ fontFamily: "Montserrat" }}
         >{language === "ua" ? "Політика конфіденційності" : "Privacy Policy"}</Link>
         <Link href="/privacy" className="cursor-pointer inline-block" style={{ fontFamily: "Montserrat" }}
