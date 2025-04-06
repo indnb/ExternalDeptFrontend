@@ -39,64 +39,69 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ validation, 
 
 
   return (
-    <div className="relative ">
+    <div className="relative  w-[100%]">
       {type === "select" ? (
-        <Select
-          {...field}
-          value={selectedValue}
-          onChange={handleChange}
-          options={selectOptions}
-          placeholder={placeholder}
-          components={{ NoOptionsMessage }}
-          defaultValue={university}
-          classNamePrefix="selectOption"
-          menuPortalTarget={document.body}
-          styles={{
-            control: (provided) => ({
-              ...provided,
-              padding: '.1rem',
-              '@media (max-width: 850px)': {
-                padding: '.1.2rem',
-              },
-              border: 'none',
-              borderBottom: '2px solid #D1D5DB',
-              boxShadow: 'none',
-              backgroundColor: 'transparent',
-              '&:hover': {
+        <div className="max-lg:h-[59px] flex items-center w-[350px]">
+          <Select
+            {...field}
+            value={selectedValue}
+            onChange={handleChange}
+            options={selectOptions}
+            placeholder={placeholder}
+            components={{ NoOptionsMessage }}
+            defaultValue={university}
+            classNamePrefix="selectOption"
+            menuPortalTarget={document.body}
+            styles={{
+              control: (provided) => ({
+                ...provided,
+                padding: '.1rem',
+                '@media (max-width: 850px)': {
+                  padding: '.1.2rem',
+                  width: "350px",
+
+                },
                 border: 'none',
                 borderBottom: '2px solid #D1D5DB',
-              },
-              '&:focus-within': {
-                borderBottom: '2px solid #203C8F',
-              },
-            }),
-            noOptionsMessage: (provided) => ({
-              ...provided,
-              fontSize: "14px",
-              color: "#A0A0A0",
-            }),
-            option: (provided, state) => ({
-              ...provided,
-              backgroundColor: state.isSelected ? '#203C8F' : 'transparent',
-              color: state.isSelected ? 'white' : 'black',
-              '&:hover': {
-                backgroundColor: '#203C8F',
-                color: 'white',
-              },
-            }),
-            placeholder: (provided) => ({
-              ...provided,
-              color: '#A0A0A0',
-              '@media (max-width: 850px)': {
-                fontSize: '16px',
-              },
-            }),
-            menu: (provided) => ({
-              ...provided,
-              zIndex: 0,
-            }),
-          }}
-        />
+                boxShadow: 'none',
+                width: "368px",
+                backgroundColor: 'transparent',
+                '&:hover': {
+                  border: 'none',
+                  borderBottom: '2px solid #D1D5DB',
+                },
+                '&:focus-within': {
+                  borderBottom: '2px solid #203C8F',
+                },
+              }),
+              noOptionsMessage: (provided) => ({
+                ...provided,
+                fontSize: "14px",
+                color: "#A0A0A0",
+              }),
+              option: (provided, state) => ({
+                ...provided,
+                backgroundColor: state.isSelected ? '#203C8F' : 'transparent',
+                color: state.isSelected ? 'white' : 'black',
+                '&:hover': {
+                  backgroundColor: '#203C8F',
+                  color: 'white',
+                },
+              }),
+              placeholder: (provided) => ({
+                ...provided,
+                color: '#A0A0A0',
+                '@media (max-width: 850px)': {
+                  fontSize: '16px',
+                },
+              }),
+              menu: (provided) => ({
+                ...provided,
+                zIndex: 0,
+              }),
+            }}
+          />
+        </div>
       ) : (
         <div className="relative">
           <input
