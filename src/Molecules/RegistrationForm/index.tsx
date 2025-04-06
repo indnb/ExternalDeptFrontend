@@ -151,7 +151,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
       {inputsConfig && page == 0 && <RegistrationInput inputsConfig={inputsConfig} setUniversity={setUniversity} control={control} errors={errors} />}
       {page == 1 &&
         membersConfig.map((elem, index) => (
-          <div key={index} className="h-[210px] max-lg:h-[400px] mt-[95px]">
+          <div key={index} className="h-[210px] max-lg:h-[400px] max-sm:w-[90vw] mt-[95px]">
             <div className=" mt-[-70px] flex justify-between">
               <h1 className="font-montserrat text-[18px]">
                 {language == 'ua' ?
@@ -180,12 +180,13 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
       <div className=" mt-[90px] max-lg:mt-[70px]" >
         {page == 0 && selectedForm == "team" && <RegistrationButton tpyeButton="button" handler={handlerNextPage} width="300" title={language == "ua" ? "Далі" : "Next"} />}
         {(selectedForm === "participant" || (page === 1 && selectedForm === "team")) && (
-          <RegistrationButton width="300" title={language === "ua" ? "Надіслати" : "Send"} />
+          <Button classCss="w-[300px] max-sm:!w-[300px]" colorButton="blue" title={language === "ua" ? "Надіслати" : "Send"} type="submit" />
+
         )}
       </div>
       {page == 1 && selectedForm == "team" &&
         <div className="w-[300px] mt-[25px]">
-          <Button classCss="w-[300px] max-sm:w-[300px]" title={language === "ua" ? "Повернутися назад" : "Go back"} callback={handlerBack} />
+          <Button classCss="w-[300px] max-sm:!w-[300px]" colorButton="blue" title={language === "ua" ? "Повернутися назад" : "Go back"} callback={handlerBack} />
         </div>}
       {formSubmitted && (
         <p className="text-black text-center mt-4">{language == "ua" ? message?.message : message?.message_eng}</p>
