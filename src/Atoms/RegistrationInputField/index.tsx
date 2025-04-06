@@ -38,7 +38,7 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ validation, 
   const selectedValue = selectOptions?.find(option => option.value === field.value);
 
   const handelrDefault = () => {
-    field.onChange(university ? university.value : 1)
+    field.onChange(university ? university.value : null)
     return university
   }
   return (

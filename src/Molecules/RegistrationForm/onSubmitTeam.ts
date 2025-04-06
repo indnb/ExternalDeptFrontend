@@ -42,8 +42,8 @@ export const onSubmitTeam = async (data: ICreateTeam, reset: any, setMessage: an
   const captainMatch = data.captain_name.match(/^(\S+)\s+(\S+)/);
   const body: TeamData = {
     captain: {
-      first_name: captainMatch ? captainMatch[2] : "",
-      last_name: captainMatch ? captainMatch[1] : "",
+      first_name: captainMatch ? captainMatch[1] : "",
+      last_name: captainMatch ? captainMatch[2] : "",
       nickname_tg: removeAtSymbol(data.captain_nickname_tg),
       phone: formatPhoneNumber(data.captain_phone),
       university_id: Number(data.captain_university)

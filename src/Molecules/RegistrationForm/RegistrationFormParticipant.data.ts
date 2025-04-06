@@ -25,29 +25,47 @@ export const useFormConfig = () => {
       {
         name: "captain_name",
         type: "text",
-        placeholder: language === "ua" ? "ІМ'Я ТА ПРІЗВИЩЕ ЛІДЕРА КОМАНДИ" : "FIRST AND LAST NAME",
+        placeholder: language === "ua"
+          ? "ІМ'Я ТА ПРІЗВИЩЕ ЛІДЕРА КОМАНДИ"
+          : "FIRST AND LAST NAME",
         validation: {
-          required: language === "ua" ? "Це поле обов'язкове" : "This field is required",
+          required: language === "ua"
+            ? "Це поле обов'язкове"
+            : "This field is required",
           validate: (value: string) => {
-            if (!/^[a-zA-Zа-яА-Яіїєґ\s]+$/.test(value)) {
-              return language === "ua" ? "Можна вводити тільки літери" : "Only letters are allowed";
+            if (!/^[a-zA-Zа-яА-ЯІіЇїЄєҐґ\s\-]+$/.test(value)) {
+              return language === "ua"
+                ? "Можна вводити тільки літери"
+                : "Only letters are allowed";
             }
+
             const words = value.trim().split(/\s+/);
             if (words.length !== 2) {
               return language === "ua"
                 ? "Має бути ім'я та прізвище"
                 : "Must include first and last name";
             }
-            if (words.some(word => word.length < 2 || word.length > 20)) {
+
+            const [firstName, lastName] = words;
+
+            if (firstName.length < 2 || firstName.length > 25) {
               return language === "ua"
-                ? "Кожне слово має містити від 2 до 20 символів"
-                : "Each word must be between 2 and 20 characters long";
+                ? "Ім'я має містити від 2 до 25 символів"
+                : "First name must be between 2 and 25 characters long";
             }
-            if (value.replace(/\s+/g, "").length > 20) {
+
+            if (lastName.length < 2 || lastName.length > 100) {
               return language === "ua"
-                ? "Загальна кількість символів не повинна перевищувати 20"
-                : "Total character count must not exceed 20";
+                ? "Прізвище має містити від 2 до 100 символів"
+                : "Last name must be between 2 and 100 characters long";
             }
+
+            if ((firstName + lastName).length > 125) {
+              return language === "ua"
+                ? "Загальна кількість символів не повинна перевищувати 125"
+                : "Total character count must not exceed 125";
+            }
+
             return true;
           },
         },
