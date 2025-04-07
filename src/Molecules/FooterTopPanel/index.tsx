@@ -28,7 +28,7 @@ ${fontFamily ? "font-kharkiv" : "font-montserrat"}
 
         </div>
       </div>
-      <div className='max-lg:w-[94px] w-[200px] flex justify-between'>
+      <div className='max-lg:w-[94px] w-[180px] flex justify-between'>
         {FooterLogoData.map((elem, key) => (
           <ItemFooterSocailIcon key={key} img={elem.img} link={elem.link} />
         )

@@ -40,7 +40,7 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
             className="absolute cursor-pointer h-auto msx-lg:w-[45px] w-[75px] right-[10px] bottom-0 transition-transform duration-300 hover:scale-110"
             href="/rusty/index.html"
           >
-            <Image src={rustCrad} alt="" />
+            <Image className={`${contrast ? 'filter grayscale brightness-90' : ''}  `} src={rustCrad} alt="" />
           </Link>
 
         }
