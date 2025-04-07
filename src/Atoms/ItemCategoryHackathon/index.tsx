@@ -21,7 +21,7 @@ mt-[0px] `}>{name}</h1>
         </div>
 
         <h1 className={`max-lg:mt-[14px]  max-lg:w-[auto] w-[45%]  font-normal ${fontFamily ? "font-kyivSerif" : "font-montserrat"} 
-${fontSize ? "text-[calc(43/1552*100vw)]  max-sm:text-[18px] min-xl2:text-[43px]" : "text-[calc(43/1552*100vw)]  max-sm:text-[18px] min-xl2:text-[43px]"} text-black`}>
+${fontSize ? "text-[calc(43/1552*100vw)]  max-sm:text-[18px] min-xl2:text-[43px]" : "min-xl2:text-[32px] text-[calc(32/1552*100vw)]  max-lg:text-[12px]"} text-black`}>
 
           {description}
         </h1>
