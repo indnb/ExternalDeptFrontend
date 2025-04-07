@@ -12,7 +12,7 @@ export const RegisterButton: React.FC<IRegisterButton> = ({ img, text, callback 
   const { contrast, fontFamily, fontSize } = useInvalidWidgetStore()
   return (
     <button className={`regButton w-[399px] 
-${fontSize ? "text-[calc(25/1552*100vw) max-lg:text-[15px]" : "text-[calc(23/1552*100vw) max-lg:text-[12px]"}
+${fontSize ? "max-lg:text-[15px] text-[25px]" : "text-[calc(23/1552*100vw) max-lg:text-[12px]"}
 ${contrast ? "regButtonContrast" : null}  h-[314px] w-[400px] max-lg:w-[191px]   max-lg:h-[150px] max-sm:w-[161px]   max-sm:h-[140px] transition  border-2 border-black  rounded-[8px] flex items-center justify-center flex-col `}
       onClick={callback}>
       {img}

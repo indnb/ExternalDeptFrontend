@@ -11,6 +11,7 @@ import proiconsCancel from "@/public/proicons_cancel.svg"
 import plus from "@/public/plus.svg"
 
 import Image from "next/image";
+import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
 
 interface RegistrationFormProps {
   selectedForm: "participant" | "team";
@@ -48,6 +49,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
   const [message, setMessage] = useState<IMesssageError | undefined>()
   const [university, setUniversity] = useState<IOption | undefined>()
   const { language } = useLanguageStore()
+  const { fontSize, fontFamily } = useInvalidWidgetStore()
   const { control, handleSubmit, formState: { errors }, reset, trigger, getValues } = useForm<ICreateTeam>();
   const { participantConfig } = useFormConfig();
   const { teamConfig, setCountMembers, membersConfig, countMembers
@@ -153,7 +155,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
         membersConfig.map((elem, index) => (
           <div key={index} className="h-[210px] max-lg:h-[400px] max-sm:w-[90vw] mt-[95px]">
             <div className=" mt-[-70px] flex justify-between">
-              <h1 className="font-montserrat text-[18px]">
+              <h1 className={`
+${fontFamily ? "font-kharkiv" : "font-montserrat"}
+ max-lg:mb-[-70px] 
+${fontSize ? "text-[28px] max-lg:text-[24px]" : "max-lg:text-[18px] text-[20px]"}`}>
                 {language == 'ua' ?
                   `Учасник ${index + 1}`
                   :
@@ -165,8 +170,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
 
             <RegistrationInput university={university} inputsConfig={elem} control={control} errors={errors} />
             {page == 1 && selectedForm == "team" && countMembers == index + 1 && countMembers < 5 &&
-              <div onClick={handlerAddMembers} className="mt-[50px] max-lg:mt-[25px] flex font-montserrat justify-end text-[18px] w-[100%] items-center text-center cursor-pointer">
-                <h1> {language == "ua" ? "Додати учасника" : "Add participant"}</h1>
+              <div onClick={handlerAddMembers} className="mt-[50px] max-lg:mt-[25px] flex  justify-end  w-[100%] items-center text-center cursor-pointer">
+                <h1 className={`                                                      
+${fontFamily ? "font-kharkiv" : "font-montserrat"}                                  
+${fontSize ? "text-[28px] max-lg:text-[24px]" : "max-lg:text-[18px] text-[20px]"}`}> {language == "ua" ? "Додати учасника" : "Add participant"}</h1>
                 <Image src={plus} alt="" className="    ml-[5px]" />
 
               </div>}
@@ -193,4 +200,4 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ selectedForm
       )}
     </form>
   );
-};
+}

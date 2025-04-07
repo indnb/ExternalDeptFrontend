@@ -5,12 +5,12 @@ import { FooterTopPanel } from "@/Molecules/FooterTopPanel";
 import Link from "next/link";
 
 export const Footer = () => {
-  const { contrast } = useInvalidWidgetStore()
+  const { contrast, fontSize, fontFamily } = useInvalidWidgetStore()
   const { language } = useLanguageStore()
   return (
     <footer className={`overflow-x-hidden max-lg:h-[165px] ${contrast ? "bg-[#414141]" : "bg-[#203C8F]"} w-[100vw] h-[370px] flex items-center flex-col `}>
       <FooterTopPanel />
-      <div className="w-[93vw] mt-[12px] max-lg:text-[12px] items-start text-[22px] flex flex-col text-white">
+      <div className={`w-[93vw] mt-[12px] ${fontFamily ? "font-kharkiv" : "font-montserrat"}  ${fontSize ? "text-[26px] max-lg:text-[16px]" : "text-[22px] max-lg:text-[12px]"} items-start  flex flex-col text-white`}>
         <a href="https://t.me/skalse_456" target="_blank" style={{ fontFamily: "Montserrat" }} rel="noopener noreferrer" >
           {language == "ua" ? "Служба підтримки" : "Contacts"}:
           @skalse_456</a>
