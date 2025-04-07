@@ -26,7 +26,7 @@ export const useFormConfig = () => {
         name: "captain_name",
         type: "text",
         placeholder: language === "ua"
-          ? "ІМ'Я ТА ПРІЗВИЩЕ ЛІДЕРА КОМАНДИ"
+          ? "ІМ'Я ТА ПРІЗВИЩЕ"
           : "FIRST AND LAST NAME",
         validation: {
           required: language === "ua"
