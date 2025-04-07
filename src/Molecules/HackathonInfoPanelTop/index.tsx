@@ -10,14 +10,18 @@ export const HackathonInfoPanelTop = ({ firstRow, secondRow }: { firstRow: strin
   return (
     <div className='w-[100vw] flex justify-center max-w-[1800px]'>
       <div className={`w-[48vw] h-full  ${contrast ? "text-[#414141]" : "text-[#203C8F]"} text-left`}>
-        <p className={`${fontFamily ? "font-kyivSerif font-[250] " : "font-kyivSans"} ${language == `ua` ? `min-xl2:text-[266px] text-[calc(250/1552*100vw)]` : `min-xl2:text-[240px] text-[calc(190/1552*100vw)]`} h-full flex items-center `}>
+        <p className={`${fontFamily ? "font-kyivSerif font-[250] " : "font-kyivSans"}
+
+            ${language == `ua` ? "min-xl2:text-[266px] text-[calc(250/1552*100vw)]"
+            :
+            "min-xl2:text-[240px] text-[calc(190/1552*100vw)]"} h-full flex items-center `}>
           {firstRow}
         </p>
       </div>
       <div
         className={`font-normal w-[48vw]  text-[#000000]
 ${fontFamily ? "font-kharkiv" : "font-montserrat"}
-${fontSize ? (language == 'ua' ? "text-[calc(37/1552*100vw)]  max-sm:text-[14px] min-xl2:text-[36px]" : "text-[calc(33/1552*100vw)]  max-sm:text-[12px] min-xl2:text-[30px]")
+${fontSize ? (language == 'ua' ? "text-[calc(43/1552*100vw)]  max-sm:text-[18px] min-xl2:text-[43px]" : "text-[calc(43/1552*100vw)]  max-sm:text-[18px] min-xl2:text-[43px]")
             : (language == 'ua' ? "min-xl2:text-[32px] text-[calc(32/1552*100vw)]  max-lg:text-[12px]" : "min-xl2:text-[30px] text-[calc(30/1552*100vw)]  max-lg:text-[12px]")}
           flex items-center justify-center`}>
         {secondRow}

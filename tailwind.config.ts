@@ -18,6 +18,8 @@ export default {
         "max-lg": { max: "850px" },
         "ming-lg": { min: "850px" },
         "max-sm": { max: "550px" },
+        "max-sm2": { max: "375px" },
+        "max-sm3": { max: "450px" },
         "max-xl": { max: "1300px" },
         "min-xl": { min: "1300px" },
         "min-xl2": { min: "1800px" },

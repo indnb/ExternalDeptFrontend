@@ -1,5 +1,7 @@
 "use client";
 
+import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
+
 type ButtonProps = {
   title: string;
   onClick: () => void;
@@ -7,10 +9,11 @@ type ButtonProps = {
 };
 
 export const SwitchLanguageButton: React.FC<ButtonProps> = ({ title, onClick, className, }) => {
+  const { fontSize } = useInvalidWidgetStore()
   return (
     <button
       onClick={onClick}
-      className={`px-[6px] py-[6px] lg:px-[7] lg:py-[7] rounded-md border-2  ${className}`}
+      className={`${fontSize ? "text-[25px]" : "text-[20px]"} text-center  h-[50px] w-[50px] rounded-md border-2  ${className}`}
     >
       {title}
     </button>

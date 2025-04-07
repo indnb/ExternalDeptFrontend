@@ -20,7 +20,7 @@ export const RegistrationButton: React.FC<buttonProps> = ({ title, width, tpyeBu
 
 ${contrast ? "hover:bg-[#414141] hover:border-[#414141]" : "hover:bg-[#203C8F] hover:border-[#203C8F]"}
 ${fontFamily ? "font-kharkiv" : "font-montserrat"}
-${fontSize ? "text-[18px] msx-lg:text-[14px]" : "text-[16px] msx-lg:text-[12px]"}
+${fontSize ? " text-[26px] max-sm:text-[20px] max-sm2:text-[17px]" : "text-[16px] max-sm:text-[14px]"}
 flex justify-center items-center self-center border-2 border-[#8D8D8D] text-[#8D8D8D] rounded-xl   hover:text-white transition h-12
 `}
     >

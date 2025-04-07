@@ -8,7 +8,7 @@ import "./mainSecondVariant.css"
 export const MainSecondVariant = () => {
   const { language } = useLanguageStore();
   const { refRegistrationSection } = useRefStore();
-  const { fontFamily, contrast } = useInvalidWidgetStore()
+  const { fontFamily, contrast, fontSize } = useInvalidWidgetStore()
   const handlerScroll = () => {
     if (refRegistrationSection?.current) {
       refRegistrationSection.current.scrollIntoView({ behavior: "smooth" });
@@ -16,7 +16,7 @@ export const MainSecondVariant = () => {
   };
 
   return (
-    <div className='mt-[80px] h-[870px] max-lg:mt-[30px] max-lg:[407px] flex flex-col justify-center items-center w-[100vw] max-lg:h-[465px] '>
+    <div className='mt-[80px] h-[870px] max-lg:mt-[30px] max-lg:[407px] flex flex-col justify-center items-center w-[100vw] max-lg:h-[485px] max-sm3:h-[465px] '>
       <div className={`education-container ${fontFamily ? "font-kyivSerif" : "font-kharkiv"}`}>
         <div className="education-title">EDUCATION</div>
         <div className="education-without-border">
@@ -29,8 +29,12 @@ export const MainSecondVariant = () => {
 
       </div>
       <p
-        className={`text-left text-[0px] text-[black] max-lg:text-[14px] max-lg:mt-[12px]
-         ${fontFamily ? "font-kharkiv" : "font-montserrat"} `}
+        className={`text-center text-[0px] text-[black] max-lg:text-[14px] 
+         ${fontFamily ? "font-kharkiv" : "font-montserrat"} 
+         max-sm3:mt-[2px] max-lg:mt-[20px] 
+         ${fontSize ? "max-lg:text-[20px] max-sm3:text-[18px] " : "max-lg:text-[14px] "}
+`}
+
       >
         {language == "ua" ? "Відділ зовнішніх зв’язків" : "Department of External Relations"}
       </p>

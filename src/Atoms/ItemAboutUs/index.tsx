@@ -14,8 +14,8 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
         boxShadow: "2px -4px 3px 1px rgba(173, 159, 173, 0.05)",
       }}
       className={`${!image ? "w-[721px] max-lg:w-[314px]" :
-        "w-[400px] max-lg:w-[200px]"} h-[auto] relative
-       max-lg:h-[auto] flex bg-[white] ml-[20px] items-center justify-start rounded-[8px] mt-[5px]` }
+        "w-[400px] max-lg:w-[200px]"} h-[auto] relative 
+       max-lg:h-[auto] min-h-[100%] flex bg-[white] ml-[20px] items-center justify-start rounded-[8px] mt-[5px]` }
     >
       {!image ? <Image
         className={`${contrast ? 'filter grayscale brightness-90' : ''} 
@@ -26,12 +26,13 @@ export const ItemAboutUs = ({ data }: { data: IAboutUsData }) => {
       /> : null}
       <div className="text-[black] h-[auto] ml-[20px] max-lg:ml-[10px]">
         <h1
-          className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"}  ${fontSize ? "text-[44px] max-lg:text-[20px]" : "text-[38px] max-lg:text-[16px]"} text-[center] font-[530] `}
+          className={`${fontFamily ? "font-kyivSerif" : "font-kyivSans"}  mb-[5px]
+${fontSize ? "text-[48px]  max-lg:text-[26px]" : "text-[38px] max-lg:text-[16px]"} text-[center] font-[530] `}
         >
           {language == "ua" ? data.name : data.name_eng}
         </h1>
         <p
-          className={`${fontSize ? "text-[26px] max-lg:text-[15px]" : "text-[20px] max-lg:text-[11px]"} text-[center] ${fontFamily ? "font-kyivSerif" : "font-montserrat"} `}
+          className={`${fontSize ? "text-[30px] max-lg:text-[17px]" : "text-[20px] max-lg:text-[11px]"} text-[center] ${fontFamily ? "font-kyivSerif" : "font-montserrat"} `}
         >
           {language == "ua" ? data.text : data.text_eng}
         </p>

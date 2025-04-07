@@ -18,8 +18,8 @@ export const HeaderButtons: React.FC = () => {
             key={elem}
             title={elem.toUpperCase()}
             onClick={() => changeLanguage(elem as "ua" | "eng")}
-            className={`px-2 py-2 rounded-md border-2 mr-2 border-black ${isActive ? contrast ? "   bg-[#414141] text-white" : "bg-[#203C8F]  border-mainBlue text-white" : "bg-white text-black"
-              } text-sm md:text-lg lg:text-xl `}
+            className={` rounded-md border-2  border-black ${isActive ? contrast ? "   bg-[#414141] text-white" : "bg-[#203C8F]  border-mainBlue text-white" : "bg-white text-black"
+              }  `}
           />
         );
       })}
