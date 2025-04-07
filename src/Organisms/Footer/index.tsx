@@ -12,7 +12,7 @@ export const Footer = () => {
       <FooterTopPanel />
       <div className={`w-[93vw] mt-[12px] ${fontFamily ? "font-kharkiv" : "font-montserrat"}  ${fontSize ? "text-[26px] max-lg:text-[16px]" : "text-[22px] max-lg:text-[12px]"} items-start  flex flex-col text-white`}>
         <a href="https://t.me/skalse_456" target="_blank" style={{ fontFamily: "Montserrat" }} rel="noopener noreferrer" >
-          {language == "ua" ? "Служба підтримки" : "Contacts"}:
+          {language == "ua" ? "Служба підтримки" : "Support"}:
           @skalse_456</a>
         <Link href="/privacy" className="cursor-pointer   " style={{ fontFamily: "Montserrat" }}
         >{language === "ua" ? "Політика конфіденційності" : "Privacy Policy"}</Link>

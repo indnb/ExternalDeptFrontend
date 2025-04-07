@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Cross from "@/public/Cross.svg";
 import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
+import { useLanguageStore } from "@/_store/LanguageChanger";
 interface InvalidWidgetHeaderProps {
   setStateWidget: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -12,6 +13,7 @@ export const InvalidWidgetHeader = ({
   const handlerClose = () => {
     setStateWidget(false);
   };
+  const { language } = useLanguageStore()
   const { fontSize, contrast, fontFamily } = useInvalidWidgetStore()
   return (
 
@@ -22,7 +24,8 @@ ${fontFamily ? "font-kharkiv" : "font-montserrat"}
 ${fontSize ? "text-[28px]  max-lg:text-[22px]" : "text-[24px]  max-lg:text-[20px]"}
 text-[bold] font-semibold flex`}
       >
-        Доступність
+        {language == "ua" ? "Доступність" : "Accessibility"}
+
       </h1>
       <button
         onClick={handlerClose}

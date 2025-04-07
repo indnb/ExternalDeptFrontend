@@ -12,24 +12,28 @@ export const useGetInvalidData = () => {
     {
       icon: ImageImg,
       text: "Зображення",
+      text_eng: "Image",
       callback: () => setImage(),
       state: image,
     },
     {
       icon: FontFamilyImg,
       text: "Шрифт",
+      text_eng: "Font",
       callback: () => setFontFamily(),
       state: fontFamily,
     },
     {
       icon: ContrastImg,
       text: "Контраст",
+      text_eng: "Contrast",
       callback: () => setContrast(),
       state: contrast,
     },
     {
       icon: FontSizeImg,
       text: "Збільшення шрифту",
+      text_eng: "Font Size Increase",
       callback: () => setFontSize(),
       state: fontSize,
     },

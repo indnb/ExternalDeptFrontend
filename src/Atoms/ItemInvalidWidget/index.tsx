@@ -1,14 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import { useInvalidWidgetStore } from "@/_store/InvalidWidget";
+import { useLanguageStore } from "@/_store/LanguageChanger";
 interface ItemInvalidWidgetProps {
   icon: string;
   text: string;
+  text_eng: string
   callback: () => void
   state: number | boolean | string
 }
 export const ItemInvalidWidget = ({ elem }: { elem: ItemInvalidWidgetProps }) => {
   const { contrast } = useInvalidWidgetStore()
+  const { language } = useLanguageStore()
   return (
     <div
       onClick={() => elem.callback()}
@@ -19,10 +22,10 @@ export const ItemInvalidWidget = ({ elem }: { elem: ItemInvalidWidgetProps }) =>
     >
       <Image src={elem.icon} alt="" className={` ${typeof elem.state == "boolean" && elem.state ? "invert" : null} `} />
       <h1
-        className={`${typeof elem.state == "boolean" && elem.state ? "text-white" : "text-[black]"} font-medium text-[22px] text-center max-lg:text-[16px]`}
+        className={`${typeof elem.state == "boolean" && elem.state ? "text-white" : "text-[black]"} font-medium text-[22px] text-center w-[90%] max-lg:text-[16px]`}
         style={{ fontFamily: "Montserrat" }}
       >
-        {elem.text}
+        {language == "ua" ? elem.text : elem.text_eng}
       </h1>
       {typeof elem.state == "number" && elem.state != 0 ?
         <div className="w-[90px] flex justify-between max-lg:mt-[5px] mt-[10px]">
