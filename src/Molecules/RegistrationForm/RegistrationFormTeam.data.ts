@@ -71,7 +71,7 @@ export const useRegisterTeam = () => {
         type: "text",
         placeholder: language === "ua"
           ? "ІМ'Я ТА ПРІЗВИЩЕ ЛІДЕРА КОМАНДИ"
-          : "FIRST AND LAST NAME OF THE TEAM LEADER",
+          : "FIRST AND LAST NAME ",
         validation: {
           required: language === "ua"
             ? "Це поле обов'язкове"

@@ -17,7 +17,7 @@ export const Footer = () => {
         <Link href="/privacy" className="cursor-pointer   " style={{ fontFamily: "Montserrat" }}
         >{language === "ua" ? "Політика конфіденційності" : "Privacy Policy"}</Link>
         <Link href="/privacy" className="cursor-pointer inline-block" style={{ fontFamily: "Montserrat" }}
-        >{language === "ua" ? "© 2025 Відділ зовнішніх зв’язків ДУІКТ" : "© 2025 Department of External Relations of DUIKT"}</Link>
+        >{language === "ua" ? "© 2025 Відділ зовнішніх зв’язків ДУІКТ" : "© 2025 Department of External Relations of  SUICT"}</Link>
       </div>
     </footer>
   );
