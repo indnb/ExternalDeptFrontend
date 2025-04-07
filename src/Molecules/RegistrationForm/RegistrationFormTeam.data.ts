@@ -149,7 +149,9 @@ export const useRegisterTeam = () => {
 
           if (startsWithQuoteA && !startsWithQuoteB) return 1;
           if (!startsWithQuoteA && startsWithQuoteB) return -1;
-          return a.name.localeCompare(b.name);
+
+          const locale = language === 'ua' ? 'uk' : 'en';
+          return a.name.localeCompare(b.name, locale);
         }),
         validation: {
           required: language == "ua" ? "Це поле обов'язкове" : "This field is required",
@@ -224,7 +226,9 @@ export const useRegisterTeam = () => {
 
               if (startsWithQuoteA && !startsWithQuoteB) return 1;
               if (!startsWithQuoteA && startsWithQuoteB) return -1;
-              return a.name.localeCompare(b.name);
+
+              const locale = language === 'ua' ? 'uk' : 'en';
+              return a.name.localeCompare(b.name, locale);
             }),
             validation: {
               required: language == "ua" ? "Це поле обов'язкове" : "This field is required",

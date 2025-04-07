@@ -102,6 +102,7 @@ export const RegistrationInputField: React.FC<InputFieldProps> = ({ validation, 
               zIndex: 0,
             }),
           }}
+          isClearable
         />
       ) : (
         <div className="relative">
